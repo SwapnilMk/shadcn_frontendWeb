@@ -15,15 +15,16 @@ const PanelContent = ({ title, description, children }) => {
 };
 
 export function PanelNavigation({
-  panelCompletionStatus /* 0 => first step, 1 => lastStep */,
+  panelCompletionStatus,
   onGoBack,
   onNext,
   onComplete,
+  isValid,
 }) {
   return (
     <div className="fixed sm:absolute bottom-0 left-0 py-5 px-10 bg-white w-full flex justify-between align-middle flex-row-reverse">
       {panelCompletionStatus === 1 && (
-        <Button className="bg-primary-400" onClick={onComplete} tabIndex="1">
+        <Button  onClick={onComplete} tabIndex="1">
           Sign Up
         </Button>
       )}
@@ -33,7 +34,7 @@ export function PanelNavigation({
         </Button>
       )}
       {panelCompletionStatus > 0 && (
-        <Button onClick={onGoBack} tabIndex="2" variant="ghost">
+        <Button onClick={onGoBack} tabIndex="2">
           Go Back
         </Button>
       )}

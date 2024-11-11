@@ -1,9 +1,10 @@
-import { SignupForm } from "@/components/SignupForm";
+import SignupFormDemo from "@/components/example/signup-form-demo";
+import Signupff from "@/components/example/singupfff";
 
 const Register = () => {
   return (
       <section id="registerPage" className="my-20">
-        <SignupForm/>
+        <Signupff/>
       </section>
   );
 };

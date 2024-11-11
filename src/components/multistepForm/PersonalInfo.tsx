@@ -1,109 +1,173 @@
 import { PanelNavigation } from "@/components/section";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  personalSchema,
+  type PersonalFormData,
+} from "@/validation/signupFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-// import { DatePicker } from "@/components/ui/date-picker"; // Assuming this is the shadcn date picker
-import React from "react";
+import { DatePicker } from "../DatePicker";
 
-const PersonalInfo = ({ defaultState, updateInfo }) => {
-  const { register, handleSubmit, setValue } = useForm();
-  const personal = defaultState.personal ?? {};
+interface PersonalInfoProps {
+  defaultState: {
+    personal?: PersonalFormData;
+  };
+  updateInfo: (data: PersonalFormData) => void;
+  onGoBack: () => void;
+}
+
+const PersonalInfo: React.FC<PersonalInfoProps> = ({
+  defaultState,
+  updateInfo,
+  onGoBack,
+}) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    trigger,
+    formState: { errors, isValid },
+  } = useForm<PersonalFormData>({
+    resolver: zodResolver(personalSchema),
+    defaultValues: defaultState.personal,
+    mode: "onChange", // Validate on change
+    reValidateMode: "onChange",
+  });
+
+  const handleSelectChange = async (field: string, value: string) => {
+    setValue(field as any, value, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+    await trigger(field as any);
+  };
 
   return (
-    <form onSubmit={handleSubmit(updateInfo)}>
+    <form onSubmit={handleSubmit(updateInfo)} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* First Name, Middle Name, Last Name in one row */}
-        <div className="mb-4">
+        <div>
           <Label htmlFor="firstName">First Name</Label>
           <Input
-            {...register("firstName", { required: true, value: personal.firstName })}
-            className="my-1"
-            type="text"
+            {...register("firstName")}
             id="firstName"
             placeholder="First Name"
-            required
+            className={errors.firstName ? "border-red-500" : ""}
           />
+          {errors.firstName && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.firstName.message}
+            </p>
+          )}
         </div>
-        <div className="mb-4">
+
+        <div>
           <Label htmlFor="middleName">Middle Name</Label>
           <Input
-            {...register("middleName", { required: false, value: personal.middleName })}
-            className="my-1"
-            type="text"
+            {...register("middleName")}
             id="middleName"
             placeholder="Middle Name"
+            className={errors.middleName ? "border-red-500" : ""}
           />
+           {errors.middleName && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.middleName.message}
+            </p>
+          )}
         </div>
-        <div className="mb-4">
+
+        <div>
           <Label htmlFor="lastName">Last Name</Label>
           <Input
-            {...register("lastName", { required: true, value: personal.lastName })}
-            className="my-1"
-            type="text"
+            {...register("lastName")}
             id="lastName"
             placeholder="Last Name"
-            required
+            className={errors.lastName ? "border-red-500" : ""}
           />
+          {errors.lastName && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.lastName.message}
+            </p>
+          )}
         </div>
       </div>
 
-      {/* Age and Date of Birth in the second row */}
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        <div className="mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
           <Label htmlFor="age">Age</Label>
           <Input
-            {...register("age", { required: true, value: personal.age })}
-            className="my-1"
+            {...register("age", { valueAsNumber: true })}
             type="number"
             id="age"
             placeholder="Enter age"
-            required
+            className={errors.age ? "border-red-500" : ""}
           />
+          {errors.age && (
+            <p className="text-sm text-red-500 mt-1">{errors.age.message}</p>
+          )}
         </div>
-        <div className="mb-4">
+
+        <div>
           <Label htmlFor="dob">Date of Birth</Label>
-          <Input
-            {...register("dob", { required: true, value: personal.dob })}
-            className="my-1"
-            type="date"
+          <DatePicker
+            {...register("dob")}
             id="dob"
-            placeholder="Enter Date of Birth"
-            required
+            className={errors.dob ? "border-red-500" : ""}
           />
-          {/* <DatePicker
-            onSelect={(date) => setValue("dob", date)} // Assuming DatePicker has onSelect handler
-            placeholder="Select Date"
-          /> */}
+          {errors.dob && (
+            <p className="text-sm text-red-500 mt-1">{errors.dob.message}</p>
+          )}
         </div>
       </div>
 
-      {/* Voter ID and Aadhaar Number in the third row */}
-      <div className="grid grid-cols-2 gap-4 mt-4">
-        <div className="mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
           <Label htmlFor="voterId">Voter ID</Label>
           <Input
-            {...register("voterId", { required: true, value: personal.voterId })}
-            className="my-1"
-            type="text"
+            {...register("voterId")}
             id="voterId"
             placeholder="Enter Voter ID"
-            required
+            className={errors.voterId ? "border-red-500" : ""}
           />
+          {errors.voterId && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.voterId.message}
+            </p>
+          )}
         </div>
-        <div className="mb-4">
+
+        <div>
           <Label htmlFor="aadharNumber">Aadhaar Number</Label>
           <Input
-            {...register("aadharNumber", { required: true, value: personal.aadharNumber })}
-            className="my-1"
-            type="text"
+            {...register("aadharNumber")}
             id="aadharNumber"
             placeholder="Enter Aadhaar Number"
-            required
+            className={errors.aadharNumber ? "border-red-500" : ""}
           />
+          {errors.aadharNumber && (
+            <p className="text-sm text-red-500 mt-1">
+              {errors.aadharNumber.message}
+            </p>
+          )}
         </div>
       </div>
 
-      <PanelNavigation panelCompletionStatus={0} />
+      <PanelNavigation
+  panelCompletionStatus={0.33} // Adjust this value for each step
+  onGoBack={onGoBack}
+  isValid={isValid}
+  onNext={undefined}
+  onComplete={undefined}
+/>
     </form>
   );
 };

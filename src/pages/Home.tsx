@@ -5,14 +5,18 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Newsletter } from "@/components/Newsletter";
 import  Layout  from "../layout/Layout";
+import Carousel from "@/components/Carousel";
+import Vision from "./Vision/Vision";
 
 function Home() {
   return (
     <>
     <Layout>
-      <Hero />
+      <Carousel/>
+      {/* <Hero /> */}
       <HowItWorks />
       {/* <Sponsors /> */}
+      {/* <Vision /> */}
       <About />
       <Features />
       {/* <Services /> */}

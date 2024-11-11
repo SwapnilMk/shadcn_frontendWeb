@@ -5,81 +5,45 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Languages } from "lucide-react"; // You can replace this with an appropriate icon if desired
+import { Globe, Check } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export function LanguageToggle() {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (language) => {
+  const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
   };
+
+  const currentLanguage = i18n.language;
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="ghost">
-          <Languages />
+        <Button variant="ghost" size="icon" className="ghost mx-2 px-6">
+          <Globe />
+          <span>{currentLanguage.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => changeLanguage("hi")}>
-          Hindi (𑑑𑑕𑑗)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("bn")}>
-          Bengali (𑄃𑄎)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("te")}>
-          Telugu (తెలుగు)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("mr")}>
-          Marathi (मराठी)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("ta")}>
-          Tamil (தமிழ்)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("ur")}>
-          Urdu (اردو)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("gu")}>
-          Gujarati (ગુજરાતી)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("ml")}>
-          Malayalam (മലയാളം)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("kn")}>
-          Kannada (ಕನ್ನಡ)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("pa")}>
-          Punjabi (ਪੰਜਾਬੀ)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("as")}>
-          Assamese (অসমীয়া)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("mai")}>
-          Maithili (मैथिली)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("or")}>
-          Odia (ଓଡ଼ିଆ)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("mni")}>
-          Manipuri (মেইতেই)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("doi")}>
-          Dogri (डोगरी)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("ks")}>
-          Kashmiri (کٕشمیری)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("sat")}>
-          Santali (ᱥᱟᱱᱛᱟᱲᱤ)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("ne")}>
-          Nepali (नेपाली)
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => changeLanguage("sd")}>
-          Sindhi (سنڌي)
-        </DropdownMenuItem>
+        {[
+          { code: "en", label: "English (English)" },
+          { code: "hi", label: "Hindi (हिंदी)" },
+          { code: "mr", label: "Marathi (मराठी)" },
+          { code: "ta", label: "Tamil (தமிழ்)" },
+          { code: "te", label: "Telugu (తెలుగు)" },
+          { code: "bn", label: "Bengali (বাংলা)" },
+          { code: "pa", label: "Punjabi (ਪੰਜਾਬੀ)" },
+          { code: "gu", label: "Gujarati (ગુજરાતી)" },
+          { code: "kn", label: "Kannada (ಕನ್ನಡ)" },
+          { code: "ml", label: "Malayalam (മലയാളം)" },
+          { code: "or", label: "Oriya (ଓଡ଼ିଆ)" },
+        ].map(({ code, label }) => (
+          <DropdownMenuItem key={code} onClick={() => changeLanguage(code)}>
+            {currentLanguage === code && <Check className="w-5 h-5" />}
+            {label}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
