@@ -1,18 +1,10 @@
 'use client'
 
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
+import { z } from 'zod'
 
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import {
     Card,
@@ -21,7 +13,14 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from '@/components/ui/form'
 import { PasswordInput } from '@/components/ui/password-input'
 
 // Schema for password validation

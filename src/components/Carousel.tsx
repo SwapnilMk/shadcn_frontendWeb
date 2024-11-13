@@ -1,15 +1,8 @@
-import img1 from "@/assets/images/backgrounds/image1.png";
-import img2 from "@/assets/images/backgrounds/image2.png";
-import img3 from "@/assets/images/backgrounds/image3.png";
-import img4 from "@/assets/images/backgrounds/image4.png";
-import img5 from "@/assets/images/backgrounds/image5.png";
-import img6 from "@/assets/images/backgrounds/image6.png";
-import img7 from "@/assets/images/backgrounds/image7.png";
-import img8 from "@/assets/images/backgrounds/image8.png";
-import img9 from "@/assets/images/backgrounds/image9.png";
-import img10 from "@/assets/images/backgrounds/img1.png";
-import img11 from "@/assets/images/backgrounds/img2.png";
-import img12 from "@/assets/images/backgrounds/img3.png";
+import img1 from "@/assets/images/backgrounds/image1.jpg";
+import img2 from "@/assets/images/backgrounds/image2.jpg"
+import img3 from "@/assets/images/backgrounds/image3.jpg";
+import img4 from "@/assets/images/backgrounds/image4.jpg";
+
 import "@/style/Carousel.css";
 import React, { useEffect, useRef, useState } from "react";
 
@@ -102,7 +95,7 @@ const Carousel: React.FC = () => {
                 <div className="item">
                     <img src={img2} alt="Slider 2" />
                     <div className="content">
-                        <div className="title">EQUAL OPPORTUNITY &</div>
+                        <div className="title">EQUAL OPPORTUNITY AND</div>
                         <div className="topic">GENDER EQUALITY</div>
                         <div className="des">
                             The party is committed to the task of building a developed democratic India based on principle of equal opportunity to all citizens. The party will lay special emphasis on improving the condition of socially and economically disadvantaged sections of society in order to build an India based on lofty objectives of our freedom struggle.
@@ -119,7 +112,7 @@ const Carousel: React.FC = () => {
                         <div className="title">GOOD HEALTH &</div>
                         <div className="topic">WELL-BEING</div>
                         <div className="des">
-                        The party will work to provide quality health facilities to all citizens, ensuring that every individual has access to health services that improve their quality of life.
+                            The party will work to provide quality health facilities to all citizens, ensuring that every individual has access to health services that improve their quality of life.
                         </div>
                         <div className="buttons">
 
@@ -133,91 +126,7 @@ const Carousel: React.FC = () => {
                         <div className="title">AGAINST MUSCLE &</div>
                         <div className="topic">MONEY POWER</div>
                         <div className="des">
-                        The party will endeavor to campaign against evil influence of money power and muscle power vitiating the democratic politics.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img5} alt="Slider 5" />
-                    <div className="content">
-                        <div className="title">UPHOLD</div>
-                        <div className="topic">SECULARISM</div>
-                        <div className="des">
-                        The party firmly supports secularism and is opposed to the idea of a theocratic state. It will work to protect and promote religious harmony and ensure equal rights for all faiths.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img6} alt="Slider 6" />
-                    <div className="content">
-                        <div className="title">INDUSTRIAL DEVELOPMENT </div>
-                        <div className="topic">& INFRASTRUCTURE</div>
-                        <div className="des">
-                        The goal of the party is to promote industrial development and build world-class infrastructure to drive economic development. By modernizing industries, encouraging research and development, and enhancing transportation, energy, and digital networks, the party aims to create a sustainable competitive economy.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img7} alt="Slider 7" />
-                    <div className="content">
-                        <div className="title">EMPLOYMENT &</div>
-                        <div className="topic">ECONOMIC GROWTH</div>
-                        <div className="des">
-                        The party is committed to promoting decent work and sustained economic growth by creating job opportunities, ensuring fair wages, and improving working conditions for all citizens. By fostering an inclusive economy, the party aims to empower individuals, particularly in rural and marginalized communities through skill development, entrepreneurship, and access to employment.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img8} alt="Slider 8" />
-                    <div className="content">
-                        <div className="title">JUSTICE, PEACE,</div>
-                        <div className="topic">CLAM AND PROSPERITY</div>
-                        <div className="des">
-                        The party aims to create a peaceful, just, and prosperous society where all citizens have equal opportunities, security, and access to resources. By Promoting societies that respect and uphold individual rights as well as the right to privacy, freedom of expression, and access to information.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img9} alt="Slider 9" />
-                    <div className="content">
-                        <div className="title">UPLIFTMENT OF</div>
-                        <div className="topic">FARMERS</div>
-                        <div className="des">
-                        The party is dedicated to the upliftment of farmers by ensuring fair prices for their product, providing access to modern farming techniques and improving infrastructure in rural areas. The focus will be on increasing farmer’s income through better market access, sustainable agricultural practices and timely financial support.
-                        </div>
-                        <div className="buttons">
-
-                            <button>REGISTER NOW</button>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img10} alt="Slider 10" />
-                    <div className="content">
-                        <div className="title">QUALITY</div>
-                        <div className="topic">EDUCATION</div>
-                        <div className="des">
-                        Achieving inclusive and quality education for all reaffirms the belief that education is one of the most powerful and proven vehicles for sustainable development. The goal is to ensure that all girls and boys complete primary and secondary schooling. It also eliminate gender and wealth disparities and achieve universal access to a quality higher education. 
+                            The party will endeavor to campaign against evil influence of money power and muscle power vitiating the democratic politics.
                         </div>
                         <div className="buttons">
 
@@ -251,42 +160,6 @@ const Carousel: React.FC = () => {
                     <img src={img4} alt="Thumbnail 4" />
                     <div className="content">
                         <div className="title">AGAINST MUSCLE AND MONEY POWER</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img5} alt="Thumbnail 5" />
-                    <div className="content">
-                        <div className="title">UPHOLD SECULARISM </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img6} alt="Thumbnail 6" />
-                    <div className="content">
-                        <div className="title">INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img7} alt="Thumbnail 7" />
-                    <div className="content">
-                        <div className="title">EMPLOYMENT & ECONOMIC GROWTH</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img8} alt="Thumbnail 8" />
-                    <div className="content">
-                        <div className="title">JUSTICE, PEACE, CLAM AND PROSPERITY</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img9} alt="Thumbnail 9" />
-                    <div className="content">
-                        <div className="title">UPLIFTMENT OF FARMERS</div>
-                    </div>
-                </div>
-                <div className="item">
-                    <img src={img10} alt="Thumbnail 10" />
-                    <div className="content">
-                        <div className="title">QUALITY EDUCATION</div>
                     </div>
                 </div>
                 {/* Add more thumbnails here if needed */}

@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import { Check, ChevronsUpDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import {
     Command,
-    CommandList,
     CommandEmpty,
     CommandGroup,
     CommandInput,
     CommandItem,
+    CommandList,
 } from '@/components/ui/command'
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import { useState } from 'react'
 
 // Import JSON data directly
 import countries from '@/data/countries.json'
