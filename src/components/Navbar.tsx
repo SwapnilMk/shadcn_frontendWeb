@@ -121,22 +121,22 @@ export const Navbar = () => {
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
+        <NavigationMenuList className="container h-20 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
-            <a
+            <Link
               rel="noreferrer noopener"
-              href="/"
-              className="ml-2 font-bold text-xl flex justify-center items-center gap-2"
+              to="/"
+              className="ml-2 font-bold text-2xl flex justify-center items-center gap-2"
             >
               <img
                 src={BppLogo}
                 className="object-contain"
-                height={45}
-                width={45}
+                height={75}
+                width={75}
                 alt="Bpp logo"
               />
               Bharatiya Popular Party
-            </a>
+            </Link>
           </NavigationMenuItem>
 
           {/* mobile */}
@@ -270,8 +270,8 @@ export const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden md:flex gap-2">
-            <Button onClick={() => navigate("/login")}>Log In</Button>
-            <Button onClick={() => navigate("/signup")}>Sign Up</Button>
+            {/* <Button onClick={() => navigate("/login")}>Log In</Button> */}
+            <Button className="bg-blue-600 hover:bg-blue-900" onClick={() => navigate("/signup")}>Join BPP</Button>
             <LanguageToggle />
             <ModeToggle />
           </div>

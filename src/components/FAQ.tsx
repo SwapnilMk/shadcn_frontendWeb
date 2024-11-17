@@ -1,86 +1,60 @@
+import { PhoneCall } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-interface FAQProps {
-  question: string;
-  answer: string;
-  value: string;
-}
-
-const FAQList: FAQProps[] = [
-  {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-2",
-  },
-  {
-    question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
-    value: "item-3",
-  },
-  {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    value: "item-4",
-  },
-  {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-5",
-  },
-];
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export const FAQ = () => {
+const navigate = useNavigate()
+
   return (
-    <section
-      id="faq"
-      className="container py-24 sm:py-32"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        Frequently Asked{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Questions
-        </span>
-      </h2>
-
-      <Accordion
-        type="single"
-        collapsible
-        className="w-full AccordionRoot"
-      >
-        {FAQList.map(({ question, answer, value }: FAQProps) => (
-          <AccordionItem
-            key={value}
-            value={value}
-          >
-            <AccordionTrigger className="text-left">
-              {question}
-            </AccordionTrigger>
-
-            <AccordionContent>{answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-
-      <h3 className="font-medium mt-4">
-        Still have questions?{" "}
-        <a
-          rel="noreferrer noopener"
-          href="#"
-          className="text-primary transition-all border-primary hover:border-b-2"
-        >
-          Contact us
-        </a>
-      </h3>
-    </section>
-  );
-};
+  <div className="w-full py-20 lg:py-15">
+    <div className="container mx-auto">
+      <div className="grid lg:grid-cols-2 gap-10">
+        <div className="flex gap-10 flex-col">
+          <div className="flex gap-4 flex-col">
+            <div>
+              <Badge variant="outline">FAQ</Badge>
+            </div>
+            <div className="flex gap-2 flex-col">
+              <h4 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-left font-regular">
+             Lorem ipsum dolor sit amet consectetur adipisi
+              </h4>
+              <p className="text-lg max-w-xl lg:max-w-lg leading-relaxed tracking-tight text-muted-foreground  text-left">
+                Managing a small business today is already tough. Avoid further
+                complications by ditching outdated, tedious trade methods. Our
+                goal is to streamline SMB trade, making it easier and faster
+                than ever.
+              </p>
+            </div>
+            <div className="">
+              <Button onClick={()=> navigate('/contact')} className="gap-4" variant="outline">
+                Any questions? Reach out <PhoneCall className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
+        <Accordion type="single" collapsible className="w-full">
+          {Array.from({ length: 7 }).map((_, index) => (
+            <AccordionItem key={index} value={"index-" + index}>
+              <AccordionTrigger>
+                This is the start of something new
+              </AccordionTrigger>
+              <AccordionContent>
+                Managing a small business today is already tough. Avoid further
+                complications by ditching outdated, tedious trade methods. Our
+                goal is to streamline SMB trade, making it easier and faster
+                than ever.
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </div>
+  </div>
+)};

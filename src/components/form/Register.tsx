@@ -133,7 +133,6 @@ const Register = () => {
             aadharNumber: '',
             gender: '',
             phone: '',
-            email: '',
         },
     });
 

@@ -1,171 +1,175 @@
-import bpplogo from '@/assets/images/logos/Bpp.png';
-import {
-  FaApple,
-  FaFacebook,
-  FaGooglePlay,
-  FaInstagram,
-  FaTwitter,
-  FaWhatsapp
-} from 'react-icons/fa';
+import bppFlag from '@/assets/images/logos/bppflag.png';
 
 import { Separator } from '@/components/ui/separator';
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { LanguageToggle } from './lang-toggle';
+import { ModeToggle } from './mode-toggle';
 
 const sections = [
   {
     title: 'About Us',
     links: [
       { name: 'Goals', href: '/about/bpp-goals' },
-      { name: 'Get To Know BPP', href: '#' },
-      { name: 'Charitable Contribution', href: '#' },
-      { name: 'Sustainability Commitment', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Logo & Media Request', href: '#' },
+      { name: 'Get To Know BPP', href: '/about/get-to-know-bpp' },
+      { name: 'Community Contribution', href: '/about/Community-contribution' },
+      { name: 'Commitment to Progress', href: '/about/commitment-progress' },
+      { name: 'Careers', href: '/about/careers' },
+      { name: 'Logo & Media Request', href: '/about/logo-media-request' },
     ],
   },
   {
     title: 'Membership',
     links: [
-      { name: 'Join Now', href: '#' },
-      { name: 'Membership Privilege', href: '#' },
-      { name: 'Active Membership Term', href: '#' },
-      { name: 'Sign in & Register', href: '#' },
-      { name: 'Membership Renewals', href: '#' },
-      { name: 'Forget Pin', href: '#' },
+      { name: 'Join Now', href: '/membership/join-now' },
+      { name: 'Membership Privilege', href: '/membership/privilege' },
+      { name: 'Active Membership Term', href: '/membership/active-term' },
+      { name: 'Sign in & Register', href: '/login' },
+      { name: 'Membership Renewals', href: '/membership/renewals' },
+      { name: 'Forget Pin', href: '/forgot-pin' },
     ],
   },
   {
     title: 'Business Community/Vendor',
     links: [
-      { name: 'Vendor & Suppliers', href: '#' },
-      { name: 'Business Community Join', href: '#' },
-      { name: 'Business/Vendor Disclosure', href: '#' },
-      { name: 'Ethics Vendor Supplier', href: '#' },
-      { name: 'Supplier Inclusion', href: '#' },
+      { name: 'Vendor & Suppliers', href: '/business-community/vendor-suppliers' },
+      { name: 'Business Community Join', href: '/business-community/join' },
+      { name: 'Business/Vendor Disclosure', href: '/business-community/disclosure' },
+      { name: 'Ethics Vendor Supplier', href: '/business-community/ethics' },
+      { name: 'Supplier Inclusion', href: '/business-community/inclusion' },
     ],
   },
+  {
+    title: 'Updates',
+    links: [
+      { name: 'Updates', href: '#' },
+    ],
+  },
+  {
+    title: 'Others',
+    links: [
+      { name: 'Others', href: '#' },
+    ],
+  }
 ];
 
 const Footer = () => {
   return (
-    <section className="py-16 border-t">
-      <div className="container">
+    <section className="border-t mt-6">
+      <div className="py-6 container">
         <footer>
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-            <div className='flex items-center gap-2'>
-            <img
-              src={bpplogo}
-              alt="logo"
-              className="mb-8 mr-auto h-16 md:mb-0"
-              /> <span className='text-3xl font-black'>Bharatiya Popular Party</span>
+          <div className="grid grid-cols-12 text-gray-600 md:gap-8">
+            {/* Left Column (Logo and Text) */}
+            <div className="col-span-2">
+              <img src={bppFlag} className="mb-10 mr-auto h-20 w-auto md:mb-0" />
+              <h3 className="mb-2 text-sm font-bold my-2 text-blue-700 dark:text-blue-400">Bharatiya Popular Party</h3>
+              <div className='my-2 text-muted-foreground font-bold text-xs'>
+                Navi Mumbai, Maharashtra India
               </div>
-            <div className="flex flex-col gap-4 md:flex-row md:items-center">
-              <p className="font-extrabold text-2xl">
-                Download App
-              </p>
-              <div className="flex gap-2">
-              <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5"
-                >
-                  <FaGooglePlay className="size-7 text-background" />
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5"
-                >
-                  <FaApple className="size-7 text-background" />
-                </a>
+              <div className='my-3 text-muted-foreground text-xs'>
+                Join the BPP's Platform and be a part of a dynamic and transparent community. Your voice matters, and together, we can drive meaningful change.
               </div>
             </div>
-          </div>
-          <Separator className="my-14" />
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {sections.map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 text-xl font-bold">{section.title}</h3>
-                <ul className="space-y-4 text-muted-foreground">
-                  {section.links.map((link, linkIdx) => (
-                    <li
-                      key={linkIdx}
-                      className="font-medium hover:text-primary"
-                    >
-                      <Link to={link.href}>{link.name}</Link>
-                    </li>
-                  ))}
+            {/* Right Column (Other Sections) */}
+            <div className="col-span-10 mx-auto grid grid-cols-2 lg:grid-cols-5 md:gap-8">
+              {sections.map((section, sectionIdx) => (
+                <div key={sectionIdx}>
+                  <h3 className="mb-2 text-xs font-bold dark:text-white">{section.title}</h3>
+                  <ul className="space-y-2 text-xs text-muted-foreground">
+                    {section.links.map((link, linkIdx) => (
+                      <li
+                        key={linkIdx}
+                        className="hover:text-primary font-normal hover:underline"
+                      >
+                        <Link to={link.href}>{link.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              {/* Member Support Section */}
+              <div>
+                <h3 className="mb-2 text-xs font-bold dark:text-white">Member Support</h3>
+                <ul className="space-y-2 text-xs text-muted-foreground">
+                  <li className="font-normal hover:text-primary hover:underline">
+                    <Link to="/customer-support">BPP Member Services</Link>
+                  </li>
+                  <li className="font-normal hover:text-primary hover:underline">
+                    <a href="#">BPP APP Technical Support</a>
+                  </li>
+                  <li className="font-normal hover:text-primary hover:underline">
+                    <a href="#">Accessibility</a>
+                  </li>
                 </ul>
               </div>
-            ))}
+            </div>
+          </div>
+          {/* Separator */}
+          <Separator className="my-3" />
+          <div className='flex gap-8 container '>
             <div>
-              <h3 className="mb-4 text-xl font-bold">Customer Support</h3>
-              <ul className="space-y-4 text-muted-foreground">
+              <LanguageToggle />
+              <ModeToggle />
+            </div>
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-2">
+              <Link to="#" className="group">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <TwitterIcon className="h-4 w-4" />
+                </div>
+              </Link>
+              <Link to="#" className="group">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <FacebookIcon className="h-4 w-4" />
+                </div>
+              </Link>
+              <Link to="#" className="group">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <InstagramIcon className="h-4 w-4" />
+                </div>
+              </Link>
+              <Link to="#" className="group">
+                <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <LinkedinIcon className="h-4 w-4" />
+                </div>
+              </Link>
+            </div>
+          </div>
+          {/* Bottom Section */}
+          <section className='grid grid-cols-12 my-3'>
+            <p className="text-xs text-center col-span-4 text-muted-foreground">
+              © 2024 Bharatiya Popular Party. All rights reserved.
+            </p>
+            <div className='text-xs col-span-8'>
+              <ul className="text-muted-foreground flex flex-wrap justify-around w-3/4 mx-auto">
                 <li className="font-medium hover:text-primary">
-                  <a href="#">BPP Customer Services</a>
+                  <Link to="/">Site Map</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
-                  <a href="#">BPP APP Technical Support</a>
+                  <Link to="/terms-and-conditions">Terms and Conditions</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
-                  <a href="#">Accessability</a>
-                </li>
-              </ul>
-              <h3 className="mb-4 mt-8 text-xl font-bold">Social</h3>
-              <ul className="flex items-center space-x-6 text-muted-foreground">
-                <li className="font-medium hover:text-primary">
-                  <a href="#">
-                    <FaWhatsapp className="size-6" />
-                  </a>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
-                  <a href="#">
-                    <FaInstagram className="size-6" />
-                  </a>
+                  <Link to="/">Cookies</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
-                  <a href="#">
-                    <FaFacebook className="size-6" />
-                  </a>
+                  <Link to="/">Feedback</Link>
                 </li>
                 <li className="font-medium hover:text-primary">
-                  <a href="#">
-                    <FaTwitter className="size-6" />
-                  </a>
+                  <Link to="/">Disclaimer</Link>
+                </li>
+                <li className="font-medium hover:text-primary">
+                  <Link to="/contact">Contact Us</Link>
                 </li>
               </ul>
             </div>
-          </div>
-          <Separator className="my-5" />
-          <div>
-          <ul className="text-muted-foreground flex justify-around my-5 w-3/4 mx-auto">
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Site Map</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Terms and Conditions</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Cookies</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Feedback</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Disclaimer</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Contact Us</a>
-                </li>
-              </ul>
-          </div>
-          <p className="text-sm text-center text-muted-foreground">
-            © 2024 Bharatiya Popular Party. All rights reserved.
-          </p>
+          </section>
         </footer>
       </div>
     </section>
+
   );
 };
 

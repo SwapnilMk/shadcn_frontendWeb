@@ -1,41 +1,34 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import bppflag from '@/assets/images/backgrounds/homepagebanner.png'
 
-export const Newsletter = () => {
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log("Subscribed!");
-  };
-
+export default function Newsletter() {
   return (
-    <section id="newsletter">
-      <hr className="w-11/12 mx-auto" />
-
-      <div className="container py-24 sm:py-32">
-        <h3 className="text-center text-4xl md:text-5xl font-bold">
-          Subscribe{" "}
-          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-            Our Newsletter
-          </span>
-        </h3>
-        <p className="text-xl text-muted-foreground text-center mt-4 mb-8">
-          Lorem ipsum dolor sit amet consectetur.
-        </p>
-
-        <form
-          className="flex flex-col w-full md:flex-row md:w-6/12 lg:w-4/12 mx-auto gap-4 md:gap-2"
-          onSubmit={handleSubmit}
-        >
-          <Input
-            placeholder="test@gmail.com"
-            className="bg-muted/50 dark:bg-muted/80 "
-            aria-label="email"
-          />
-          <Button>Subscribe</Button>
-        </form>
-      </div>
-
-      <hr className="w-11/12 mx-auto" />
-    </section>
+    <>
+      <section
+        className="relative bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url(${bppflag})` }}
+      >
+        <div className="absolute inset-0 bg-black opacity-60"></div> {/* Black overlay with transparency */}
+        <div className="container py-16 md:py-24 relative z-10">
+          <div className="flex flex-col items-center text-center text-white">
+            <h3 className="mb-3 max-w-full text-2xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+              Stay Informed with Bharatiya Popular Party
+            </h3>
+            <p className="mb-8 max-w-3xl text-lg lg:text-lg">
+              BPP is committed to keep you updated with the latest national news and important political
+              developments. By subscribing, you'll receive timely and relevant updates straight to your inbox—
+              no spam, just the facts and insights that matter most.
+            </p>
+            <div className="w-full md:max-w-lg">
+              <div className="flex flex-col justify-center gap-2 sm:flex-row">
+                <Input placeholder="Enter your email" className="text-black" />
+                <Button className="bg-blue-700">Subscribe</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
-};
+}

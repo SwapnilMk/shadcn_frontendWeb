@@ -5,7 +5,7 @@ import {
     DialogTitle,
 } from '@/components/ui/dialog';
 import React from 'react';
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 
 interface CaptchaDialogProps {
     isOpen: boolean;
@@ -13,13 +13,15 @@ interface CaptchaDialogProps {
     onSuccess: () => void;
 }
 
-export const CaptchaDialog: React.FC<CaptchaDialogProps> = ({ isOpen, onOpenChange, onSuccess }) => {
-    const handleCaptchaChange = (value: string | null) => {
-        if (value) {
-            onSuccess();
-            onOpenChange(false);
-        }
-    };
+export const CaptchaDialog: React.FC<CaptchaDialogProps> = ({ isOpen, onOpenChange, 
+    // onSuccess
+    }) => {
+    // const handleCaptchaChange = (value: string | null) => {
+    //     if (value) {
+    //         onSuccess();
+    //         onOpenChange(false);
+    //     }
+    // };
 
     return (
         <Dialog open={isOpen} onOpenChange={onOpenChange}>
@@ -28,10 +30,10 @@ export const CaptchaDialog: React.FC<CaptchaDialogProps> = ({ isOpen, onOpenChan
                     <DialogTitle>Complete Captcha</DialogTitle>
                 </DialogHeader>
                 <div className="flex flex-col items-center space-y-4">
-                    <ReCAPTCHA
+                    {/* <ReCAPTCHA
                         sitekey={"6LfQIXwqAAAAALc3l8Yp1jdN8DzrxWRhCbzJW-6P"}
                         onChange={handleCaptchaChange}
-                    />
+                    /> */}
                 </div>
             </DialogContent>
         </Dialog>

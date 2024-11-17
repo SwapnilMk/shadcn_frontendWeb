@@ -1,10 +1,12 @@
 import img1 from "@/assets/images/backgrounds/image1.jpg";
-import img2 from "@/assets/images/backgrounds/image2.jpg"
+import img2 from "@/assets/images/backgrounds/image2.jpg";
 import img3 from "@/assets/images/backgrounds/image3.jpg";
 import img4 from "@/assets/images/backgrounds/image4.jpg";
 
 import "@/style/Carousel.css";
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
 
 const Carousel: React.FC = () => {
     const [isNext, setIsNext] = useState(false);
@@ -15,6 +17,7 @@ const Carousel: React.FC = () => {
     const [carouselTimeout, setCarouselTimeout] = useState<NodeJS.Timeout | null>(
         null
     );
+    const navigate = useNavigate()
 
     const carouselRef = useRef<HTMLDivElement | null>(null);
     const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -130,7 +133,7 @@ const Carousel: React.FC = () => {
                         </div>
                         <div className="buttons">
 
-                            <button>REGISTER NOW</button>
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>

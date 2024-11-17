@@ -1,4 +1,9 @@
-import { FaBalanceScale, FaHandshake, FaHospital, FaShieldAlt, FaPrayingHands, FaIndustry } from 'react-icons/fa';
+import img1 from "@/assets/images/backgrounds/image1.jpg";
+import img2 from "@/assets/images/backgrounds/image2.jpg";
+import img3 from "@/assets/images/backgrounds/image3.jpg";
+import img4 from "@/assets/images/backgrounds/image4.jpg";
+import img5 from "@/assets/images/backgrounds/image5.png";
+import img6 from "@/assets/images/backgrounds/image6.png";
 import {
   Card,
   CardContent,
@@ -6,24 +11,23 @@ import {
   CardHeader,
 } from '@/components/ui/card';
 import Layout from '@/layout/Layout';
-import img1 from "@/assets/images/backgrounds/image1.jpg";
-import img2 from "@/assets/images/backgrounds/image2.jpg"
-import img3 from "@/assets/images/backgrounds/image3.jpg";
-import img4 from "@/assets/images/backgrounds/image4.jpg";
-import img5 from "@/assets/images/backgrounds/image5.png";
-import img6 from "@/assets/images/backgrounds/image6.png";
+import HeaderComponent from '@/components/HeaderComponent'
+import { FaBalanceScale, FaHandshake, FaHospital, FaIndustry, FaPrayingHands, FaShieldAlt } from 'react-icons/fa';
 
 const Goals = () => {
   return (
     <Layout>
-      <section className="py-16">
+      <HeaderComponent heading="BPP Goals" text="BPP is dedicated to a united, prosperous India. We fight for equal opportunity, quality healthcare and education,
+industrial growth and upliftment of farmers. We believe in socialism, secularism and democracy and would uphold the
+sovereignty, unity and integrity of India."  breadcrumbLinks={[
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "BPP Goals", href: "/bpp-goals" }
+  ]} imgUrl={img1} />
+      <section className="py-8">
         <div className="container">
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-            <h1 className="mb-6 text-pretty text-4xl font-semibold lg:text-5xl">
-              OUR GOALS
-            </h1>
-
-            <div className="mt-10 grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader className="pb-1">
                   <FaBalanceScale className="size-6" />
