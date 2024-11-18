@@ -6,7 +6,7 @@ const TransparentDecisionMaking = () => {
     {
       title: "Commitment to Inclusivity",
       text: `
-        Bharatiya Public Party is committed to inclusivity, fairness, and mutual respect among all members 
+        Bharatiya Popular Party is committed to inclusivity, fairness, and mutual respect among all members 
         by creating an environment where every voice is heard and decisions are made collectively. 
         This approach will strengthen the sense of community as the decisions reflect the collective interests of all the members.
       `,
@@ -41,7 +41,7 @@ const TransparentDecisionMaking = () => {
     <Layout>
       <HeaderComponent
         heading="Transparent Decision-Making"
-        text="Bharatiya Public Party is committed to inclusivity, fairness, and mutual respect among all members by creating an environment where every voice is heard and decisions are made collectively."
+        text="Bharatiya Popular Party is committed to inclusivity, fairness, and mutual respect among all members by creating an environment where every voice is heard and decisions are made collectively."
         breadcrumbLinks={[
           { label: "Home", href: "/" },
           { label: "Transparent Decision-Making", href: "/transparent-decision-making" },

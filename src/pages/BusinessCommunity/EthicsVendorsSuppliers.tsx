@@ -24,7 +24,7 @@ const EthicsVendorsSuppliers = () => {
                     {/* Introduction */}
                     <div className="max-w-3xl mb-12 text-gray-700 dark:text-gray-300 space-y-4">
                         <p>
-                            At Bharatiya Public Party, we believe that our vendors and suppliers play a crucial role in building a supportive and compassionate community. To ensure the well-being of our members and society, we uphold the highest ethical standards and trust that all our partners will act with integrity, fairness, and respect.
+                            At Bharatiya Popular Party, we believe that our vendors and suppliers play a crucial role in building a supportive and compassionate community. To ensure the well-being of our members and society, we uphold the highest ethical standards and trust that all our partners will act with integrity, fairness, and respect.
                         </p>
                     </div>
 

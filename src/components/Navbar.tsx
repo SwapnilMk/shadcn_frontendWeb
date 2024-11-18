@@ -21,6 +21,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LanguageToggle } from "./lang-toggle";
 import { ModeToggle } from "./mode-toggle";
 import { Button, buttonVariants } from "./ui/button";
+import { useTranslation } from "react-i18next";
 
 interface RouteProps {
   href: string;
@@ -118,6 +119,8 @@ const businessCommunityItems = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { t } = useTranslation()
+
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
       <NavigationMenu className="mx-auto">
@@ -135,7 +138,7 @@ export const Navbar = () => {
                 width={75}
                 alt="Bpp logo"
               />
-              Bharatiya Popular Party
+              {t('navigation.partyName')}
             </Link>
           </NavigationMenuItem>
 
@@ -185,11 +188,11 @@ export const Navbar = () => {
                 })}`}
               >
                 <Link to="/">
-                  <NavigationMenuLink>Home</NavigationMenuLink>
+                  <NavigationMenuLink>{t('navigation.home')}</NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
+                <NavigationMenuTrigger>{t('navigation.aboutUs')}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
@@ -204,7 +207,7 @@ export const Navbar = () => {
                             className="absolute inset-0 w-full h-full object-cover"
                           />
                           <div className="relative z-10 bg-black/50 -mx-6 -mb-6 p-6">
-                            <div className="mb-2 text-lg font-medium text-white">BPP Goals</div>
+                            <div className="mb-2 text-lg font-medium text-white">{t('navigation.goals')}</div>
                             <p className="text-xs leading-tight text-gray-200">
                               Learn about the goals that drive BPP's mission and vision.
                             </p>
@@ -212,22 +215,22 @@ export const Navbar = () => {
                         </Link>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/docs" title="Get To Know BPP">
+                    <ListItem href="/docs" title={t("navigation.GetToKnowBPP")}>
                       Discover more about BPP, its values, and its journey.
                     </ListItem>
-                    <ListItem href="/docs/installation" title="Charitable Contribution">
+                    <ListItem href="/docs/installation" title={t("navigation.CommunityContribution")}>
                       See how BPP is making a difference through charitable work.
                     </ListItem>
                     <ListItem
                       href="/docs/primitives/typography"
-                      title="Sustainability Commitment"
+                      title={t("navigation.CommitmentProgress")}
                     >
                       Understand BPP's dedication to sustainability and environmental responsibility.
                     </ListItem>
-                    <ListItem href="/docs/primitives/typography" title="Careers">
+                    <ListItem href="/docs/primitives/typography" title={t("navigation.Careers")}>
                       Explore exciting career opportunities at BPP.
                     </ListItem>
-                    <ListItem href="/docs/primitives/typography" title="Logo & Media Request">
+                    <ListItem href="/docs/primitives/typography" title={t("navigation.LogoMediaRequest")}>
                       Request official BPP logos and media assets for use.
                     </ListItem>
                   </ul>

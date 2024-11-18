@@ -6,7 +6,7 @@ const CollaborativeNetworks = () => {
     {
       title: "Overview",
       text: `
-        Bharatiya Public Party aims to build a collaborative network with a strong focus on
+        Bharatiya Popular Party aims to build a collaborative network with a strong focus on
         social impact, knowledge-sharing, and mutual growth. The network will play
         a major role in addressing societal issues like poverty, literacy, healthcare, and skill development.
       `,
@@ -42,7 +42,7 @@ const CollaborativeNetworks = () => {
     <Layout>
       <HeaderComponent
         heading="Collaborative Networks"
-        text="Bharatiya Public Party aims to build a collaborative network with a strong focus on social impact, knowledge-sharing, and mutual growth."
+        text="Bharatiya Popular Party aims to build a collaborative network with a strong focus on social impact, knowledge-sharing, and mutual growth."
         breadcrumbLinks={[
           { label: "Home", href: "/" },
           { label: "Collaborative Networks", href: "/collaborative-networks" },

@@ -31,36 +31,57 @@ const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
+                {/* Main Routes */}
                 <Route path="/" element={<Home />} />
-                <Route path="/signup" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/forgot-pin" element={<ForgetPin />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/reset-pin" element={<ResetPin />} />
-                <Route path="/about/bpp-goals" element={<Goals />} />
-                <Route path="/about/get-to-know-bpp" element={<GetToKnow />} />
-                <Route path="/membership/join-now" element={<Join />} />
-                <Route path="/membership/renewals" element={<MembershipRenewal />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/vision" element={<Vision />} />
-                <Route path="/mission" element={<Mission />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/customer-support" element={<CustomerService />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-                <Route path="/business-community/vendor-suppliers" element={<VendorSupplier />} />
-                <Route path="/business-community/ethics" element={<EthicsVendorsSuppliers />} />
-                <Route path="/about/community-contribution" element={<CommunityContribution />} />
-                <Route path="/about/commitment-progress" element={<CommitmentToProgress />} />
 
-                {/* join now pages  */}
-                <Route path="/direct-participation" element={<DirectParticipation />} />
-                <Route path="/collaborative-networks" element={<CollaborativeNetwork />} />
-                <Route path="/transparent-decision-making" element={<TransparentDecisionMaking />} />
-                <Route path="/earn-representation" element={<EarnRepresentation />} />
+                {/* Auth Routes */}
+                <Route path="auth">
+                    <Route path="signup" element={<Register />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="forgot-password" element={<ForgotPassword />} />
+                    <Route path="forgot-pin" element={<ForgetPin />} />
+                    <Route path="reset-password" element={<ResetPassword />} />
+                    <Route path="reset-pin" element={<ResetPin />} />
+                </Route>
 
-                {/* page not found  */}
+                {/* About Routes */}
+                <Route path="about">
+                    <Route index element={<About />} />
+                    <Route path="bpp-goals" element={<Goals />} />
+                    <Route path="get-to-know-bpp" element={<GetToKnow />} />
+                    <Route path="community-contribution" element={<CommunityContribution />} />
+                    <Route path="commitment-progress" element={<CommitmentToProgress />} />
+                </Route>
+
+                {/* Membership Routes */}
+                <Route path="membership">
+                    <Route path="join-now" element={<Join />} />
+                    <Route path="renewals" element={<MembershipRenewal />} />
+                </Route>
+
+                {/* Business Community Routes */}
+                <Route path="business-community">
+                    <Route path="vendor-suppliers" element={<VendorSupplier />} />
+                    <Route path="ethics" element={<EthicsVendorsSuppliers />} />
+                </Route>
+
+                {/* Join Now Routes */}
+                <Route path="join">
+                    <Route path="direct-participation" element={<DirectParticipation />} />
+                    <Route path="collaborative-networks" element={<CollaborativeNetwork />} />
+                    <Route path="transparent-decision-making" element={<TransparentDecisionMaking />} />
+                    <Route path="earn-representation" element={<EarnRepresentation />} />
+                </Route>
+
+                {/* Other Routes */}
+                <Route path="vision" element={<Vision />} />
+                <Route path="mission" element={<Mission />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="customer-support" element={<CustomerService />} />
+                <Route path="privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="terms-and-conditions" element={<TermsAndConditions />} />
+
+                {/* 404 Route */}
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
         </BrowserRouter>
@@ -68,3 +89,44 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
+
+
+
+
+
+
+
+
+
+{/* Protected Routes (requires authentication) */ }
+//  <Route
+//  path="/membership"
+//  element={
+//    <ProtectedRoute isAuthenticated={isAuthenticated}>
+//      <Route>
+//        <Route path="join-now" element={<Join />} />
+//        <Route path="renewals" element={<MembershipRenewal />} />
+//      </Route>
+//    </ProtectedRoute>
+//  }
+// />
+
+{/* Private Routes (requires authentication + specific roles) */ }
+{/* <Route
+ path="/admin"
+ element={
+   <PrivateRoute
+     isAuthenticated={isAuthenticated}
+     userRole={userRole}
+     allowedRoles={['admin']}
+   >
+     <Route>
+       <Route path="dashboard" element={<AdminDashboard />} />
+       <Route path="users" element={<UserManagement />} />
+     </Route>
+   </PrivateRoute>
+ }
+/> */}
+
+{/* Error Routes */ }
+{/* <Route path="/unauthorized" element={<UnauthorizedPage />} /> */ }

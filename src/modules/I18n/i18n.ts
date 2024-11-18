@@ -20,8 +20,6 @@ i18n
     fallbackLng: "en",
     debug: true,
     returnNull: false,
-    returnObjects: true,
-    keySeparator: false,
     interpolation: {
       escapeValue: false,
     },

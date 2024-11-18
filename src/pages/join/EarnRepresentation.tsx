@@ -6,7 +6,7 @@ const EarnRepresentation = () => {
     {
       title: "Leadership Based on Engagement",
       text: `
-        Bharatiya Public Party emphasizes that leadership positions are not granted based on title, seniority, or favoritism but are earned through active, consistent involvement in the community and alignment with the Party's core values and objectives.
+        Bharatiya Popular Party emphasizes that leadership positions are not granted based on title, seniority, or favoritism but are earned through active, consistent involvement in the community and alignment with the Party's core values and objectives.
       `,
     },
     {
@@ -39,7 +39,7 @@ const EarnRepresentation = () => {
     <Layout>
       <HeaderComponent
         heading="Earn Representation"
-        text="Bharatiya Public Party emphasizes that leadership positions are not granted based on title, seniority, or favoritism but are earned through active, consistent involvement in the community and alignment with the Party's core values and objectives."
+        text="Bharatiya Popular Party emphasizes that leadership positions are not granted based on title, seniority, or favoritism but are earned through active, consistent involvement in the community and alignment with the Party's core values and objectives."
         breadcrumbLinks={[
           { label: "Home", href: "/" },
           { label: "Earn Representation", href: "/earn-representation" },

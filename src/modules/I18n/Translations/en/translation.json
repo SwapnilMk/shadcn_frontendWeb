@@ -1,5 +1,13 @@
 {
-    "tittle": "Empowering",
-    "tittles": "Communities Through Decentralization",
-    "goal": "Our goal at BPP is to foster mass connectivity, empowering individuals from all levels of society. We aim to create a transparent and accessible platform where every citizen can contribute to shaping policies and decisions. BPP envisions a society where all voices are heard, and decision-making is a collective, inclusive process."
+  "navigation": {
+    "partyName": "Bharatiya Popular Party",
+    "home": "Home",
+    "aboutUs": "About Us",
+    "goals": "Goals",
+    "GetToKnowBPP": "Get To Know BPP",
+    "CommunityContribution": "Community Contribution",
+    "CommitmentProgress": "Commitment to Progress",
+    "Careers": "Careers",
+    "LogoMediaRequest": "Logo & Media Request"
+  }
 }
