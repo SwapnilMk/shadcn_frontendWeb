@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Layout from "@/layout/Layout";
 import { GraduationCap, Shield, Users } from "lucide-react";
+import vision from '@/assets/images/headerBanners/Vision.png'
 
 export default function Vision() {
     return (
@@ -11,7 +12,7 @@ export default function Vision() {
                 <HeaderComponent heading="Our Vision" text="Our Vision" breadcrumbLinks={[
                     { label: "Home", href: "/" },
                     { label: "Vision", href: "/vision" },
-                ]} imgUrl={""} />
+                ]} imgUrl={vision} />
                 <section className="w-full py-5 dark:bg-gray-800">
                     {/* Hero Section */}
                     <div>

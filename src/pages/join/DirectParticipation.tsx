@@ -4,15 +4,6 @@ import Layout from '@/layout/Layout'
 const DirectParticipation = () => {
   const sections = [
     {
-      title: "Active Members",
-      description:
-        "Active Members are the most involved in day-to-day party activities. They participate in meetings, engage in campaigns, and contribute to shaping the party's policies or agenda.",
-      details: [
-        "They have a say in key decisions such as leadership elections or policy proposals.",
-        "As active participants, they may have a stronger voice in shaping the party's platform or in local elections and may be eligible for leadership roles within the party structure.",
-      ],
-    },
-    {
       title: "Primary Members",
       description:
         "Primary Members support the party but are less directly involved than active members. They can have voting rights, particularly in party conventions or primary elections, and may contribute through financial support or other forms of advocacy.",
@@ -20,6 +11,15 @@ const DirectParticipation = () => {
         "They help by endorsing the party, attending major events, or supporting candidates during elections.",
         "They have the ability to influence party decisions through their vote.",
         "Their participation is important, especially in decisions like selecting candidates or shaping party leadership.",
+      ],
+    },
+    {
+      title: "Active Members",
+      description:
+        "Active Members are the most involved in day-to-day party activities. They participate in meetings, engage in campaigns, and contribute to shaping the party's policies or agenda.",
+      details: [
+        "They have a say in key decisions such as leadership elections or policy proposals.",
+        "As active participants, they may have a stronger voice in shaping the party's platform or in local elections and may be eligible for leadership roles within the party structure.",
       ],
     },
     {

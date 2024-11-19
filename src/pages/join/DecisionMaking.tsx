@@ -23,16 +23,13 @@ const TransparentDecisionMaking = () => {
     {
       title: "Collective Decision-Making",
       text: `
-        Party’s approach ensures that decisions are collective and based on the active participation and contributions of our members. 
-        Every member, regardless of their role or background, has the opportunity to participate in shaping the network’s direction.
+    Party’s approach ensures that decisions are collective and based on the active participation and contributions of our members. Every member, regardless of their role or background, has the opportunity to participate in shaping the community’s direction.
       `,
     },
     {
       title: "Dynamic Roles and Responsibilities",
       text: `
-        Roles and responsibilities within the network will be determined by the active contribution of the members. 
-        Members who actively engage with the community will have the opportunity to take on leadership positions or other roles of influence. 
-        As a result, members’ positions within the network will be dynamic and based on their involvement rather than titles or hierarchy.
+     Roles and responsibilities within the community will be determined by the active contribution of the members. Members who actively engage will have the opportunity to take on leadership positions or other roles of influence. As a result, members’ positions within the community will be dynamic and based on their involvement rather than titles or hierarchy.
       `,
     },
   ];

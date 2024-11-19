@@ -1,7 +1,13 @@
-import img1 from "@/assets/images/backgrounds/image1.jpg";
-import img2 from "@/assets/images/backgrounds/image2.jpg";
-import img3 from "@/assets/images/backgrounds/image3.jpg";
-import img4 from "@/assets/images/backgrounds/image4.jpg";
+import img1 from "@/assets/images/banners/NATIONAL INTEGRITY.jpeg";
+import img2 from "@/assets/images/banners/EQUAL OPPORTUNITY AND GENDER EQUALITY.jpeg";
+import img3 from "@/assets/images/banners/GOOD HEALTH AND WELL-BEING.jpeg";
+import img4 from "@/assets/images/banners/GAINST MUSCLE AND MONEY POWER.webp";
+import img5 from "@/assets/images/banners/INDIA UPHOLD SECULARISM .jpeg";
+import img6 from "@/assets/images/banners/INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE.jpeg";
+import img7 from "@/assets/images/banners/EMPLOYMENT & ECONOMIC GROWTH.jpeg";
+import img8 from "@/assets/images/banners/JUSTICE, PEACE, CALM AND PROSPERITY.jpeg";
+import img9 from "@/assets/images/banners/UPLIFTMENT OF FARMERS.jpeg";
+import img10 from "@/assets/images/banners/QUALITY EDUCATION.jpg";
 
 import "@/style/Carousel.css";
 import React, { useEffect, useRef, useState } from "react";
@@ -87,7 +93,7 @@ const Carousel: React.FC = () => {
                         <div className="title">National</div>
                         <div className="topic">Integrity</div>
                         <div className="des">
-                            The party shall bear true faith and allegiance to the constitution of India as by law established, and to the principles of socialism, secularism and democracy and would uphold the sovereignty, unity and integrity of India.
+                        Bharatiya Popular Party shall bear true faith and allegiance to the constitution of India as by law established, and to the principles of socialism, secularism and democracy and would uphold the sovereignty, unity and integrity of India.
                         </div>
                         <div className="buttons">
 
@@ -101,7 +107,7 @@ const Carousel: React.FC = () => {
                         <div className="title">EQUAL OPPORTUNITY AND</div>
                         <div className="topic">GENDER EQUALITY</div>
                         <div className="des">
-                            The party is committed to the task of building a developed democratic India based on principle of equal opportunity to all citizens. The party will lay special emphasis on improving the condition of socially and economically disadvantaged sections of society in order to build an India based on lofty objectives of our freedom struggle.
+                        Bharatiya Popular Party is committed to the task of building a developed democratic India based on principle of equal opportunity to all citizens. The party will lay special emphasis on improving the condition of socially and economically disadvantaged sections of society.
                         </div>
                         <div className="buttons">
 
@@ -115,7 +121,7 @@ const Carousel: React.FC = () => {
                         <div className="title">GOOD HEALTH &</div>
                         <div className="topic">WELL-BEING</div>
                         <div className="des">
-                            The party will work to provide quality health facilities to all citizens, ensuring that every individual has access to health services that improve their quality of life.
+                        Bharatiya Popular Party will work to provide quality health facilities to all citizens, ensuring that every individual has access to health services that improve their quality of life.
                         </div>
                         <div className="buttons">
 
@@ -129,10 +135,91 @@ const Carousel: React.FC = () => {
                         <div className="title">AGAINST MUSCLE &</div>
                         <div className="topic">MONEY POWER</div>
                         <div className="des">
-                            The party will endeavor to campaign against evil influence of money power and muscle power vitiating the democratic politics.
+                        Bharatiya Popular Party will work against the misuse of money and muscle power in democratic politics. 
                         </div>
                         <div className="buttons">
 
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img5} alt="Slider 5" />
+                    <div className="content">
+                        <div className="title">UPHOLD </div>
+                        <div className="topic">SECULARISM </div>
+                        <div className="des">
+                        Bharatiya Popular Party firmly supports secularism and is opposed to the idea of a theocratic state.BPP will work to protect and promote religious harmony and ensure equal rights for all faiths.
+                        </div>
+                        <div className="buttons">
+
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img6} alt="Slider 6" />
+                    <div className="content">
+                        <div className="title">INDUSTRIAL DEVELOPMENT </div>
+                        <div className="topic">& INFRASTRUCTURE</div>
+                        <div className="des">
+                        The goal of the BPP is to promote industrial development and build world-class infrastructure to drive economic development. By modernizing industries, encouraging research and development and enhancing transportation, energy and digital networks, the party aims to create a sustainable competitive economy.
+                        </div>
+                        <div className="buttons">
+
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img7} alt="Slider 7" />
+                    <div className="content">
+                        <div className="title">EMPLOYMENT &</div>
+                        <div className="topic">ECONOMIC GROWTH</div>
+                        <div className="des">
+                        BPP is committed to promoting decent work and sustained economic growth by creating job opportunities, ensuring fair wages and improving working conditions for all citizens. The party aims to empower individuals particularly in rural and marginalized communities through skill development, entrepreneurship and access to employment.
+                        </div>
+                        <div className="buttons">
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img8} alt="Slider 8" />
+                    <div className="content">
+                        <div className="title">JUSTICE, PEACE,</div>
+                        <div className="topic">CALM AND PROSPERITY</div>
+                        <div className="des">
+                        BPP  aims to create a peaceful, just, and prosperous society where all citizens have equal opportunities, security and access to resources. By this goal BPP will uphold individual rights as well as the right to privacy freedom of expression and access to information.
+                        </div>
+                        <div className="buttons">
+
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img9} alt="Slider 9" />
+                    <div className="content">
+                        <div className="title">UPLIFTMENT OF</div>
+                        <div className="topic">FARMERS</div>
+                        <div className="des">
+                        BPP is dedicated to the upliftment of farmers by ensuring fair prices for their product, providing access to modern farming techniques and improving infrastructure in rural areas. The focus will be on increasing farmer’s income through better market access, sustainable agricultural practices and timely financial support.
+                        </div>
+                        <div className="buttons">
+                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                        </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img10} alt="Slider 10" />
+                    <div className="content">
+                        <div className="title">QUALITY</div>
+                        <div className="topic">EDUCATION</div>
+                        <div className="des">
+                        BPP believes that education is one of the most powerful and proven vehicles for sustainable development. The goal is to ensure that all girls and boys complete primary and secondary schooling. It also eliminate gender and wealth disparities and achieve universal access to a quality higher education. 
+                        </div>
+                        <div className="buttons">
                             <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
@@ -163,6 +250,42 @@ const Carousel: React.FC = () => {
                     <img src={img4} alt="Thumbnail 4" />
                     <div className="content">
                         <div className="title">AGAINST MUSCLE AND MONEY POWER</div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img5} alt="Thumbnail 5" />
+                    <div className="content">
+                        <div className="title">UPHOLD SECULARISM </div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img6} alt="Thumbnail 6" />
+                    <div className="content">
+                        <div className="title">INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE</div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img7} alt="Thumbnail 7" />
+                    <div className="content">
+                        <div className="title">EMPLOYMENT & ECONOMIC GROWTH</div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img8} alt="Thumbnail 8" />
+                    <div className="content">
+                        <div className="title">JUSTICE, PEACE, CALM AND PROSPERITY</div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img9} alt="Thumbnail 9" />
+                    <div className="content">
+                        <div className="title">UPLIFTMENT OF FARMERS</div>
+                    </div>
+                </div>
+                <div className="item">
+                    <img src={img10} alt="Thumbnail 10" />
+                    <div className="content">
+                        <div className="title">QUALITY EDUCATION</div>
                     </div>
                 </div>
                 {/* Add more thumbnails here if needed */}

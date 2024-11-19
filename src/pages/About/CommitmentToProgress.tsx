@@ -1,6 +1,7 @@
 import HeaderComponent from '@/components/HeaderComponent';
 import { Separator } from '@/components/ui/separator';
 import Layout from '@/layout/Layout';
+import commitment from '@/assets/images/headerBanners/commitment.png'
 
 const CommitmentToProgress = () => {
     return (
@@ -9,7 +10,7 @@ const CommitmentToProgress = () => {
                 { label: "About", href: "/about" },
                 { label: "Commitment to Progress", href: "/about/Commitment to Progress" }
             ]}
-                imgUrl={"null"}
+                imgUrl={commitment}
             />
             <section className="w-full py-8 dark:bg-gray-800">
                 {/* Header Section */}

@@ -1,6 +1,7 @@
 import HeaderComponent from "@/components/HeaderComponent";
 import Layout from "@/layout/Layout";
 import { BookOpenCheck, Coins, Eye, HeartHandshake, Leaf } from "lucide-react";
+import community from '@/assets/images/headerBanners/community.png'
 
 const CommunityContribution = () => {
     return (
@@ -9,7 +10,7 @@ const CommunityContribution = () => {
                 { label: "About", href: "/about" },
                 { label: "Community Contribution", href: "/about/Community Contribution" }
             ]}
-                imgUrl={"null"}
+                imgUrl={community}
             />
             <section className="w-full py-8 dark:bg-gray-800">
                 {/* Header Section */}

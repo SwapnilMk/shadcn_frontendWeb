@@ -1,9 +1,14 @@
-import img1 from "@/assets/images/backgrounds/image1.jpg";
-import img2 from "@/assets/images/backgrounds/image2.jpg";
-import img3 from "@/assets/images/backgrounds/image3.jpg";
-import img4 from "@/assets/images/backgrounds/image4.jpg";
-import img5 from "@/assets/images/backgrounds/image5.png";
-import img6 from "@/assets/images/backgrounds/image6.png";
+import img7 from "@/assets/images/banners/EMPLOYMENT & ECONOMIC GROWTH.jpeg";
+import img2 from "@/assets/images/banners/EQUAL OPPORTUNITY AND GENDER EQUALITY.jpeg";
+import img4 from "@/assets/images/banners/GAINST MUSCLE AND MONEY POWER.webp";
+import img3 from "@/assets/images/banners/GOOD HEALTH AND WELL-BEING.jpeg";
+import img5 from "@/assets/images/banners/INDIA UPHOLD SECULARISM .jpeg";
+import img6 from "@/assets/images/banners/INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE.jpeg";
+import img8 from "@/assets/images/banners/JUSTICE, PEACE, CALM AND PROSPERITY.jpeg";
+import img1 from "@/assets/images/banners/NATIONAL INTEGRITY.jpeg";
+import img10 from "@/assets/images/banners/QUALITY EDUCATION.jpg";
+import img9 from "@/assets/images/banners/UPLIFTMENT OF FARMERS.jpeg";
+import HeaderComponent from '@/components/HeaderComponent';
 import {
   Card,
   CardContent,
@@ -11,8 +16,6 @@ import {
   CardHeader,
 } from '@/components/ui/card';
 import Layout from '@/layout/Layout';
-import HeaderComponent from '@/components/HeaderComponent'
-import { FaBalanceScale, FaHandshake, FaHospital, FaIndustry, FaPrayingHands, FaShieldAlt } from 'react-icons/fa';
 
 const Goals = () => {
   return (
@@ -26,11 +29,11 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
   ]} imgUrl={img1} />
       <section className="py-8">
         <div className="container">
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
+          <div className="mx-auto flex flex-col items-center gap-6 text-center">
             <div className="grid grid-cols-1 place-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader className="pb-1">
-                  <FaBalanceScale className="size-6" />
+                  {/* <FaBalanceScale className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">NATIONAL INTEGRITY</h2>
@@ -49,7 +52,7 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
 
               <Card>
                 <CardHeader className="pb-1">
-                  <FaHandshake className="size-6" />
+                  {/* <FaHandshake className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">EQUAL OPPORTUNITY AND GENDER EQUALITY</h2>
@@ -68,7 +71,7 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
 
               <Card>
                 <CardHeader className="pb-1">
-                  <FaHospital className="size-6" />
+                  {/* <FaHospital className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">GOOD HEALTH AND WELL-BEING</h2>
@@ -87,7 +90,7 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
 
               <Card>
                 <CardHeader className="pb-1">
-                  <FaShieldAlt className="size-6" />
+                  {/* <FaShieldAlt className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">AGAINST MUSCLE AND MONEY POWER</h2>
@@ -106,7 +109,7 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
 
               <Card>
                 <CardHeader className="pb-1">
-                  <FaPrayingHands className="size-6" />
+                  {/* <FaPrayingHands className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">UPHOLD SECULARISM</h2>
@@ -125,7 +128,7 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
 
               <Card>
                 <CardHeader className="pb-1">
-                  <FaIndustry className="size-6" />
+                  {/* <FaIndustry className="size-6" /> */}
                 </CardHeader>
                 <CardContent className="text-left">
                   <h2 className="mb-1 text-lg font-semibold">INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE</h2>
@@ -137,6 +140,78 @@ sovereignty, unity and integrity of India."  breadcrumbLinks={[
                   <img
                     className="h-40 w-full rounded-tl-md object-cover object-center"
                     src={img6}
+                    alt="placeholder"
+                  />
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader className="pb-1">
+                  {/* <FaIndustry className="size-6" /> */}
+                </CardHeader>
+                <CardContent className="text-left">
+                  <h2 className="mb-1 text-lg font-semibold">EMPLOYMENT & ECONOMIC GROWTH</h2>
+                  <p className="leading-snug text-muted-foreground">
+                  BPP is committed to promoting decent work and sustained economic growth by creating job opportunities, ensuring fair wages and improving working conditions for all citizens. The party aims to empower individuals particularly in rural and marginalized communities through skill development, entrepreneurship and access to employment.
+                  </p>
+                </CardContent>
+                <CardFooter className="justify-end pb-0 pr-0">
+                  <img
+                    className="h-40 w-full rounded-tl-md object-cover object-center"
+                    src={img7}
+                    alt="placeholder"
+                  />
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader className="pb-1">
+                  {/* <FaIndustry className="size-6" /> */}
+                </CardHeader>
+                <CardContent className="text-left">
+                  <h2 className="mb-1 text-lg font-semibold">JUSTICE, PEACE, CALM AND PROSPERITY</h2>
+                  <p className="leading-snug text-muted-foreground">
+                  BPP  aims to create a peaceful, just, and prosperous society where all citizens have equal opportunities, security and access to resources. By this goal BPP will uphold individual rights as well as the right to privacy freedom of expression and access to information.
+                  </p>
+                </CardContent>
+                <CardFooter className="justify-end pb-0 pr-0">
+                  <img
+                    className="h-40 w-full rounded-tl-md object-cover object-center"
+                    src={img8}
+                    alt="placeholder"
+                  />
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader className="pb-1">
+                  {/* <FaIndustry className="size-6" /> */}
+                </CardHeader>
+                <CardContent className="text-left">
+                  <h2 className="mb-1 text-lg font-semibold">UPLIFTMENT OF FARMERS</h2>
+                  <p className="leading-snug text-muted-foreground">
+                  BPP is dedicated to the upliftment of farmers by ensuring fair prices for their product, providing access to modern farming techniques and improving infrastructure in rural areas. The focus will be on increasing farmer’s income through better market access, sustainable agricultural practices and timely financial support.
+                  </p>
+                </CardContent>
+                <CardFooter className="justify-end pb-0 pr-0">
+                  <img
+                    className="h-40 w-full rounded-tl-md object-cover object-center"
+                    src={img9}
+                    alt="placeholder"
+                  />
+                </CardFooter>
+              </Card>
+              <Card>
+                <CardHeader className="pb-1">
+                  {/* <FaIndustry className="size-6" /> */}
+                </CardHeader>
+                <CardContent className="text-left">
+                  <h2 className="mb-1 text-lg font-semibold">QUALITY EDUCATION</h2>
+                  <p className="leading-snug text-muted-foreground">
+                  BPP believes that education is one of the most powerful and proven vehicles for sustainable development. The goal is to ensure that all girls and boys complete primary and secondary schooling. It also eliminate gender and wealth disparities and achieve universal access to a quality higher education. 
+                  </p>
+                </CardContent>
+                <CardFooter className="justify-end pb-0 pr-0">
+                  <img
+                    className="h-40 w-full rounded-tl-md object-cover object-center"
+                    src={img10}
                     alt="placeholder"
                   />
                 </CardFooter>

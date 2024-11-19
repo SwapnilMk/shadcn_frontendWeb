@@ -4,6 +4,8 @@ import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
 import CommunityContribution from '@/pages/About/CommunityContribution';
 import GetToKnow from '@/pages/About/GetToKnow';
 import Goals from '@/pages/About/Goals';
+import LogoMediaRequest from '@/pages/About/LogoMediaRequest';
+import Volunteer from '@/pages/About/Volunteer';
 import ForgetPin from '@/pages/auth/ForgetPin';
 import ForgotPassword from "@/pages/auth/ForgotPassword";
 import Login from '@/pages/auth/Login';
@@ -17,7 +19,9 @@ import CollaborativeNetwork from '@/pages/join/CollaborativeNetwork';
 import TransparentDecisionMaking from '@/pages/join/DecisionMaking';
 import DirectParticipation from '@/pages/join/DirectParticipation';
 import EarnRepresentation from '@/pages/join/EarnRepresentation';
+import ActiveMembershipTerm from '@/pages/Membership/ActiveMembershipTerm';
 import Join from '@/pages/Membership/JoinNow';
+import MembershipPrivilege from '@/pages/Membership/MembershipPrivilege';
 import MembershipRenewal from '@/pages/Membership/MembershipRenewal';
 import Mission from '@/pages/Mission/Mission';
 import PageNotFound from '@/pages/NotFound/PageNotFound';
@@ -51,12 +55,16 @@ const AppRoutes = () => {
                     <Route path="get-to-know-bpp" element={<GetToKnow />} />
                     <Route path="community-contribution" element={<CommunityContribution />} />
                     <Route path="commitment-progress" element={<CommitmentToProgress />} />
+                    <Route path="volunteer" element={<Volunteer />} />
+                    <Route path="logo-media-request" element={<LogoMediaRequest />} />
                 </Route>
 
                 {/* Membership Routes */}
                 <Route path="membership">
                     <Route path="join-now" element={<Join />} />
                     <Route path="renewals" element={<MembershipRenewal />} />
+                    <Route path="membership-privilege" element={<MembershipPrivilege />} />
+                    <Route path="membership-term" element={<ActiveMembershipTerm />} />
                 </Route>
 
                 {/* Business Community Routes */}
