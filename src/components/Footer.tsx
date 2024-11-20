@@ -10,7 +10,7 @@ const sections = [
   {
     title: 'About Us',
     links: [
-      { name: 'Goals', href: '/about/bpp-goals' },
+      { name: 'BPP Goals', href: '/about/bpp-goals' },
       { name: 'Get To Know BPP', href: '/about/get-to-know-bpp' },
       { name: 'Community Contribution', href: '/about/Community-contribution' },
       { name: 'Commitment to Progress', href: '/about/commitment-progress' },
@@ -21,7 +21,7 @@ const sections = [
   {
     title: 'Membership',
     links: [
-      { name: 'Join Now', href: '/membership/join-now' },
+      { name: 'Join Now', href: '/auth/signup' },
       { name: 'Membership Privilege', href: '/membership/membership-privilege' },
       { name: 'Active Membership Term', href: '/membership/membership-term' },
       { name: 'Sign in & Register', href: '/login' },

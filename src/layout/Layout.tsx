@@ -1,3 +1,4 @@
+import CookieConsent from "@/components/CookieConsent";
 import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -16,6 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
         <ScrollToTop />
       </I18nextProvider>
     </div>

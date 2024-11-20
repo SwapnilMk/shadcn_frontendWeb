@@ -9,6 +9,20 @@ import img8 from "@/assets/images/banners/JUSTICE, PEACE, CALM AND PROSPERITY.jp
 import img9 from "@/assets/images/banners/UPLIFTMENT OF FARMERS.jpeg";
 import img10 from "@/assets/images/banners/QUALITY EDUCATION.jpg";
 
+
+
+
+import image1 from "@/assets/images/SliderBanners/INDIA NATIONAL INTEGRITY.png";
+import image2 from "@/assets/images/SliderBanners/EQUAL OPPORTUNITY AND GENDER EQUALITY.png";
+import image3 from "@/assets/images/SliderBanners/GOOD HEALTH AND WELL-BEING.png";
+import image4 from "@/assets/images/SliderBanners/GAINST MUSCLE AND MONEY POWER.png";
+import image5 from "@/assets/images/SliderBanners/INDIA UPHOLD SECULARISM.png";
+import image6 from "@/assets/images/SliderBanners/INDUSTRIAL DEVELOPMENT & INFRASTRUCTURE.png";
+import image7 from "@/assets/images/SliderBanners/EMPLOYMENT & ECONOMIC GROWTH.png";
+import image8 from "@/assets/images/SliderBanners/JUSTICE, PEACE, CALM AND PROSPERITY.png";
+import image9 from "@/assets/images/SliderBanners/UPLIFTMENT OF FARMERS.png";
+import image10 from "@/assets/images/SliderBanners/QUALITY EDUCATION.png";
+
 import "@/style/Carousel.css";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -88,7 +102,7 @@ const Carousel: React.FC = () => {
         >
             <div className="list" ref={sliderRef}>
                 <div className="item">
-                    <img src={img1} alt="Slider 1" />
+                    <img src={image1} alt="Slider 1" />
                     <div className="content">
                         <div className="title">National</div>
                         <div className="topic">Integrity</div>
@@ -102,7 +116,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img2} alt="Slider 2" />
+                    <img src={image2} alt="Slider 2" />
                     <div className="content">
                         <div className="title">EQUAL OPPORTUNITY AND</div>
                         <div className="topic">GENDER EQUALITY</div>
@@ -116,7 +130,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img3} alt="Slider 3" />
+                    <img src={image3} alt="Slider 3" />
                     <div className="content">
                         <div className="title">GOOD HEALTH &</div>
                         <div className="topic">WELL-BEING</div>
@@ -130,7 +144,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img4} alt="Slider 4" />
+                    <img src={image4} alt="Slider 4" />
                     <div className="content">
                         <div className="title">AGAINST MUSCLE &</div>
                         <div className="topic">MONEY POWER</div>
@@ -144,7 +158,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img5} alt="Slider 5" />
+                    <img src={image5} alt="Slider 5" />
                     <div className="content">
                         <div className="title">UPHOLD </div>
                         <div className="topic">SECULARISM </div>
@@ -158,7 +172,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img6} alt="Slider 6" />
+                    <img src={image6} alt="Slider 6" />
                     <div className="content">
                         <div className="title">INDUSTRIAL DEVELOPMENT </div>
                         <div className="topic">& INFRASTRUCTURE</div>
@@ -172,7 +186,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img7} alt="Slider 7" />
+                    <img src={image7} alt="Slider 7" />
                     <div className="content">
                         <div className="title">EMPLOYMENT &</div>
                         <div className="topic">ECONOMIC GROWTH</div>
@@ -185,7 +199,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img8} alt="Slider 8" />
+                    <img src={image8} alt="Slider 8" />
                     <div className="content">
                         <div className="title">JUSTICE, PEACE,</div>
                         <div className="topic">CALM AND PROSPERITY</div>
@@ -199,7 +213,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img9} alt="Slider 9" />
+                    <img src={image9} alt="Slider 9" />
                     <div className="content">
                         <div className="title">UPLIFTMENT OF</div>
                         <div className="topic">FARMERS</div>
@@ -212,7 +226,7 @@ const Carousel: React.FC = () => {
                     </div>
                 </div>
                 <div className="item">
-                    <img src={img10} alt="Slider 10" />
+                    <img src={image10} alt="Slider 10" />
                     <div className="content">
                         <div className="title">QUALITY</div>
                         <div className="topic">EDUCATION</div>

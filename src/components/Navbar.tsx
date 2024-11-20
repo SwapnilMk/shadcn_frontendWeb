@@ -28,98 +28,94 @@ interface RouteProps {
   label: string;
 }
 
-
 const routeList: RouteProps[] = [
   {
-    href: "#features",
+    href: "/",
     label: "Home",
   },
-
   {
-    href: "#testimonials",
+    href: "/vision",
     label: "Vision",
   },
   {
-    href: "#pricing",
+    href: "/mission",
     label: "Our Mission",
   },
   {
-    href: "#faq",
+    href: "/mapping",
     label: "Mapping",
   },
   {
-    href: "#faq",
+    href: "/why-bpp",
     label: "Why BPP",
   },
 ];
 
-
 const membershipItems = [
   {
     title: "Join Now",
-    href: "/join-now",
+    href: "/membership/join-now",
     description: "Become a member and enjoy exclusive benefits.",
   },
   {
     title: "Membership Privilege",
-    href: "/membership-privilege",
+    href: "/membership/membership-privilege",
     description: "Learn more about the privileges of being a member.",
   },
   {
     title: "Active Membership Term",
-    href: "/membership-term",
+    href: "/membership/membership-term",
     description: "View details of your active membership term.",
   },
   {
     title: "Sign in & Register",
-    href: "/sign-in-register",
+    href: "/auth/login",
     description: "Sign in or register for membership.",
   },
   {
     title: "Membership Renewals",
-    href: "/membership-renewals",
+    href: "/membership/renewals",
     description: "Renew your membership easily.",
   },
   {
     title: "Forget Pin",
-    href: "/forget-pin",
+    href: "/auth/forgot-pin",
     description: "Recover your membership pin.",
   },
 ];
 
-
 const businessCommunityItems = [
   {
     title: "Vendor & Suppliers",
-    href: "/vendor-suppliers",
+    href: "/business-community/vendor-suppliers",
     description: "Explore vendors and suppliers within the community.",
   },
   {
     title: "Business Community Join",
-    href: "/business-community-join",
+    href: "/business-community/join",
     description: "Join the business community and grow your network.",
   },
   {
     title: "Business/Vendor Disclosure",
-    href: "/vendor-disclosure",
+    href: "/business-community/disclosure",
     description: "View important business/vendor disclosure information.",
   },
   {
     title: "Ethics Vendor Supplier",
-    href: "/ethics-vendor-supplier",
+    href: "/business-community/ethics",
     description: "Understand the ethics for vendors and suppliers.",
   },
   {
     title: "Supplier Inclusion",
-    href: "/supplier-inclusion",
+    href: "/business-community/inclusion",
     description: "Learn about supplier inclusion initiatives.",
-  },
-]
+  }
+];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
@@ -144,8 +140,6 @@ export const Navbar = () => {
 
           {/* mobile */}
           <span className="flex md:hidden">
-
-            {/* <ModeToggle /> */}
             <LanguageToggle />
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -166,15 +160,14 @@ export const Navbar = () => {
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
-                    <a
-                      rel="noreferrer noopener"
+                    <Link
                       key={label}
-                      href={href}
+                      to={href}
                       onClick={() => setIsOpen(false)}
                       className={buttonVariants({ variant: "ghost" })}
                     >
                       {label}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </SheetContent>
@@ -202,7 +195,7 @@ export const Navbar = () => {
                           to="/about/bpp-goals"
                         >
                           <img
-                            src={BppLogo} 
+                            src={BppLogo}
                             alt="BPP Goals Background"
                             className="absolute inset-0 w-full h-full object-cover"
                           />
@@ -215,22 +208,22 @@ export const Navbar = () => {
                         </Link>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/docs" title={t("navigation.GetToKnowBPP")}>
+                    <ListItem to="/about/get-to-know-bpp" title={t("navigation.GetToKnowBPP")}>
                       Discover more about BPP, its values, and its journey.
                     </ListItem>
-                    <ListItem href="/docs/installation" title={t("navigation.CommunityContribution")}>
+                    <ListItem to="/about/Community-contribution" title={t("navigation.CommunityContribution")}>
                       See how BPP is making a difference through charitable work.
                     </ListItem>
                     <ListItem
-                      href="/docs/primitives/typography"
+                      to="/about/commitment-progress"
                       title={t("navigation.CommitmentProgress")}
                     >
                       Understand BPP's dedication to sustainability and environmental responsibility.
                     </ListItem>
-                    <ListItem href="/docs/primitives/typography" title={t("navigation.Careers")}>
+                    <ListItem to="/about/volunteer" title={t("navigation.volunteer")}>
                       Explore exciting career opportunities at BPP.
                     </ListItem>
-                    <ListItem href="/docs/primitives/typography" title={t("navigation.LogoMediaRequest")}>
+                    <ListItem to="/about/logo-media-request" title={t("navigation.LogoMediaRequest")}>
                       Request official BPP logos and media assets for use.
                     </ListItem>
                   </ul>
@@ -242,7 +235,7 @@ export const Navbar = () => {
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                     {membershipItems.map((item) => (
-                      <ListItem key={item.title} title={item.title} href={item.href}>
+                      <ListItem key={item.title} title={item.title} to={item.href}>
                         {item.description}
                       </ListItem>
                     ))}
@@ -254,7 +247,7 @@ export const Navbar = () => {
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {businessCommunityItems.map((item) => (
-                      <ListItem key={item.title} title={item.title} href={item.href}>
+                      <ListItem key={item.title} title={item.title} to={item.href}>
                         {item.description}
                       </ListItem>
                     ))}
@@ -273,8 +266,7 @@ export const Navbar = () => {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden md:flex gap-2">
-            {/* <Button onClick={() => navigate("/login")}>Log In</Button> */}
-            <Button className="bg-blue-600 hover:bg-blue-900" onClick={() => navigate("/signup")}>Join BPP</Button>
+            <Button className="bg-blue-600 hover:bg-blue-900" onClick={() => navigate("/auth/signup")}>Join BPP</Button>
             <LanguageToggle />
             <ModeToggle />
           </div>
@@ -285,13 +277,13 @@ export const Navbar = () => {
 };
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<typeof Link>,
+  React.ComponentPropsWithoutRef<typeof Link>
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -303,7 +295,7 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );
