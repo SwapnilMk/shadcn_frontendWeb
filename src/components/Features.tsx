@@ -33,7 +33,7 @@ export const Features = () => {
                   </p>
                 </div>
                 <p className="font-normal text-muted-foreground md:block">
-                  Common an in Bharatiya Popular party is the voter or supporter who is associated with
+                  Common Man in Bharatiya Popular party is the voter or supporter who is associated with
                   the party and expresses loyalty and trust in party's vision, principles, and
                   leadership.
                 </p>
@@ -77,7 +77,7 @@ export const Features = () => {
                       <h3 className="text-3xl font-bold">Common Man</h3>
                     </div>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      Common an in Bharatiya Popular party is the voter or supporter who is associated with
+                      Common Man in Bharatiya Popular party is the voter or supporter who is associated with
                       the party and expresses loyalty and trust in party's vision, principles, and
                       leadership. This individual may or may not have expertise in specific fields such as
                       education, business, or services, but is actively engaged in party activities, discussions,

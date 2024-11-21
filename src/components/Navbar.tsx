@@ -51,7 +51,7 @@ const routeList: RouteProps[] = [
   },
 ];
 
-const membershipItems = [
+export const membershipItems = [
   {
     title: "Join Now",
     href: "/membership/join-now",
@@ -84,7 +84,7 @@ const membershipItems = [
   },
 ];
 
-const businessCommunityItems = [
+export const businessCommunityItems = [
   {
     title: "Vendor & Suppliers",
     href: "/business-community/vendor-suppliers",
@@ -276,7 +276,7 @@ export const Navbar = () => {
   );
 };
 
-const ListItem = React.forwardRef<
+export const ListItem = React.forwardRef<
   React.ElementRef<typeof Link>,
   React.ComponentPropsWithoutRef<typeof Link>
 >(({ className, title, children, ...props }, ref) => {

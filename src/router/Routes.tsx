@@ -14,6 +14,9 @@ import ResetPin from '@/pages/auth/ResetPin';
 import EthicsVendorsSuppliers from '@/pages/BusinessCommunity/EthicsVendorsSuppliers';
 import VendorSupplier from '@/pages/BusinessCommunity/VendorSupplier';
 import Contact from '@/pages/Contact/Contact';
+import DashboardPage from '@/pages/Dashboard';
+import NewPostPage from '@/pages/Dashboard/posts/new/page';
+import PostsPage from '@/pages/Dashboard/posts/page';
 import Home from '@/pages/Home/Home';
 import CollaborativeNetwork from '@/pages/join/CollaborativeNetwork';
 import TransparentDecisionMaking from '@/pages/join/DecisionMaking';
@@ -91,6 +94,9 @@ const AppRoutes = () => {
 
                 {/* 404 Route */}
                 <Route path="*" element={<PageNotFound />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/post" element={<PostsPage />} />
+                <Route path="/posts/new" element={<NewPostPage />} />
             </Routes>
         </BrowserRouter>
     );

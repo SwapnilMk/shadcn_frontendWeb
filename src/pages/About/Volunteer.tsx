@@ -81,7 +81,7 @@ const Volunteer = () => {
         <div className="bg-blue-500 text-white py-16 text-center">
           <div className="max-w-4xl mx-auto px-4">
             <p className="text-xl mb-8">
-              Your support has the power for the development of India. Let us work towards as world where there are immense opportunities for growth and development and let us rebuild our nation to make it a better place to live, work and grow.
+            Your support holds the power to drive India’s development. Let us work together towards a world full of opportunities for growth and progress. Together, we can rebuild our nation and make it a better place to live, work, and thrive.
             </p>
             <Button className="bg-white text-black hover:bg-blue-800 hover:text-white text-lg px-8 py-6">
               Become a Volunteer

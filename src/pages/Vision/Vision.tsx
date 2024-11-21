@@ -1,9 +1,9 @@
+import vision from '@/assets/images/headerBanners/Vision.png';
 import HeaderComponent from "@/components/HeaderComponent";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Layout from "@/layout/Layout";
 import { GraduationCap, Shield, Users } from "lucide-react";
-import vision from '@/assets/images/headerBanners/Vision.png'
 
 export default function Vision() {
     return (
@@ -18,9 +18,17 @@ export default function Vision() {
                     <div>
                         <div className="space-y-3 xl:text-left">
                             {/* Core Pillars Section */}
-                            <div className="container mt-12 px-4 md:px-6">
+                            <div className="container mt-8 px-4 md:px-6">
+                            <h3 className="text-xl font-bold">
+                                    At Bharatiya Popular Party (BPP), our vision is to build an equitable and prosperous society where power is distributed fairly, decisions are made closer to the people, and every voice is heard.
+                        
+                                    We are
+                                    driven by the belief that true democracy flourishes when governance is not
+                                    centralized but shared across all levels, empowering local communities and
+                                    respecting regional diversity.
+                                </h3>
                                 <h2
-                                    className="font-bold text-3xl mb-6">
+                                    className="font-bold text-2xl mt-4 mb-6">
                                     Our vision is built on three core pillars
                                 </h2>
                                 <Separator />
@@ -85,70 +93,11 @@ export default function Vision() {
                                 </div>
                                 <p className="mt-4 text-gray-600 dark:text-gray-300">
                                     We believe that a nation can only progress when{" "}
-                                    <span className="font-bold">everyone is given a fair chance</span>. when opportunity is not dictated by wealth, power, or birthright, but by talent, hard work, and determination. This vision for the future is rooted in the belief that our diversity is our strength, and our democracy is our most powerful tool for change.
-                                    Together, we will {" "}
+                                    <span className="font-bold">everyone is given a fair chance</span>, when opportunity is not dictated by wealth, power, or birthright, but by talent, hard work, and determination. This vision for the future is rooted in the belief that our diversity is our strength, and our democracy is our most powerful tool for change.
+                                    Together, we will{" "}
                                     <span className="font-bold">build a nation that works for all</span>, where dignity, justice, and opportunity are available to every citizen.
                                 </p>
                             </div>
-
-                            {/* <div className="py-24 lg:py-15">
-                                <div className="container mx-auto">
-                                    <div className="grid gap-12">
-                                        <div>
-                                            <h2 className="text-3xl font-bold lg:text-4xl">Our vision is built on three core pillars</h2>
-                                            <p className="mt-3 text-muted-foreground">
-                                                For as long as there have been cities, the public square has
-                                                been a fundamental part of the urban landscape - an open,
-                                                approachable space to meet and engage with friends and
-                                                neighbours. Space aims to capture this spirit of bringing people
-                                                together in an exciting, welcoming environment.
-                                            </p>
-                                        </div>
-                                        <div className="space-y-6 lg:space-y-10">
-                                            <div className="flex">
-                                                <Building2Icon className="flex-shrink-0 mt-2 h-6 w-6" />
-                                                <div className="ms-5 sm:ms-8">
-                                                    <h3 className="text-base sm:text-lg font-semibold">
-                                                        High quality Co-Living spaces
-                                                    </h3>
-                                                    <p className="mt-1 text-muted-foreground">
-                                                        Our fully furnished spaces are designed and purpose-built
-                                                        with Co-Living in mind, featuring high-end finishes and
-                                                        amenities that go far beyond traditional apartment
-                                                        buildings.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="flex">
-                                                <Users2Icon className="flex-shrink-0 mt-2 h-6 w-6" />
-                                                <div className="ms-5 sm:ms-8">
-                                                    <h3 className="text-base sm:text-lg font-semibold">
-                                                        Fostering vibrant communities
-                                                    </h3>
-                                                    <p className="mt-1 text-muted-foreground">
-                                                        Our passion is bringing people together. Beyond creating
-                                                        beautiful spaces, we provide shared experiences.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div className="flex">
-                                                <ThumbsUpIcon className="flex-shrink-0 mt-2 h-6 w-6" />
-                                                <div className="ms-5 sm:ms-8">
-                                                    <h3 className="text-base sm:text-lg font-semibold">
-                                                        Simple and all-inclusive
-                                                    </h3>
-                                                    <p className="mt-1 text-muted-foreground">
-                                                        We worry about the details so that our residents don&apos;t
-                                                        have to. From our online application process to simple,
-                                                        all-inclusive billing we aim to make the living experience
-                                                        as effortless as possible.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </section>
