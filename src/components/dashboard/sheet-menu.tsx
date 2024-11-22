@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MenuIcon, PanelsTopLeft } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Menu } from "@/components/dashboard/menu";

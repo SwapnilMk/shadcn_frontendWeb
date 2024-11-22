@@ -12,7 +12,7 @@ interface NavbarProps {
   title: string;
 }
 
-export function Navbar({ title }: NavbarProps) {
+export function Navbar({ }: NavbarProps) {
   const { t } = useTranslation();
 
   return (

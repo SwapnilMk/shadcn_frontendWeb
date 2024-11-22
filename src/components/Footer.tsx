@@ -12,7 +12,7 @@ const sections = [
     links: [
       { name: 'BPP Goals', href: '/about/bpp-goals' },
       { name: 'Get To Know BPP', href: '/about/get-to-know-bpp' },
-      { name: 'Community Contribution', href: '/about/Community-contribution' },
+     
       { name: 'Commitment to Progress', href: '/about/commitment-progress' },
       { name: 'Volunteer', href: '/about/volunteer' },
       { name: 'Logo & Media Request', href: '/about/logo-media-request' },
@@ -26,7 +26,7 @@ const sections = [
       { name: 'Active Membership Term', href: '/membership/membership-term' },
       { name: 'Sign in & Register', href: '/login' },
       { name: 'Membership Renewals', href: '/membership/renewals' },
-      { name: 'Forget Pin', href: '/forgot-pin' },
+      // { name: 'Forget Pin', href: '/forgot-pin' },
     ],
   },
   {
@@ -37,6 +37,13 @@ const sections = [
       { name: 'Business/Vendor Disclosure', href: '/business-community/disclosure' },
       { name: 'Ethics Vendor Supplier', href: '/business-community/ethics' },
       { name: 'Supplier Inclusion', href: '/business-community/inclusion' },
+    ],
+  },
+  {
+    title: 'Community Contributions',
+    links: [
+      { name: 'Community Contribution', href: '/about/Community-contribution' },
+      { name: 'How it Works', href: '#' },
     ],
   },
   {
@@ -71,7 +78,7 @@ const Footer = () => {
               </div>
             </div>
             {/* Right Column (Other Sections) */}
-            <div className="col-span-10 mx-auto grid grid-cols-2 lg:grid-cols-5 md:gap-8">
+            <div className="col-span-10 mx-auto grid grid-cols-2 lg:grid-cols-5 md:gap-5">
               {sections.map((section, sectionIdx) => (
                 <div key={sectionIdx}>
                   <h3 className="mb-2 text-xs font-bold dark:text-white">{section.title}</h3>

@@ -6,7 +6,7 @@
   "tailwind": {
     "config": "tailwind.config.js",
     "css": "src/App.css",
-    "baseColor": "neutral",
+    "baseColor": "slate",
     "cssVariables": true,
     "prefix": ""
   },
@@ -16,7 +16,8 @@
     "ui": "@/components/ui",
     "examples": "@/components/examples",
     "blocks": "@/components/blocks",
-     "lib": "@/lib",
+    "lib": "@/lib",
     "hooks": "@/hooks"
-  }
+  },
+  "iconLibrary": "lucide"
 }
