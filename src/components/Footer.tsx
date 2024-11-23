@@ -55,7 +55,7 @@ const sections = [
   {
     title: 'Others',
     links: [
-      { name: 'Dashboard', href: '/dashboard' },
+      { name: 'Dashboard', href: '/dashboard/home' },
     ],
   }
 ];

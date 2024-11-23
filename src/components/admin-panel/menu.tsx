@@ -1,19 +1,17 @@
 "use client";
-
+import { Link, useLocation } from 'react-router-dom';
 import { Ellipsis, LogOut } from "lucide-react";
-import { NavLink, useLocation } from "react-router-dom";
-
-import { CollapseMenuButton } from "@/components/dashboard/collapse-menu-button";
+import { cn } from "@/lib/utils";
+import { getMenuList } from "@/lib/menu-list";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { CollapseMenuButton } from "@/components/admin-panel/collapse-menu-button";
 import {
   Tooltip,
-  TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
+  TooltipContent,
+  TooltipProvider
 } from "@/components/ui/tooltip";
-import { getMenuList } from "@/lib/menu-list";
-import { cn } from "@/lib/utils";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -60,14 +58,14 @@ export function Menu({ isOpen }: MenuProps) {
                               variant={
                                 (active === undefined &&
                                   location.pathname.startsWith(href)) ||
-                                active
+                                  active
                                   ? "secondary"
                                   : "ghost"
                               }
                               className="w-full justify-start h-10 mb-1"
                               asChild
                             >
-                              <NavLink to={href}>
+                              <Link to={href}>
                                 <span
                                   className={cn(isOpen === false ? "" : "mr-4")}
                                 >
@@ -83,7 +81,7 @@ export function Menu({ isOpen }: MenuProps) {
                                 >
                                   {label}
                                 </p>
-                              </NavLink>
+                              </Link>
                             </Button>
                           </TooltipTrigger>
                           {isOpen === false && (
@@ -117,7 +115,7 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => {}}
+                    onClick={() => { }}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >

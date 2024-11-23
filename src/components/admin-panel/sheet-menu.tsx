@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, PanelsTopLeft } from "lucide-react";
+import { Link } from 'react-router-dom';
 
+import { Menu } from "@/components/admin-panel/menu";
 import { Button } from "@/components/ui/button";
-import { Menu } from "@/components/dashboard/menu";
 import {
   Sheet,
-  SheetHeader,
   SheetContent,
-  SheetTrigger,
-  SheetTitle
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
 } from "@/components/ui/sheet";
 
 export function SheetMenu() {
@@ -27,7 +27,8 @@ export function SheetMenu() {
             asChild
           >
             <Link to="/dashboard" className="flex items-center gap-2">
-              <SheetTitle className="font-bold text-lg">Bharatiya Popular Party</SheetTitle>
+              <PanelsTopLeft className="w-6 h-6 mr-1" />
+              <SheetTitle className="font-bold text-lg">BHARATIYA POPULAR PARTY</SheetTitle>
             </Link>
           </Button>
         </SheetHeader>

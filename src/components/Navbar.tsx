@@ -17,11 +17,11 @@ import {
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { LanguageToggle } from "./lang-toggle";
 import { ModeToggle } from "./mode-toggle";
 import { Button, buttonVariants } from "./ui/button";
-import { useTranslation } from "react-i18next";
 
 interface RouteProps {
   href: string;
@@ -110,6 +110,18 @@ export const businessCommunityItems = [
     href: "/business-community/inclusion",
     description: "Learn about supplier inclusion initiatives.",
   }
+];
+export const CommunityContribution = [
+  {
+    title: "Introduction",
+    href: "/about/Community-contribution",
+    description: "Explore vendors and suppliers within the community.",
+  },
+  {
+    title: "How it works",
+    href: "/about/how-it-works",
+    description: "Join the business community and grow your network.",
+  },
 ];
 
 export const Navbar = () => {
@@ -243,10 +255,10 @@ export const Navbar = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Business Community</NavigationMenuTrigger>
+                <NavigationMenuTrigger>Community Contributions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {businessCommunityItems.map((item) => (
+                    {CommunityContribution.map((item) => (
                       <ListItem key={item.title} title={item.title} to={item.href}>
                         {item.description}
                       </ListItem>

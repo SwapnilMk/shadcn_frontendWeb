@@ -1,9 +1,8 @@
 "use client";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { ChevronDown, Dot, LucideIcon } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { DropdownMenuArrow } from "@radix-ui/react-dropdown-menu";
@@ -26,7 +25,6 @@ import {
   DropdownMenuContent,
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
-import { useLocation } from "react-router-dom";
 
 type Submenu = {
   href: string;
@@ -45,11 +43,11 @@ interface CollapseMenuButtonProps {
 export function CollapseMenuButton({
   icon: Icon,
   label,
+  active,
   submenus,
   isOpen
 }: CollapseMenuButtonProps) {
-  const location = useLocation();
-  const pathname = location.pathname;
+  const { pathname } = useLocation();
   const isSubmenuActive = submenus.some((submenu) =>
     submenu.active === undefined ? submenu.href === pathname : submenu.active
   );
@@ -173,9 +171,10 @@ export function CollapseMenuButton({
         {submenus.map(({ href, label, active }, index) => (
           <DropdownMenuItem key={index} asChild>
             <Link
-              className={`cursor-pointer ${((active === undefined && pathname === href) || active) &&
+              className={`cursor-pointer ${
+                ((active === undefined && pathname === href) || active) &&
                 "bg-secondary"
-                }`}
+              }`}
               to={href}
             >
               <p className="max-w-[180px] truncate">{label}</p>

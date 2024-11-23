@@ -1,5 +1,6 @@
 import { About } from '@/components/About';
 import Register from '@/components/form/Register';
+import { HowItWorks } from '@/components/HowItWorks';
 import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
 import CommunityContribution from '@/pages/About/CommunityContribution';
 import GetToKnow from '@/pages/About/GetToKnow';
@@ -15,8 +16,7 @@ import EthicsVendorsSuppliers from '@/pages/BusinessCommunity/EthicsVendorsSuppl
 import VendorSupplier from '@/pages/BusinessCommunity/VendorSupplier';
 import Contact from '@/pages/Contact/Contact';
 import DashboardPage from '@/pages/Dashboard';
-import NewPostPage from '@/pages/Dashboard/posts/new/page';
-import PostsPage from '@/pages/Dashboard/posts/page';
+import GoalsPage from '@/pages/Dashboard/Goals';
 import Home from '@/pages/Home/Home';
 import CollaborativeNetwork from '@/pages/join/CollaborativeNetwork';
 import TransparentDecisionMaking from '@/pages/join/DecisionMaking';
@@ -57,6 +57,7 @@ const AppRoutes = () => {
                     <Route path="bpp-goals" element={<Goals />} />
                     <Route path="get-to-know-bpp" element={<GetToKnow />} />
                     <Route path="community-contribution" element={<CommunityContribution />} />
+                    <Route path="how-it-works" element={<HowItWorks />} />
                     <Route path="commitment-progress" element={<CommitmentToProgress />} />
                     <Route path="volunteer" element={<Volunteer />} />
                     <Route path="logo-media-request" element={<LogoMediaRequest />} />
@@ -92,11 +93,27 @@ const AppRoutes = () => {
                 <Route path="privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="terms-and-conditions" element={<TermsAndConditions />} />
 
+
+
+                {/* <Route path="/admin" element={<AdminPanelLayout />}> */}
+                {/* <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="categories" element={<CategoriesPage />} />
+          <Route path="posts" element={<PostsPage />} />
+          <Route path="posts/new" element={<NewPostPage />} />
+          <Route path="tags" element={<TagsPage />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="account" element={<AccountPage />} /> */}
+                {/* </Route> */}
+
+
+
+                <Route path="dashboard">
+                    <Route path="home" element={<DashboardPage />} />
+                    <Route path="goal" element={<GoalsPage />} />
+                </Route>
+
                 {/* 404 Route */}
                 <Route path="*" element={<PageNotFound />} />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/post" element={<PostsPage />} />
-                <Route path="/posts/new" element={<NewPostPage />} />
             </Routes>
         </BrowserRouter>
     );

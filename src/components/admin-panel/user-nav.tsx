@@ -1,10 +1,16 @@
 "use client";
 
+import { Link } from 'react-router-dom';
 import { LayoutGrid, LogOut, User } from "lucide-react";
-import { Link } from "react-router-dom";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+  TooltipProvider
+} from "@/components/ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,12 +20,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from "@/components/ui/tooltip";
 
 export function UserNav() {
   return (
@@ -46,9 +46,9 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Swapnil Mahadik</p>
+            <p className="text-sm font-medium leading-none">John Doe</p>
             <p className="text-xs leading-none text-muted-foreground">
-              mswapnil218@gmail.com
+              johndoe@example.com
             </p>
           </div>
         </DropdownMenuLabel>
@@ -68,7 +68,7 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => {}}>
+        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => { }}>
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out
         </DropdownMenuItem>

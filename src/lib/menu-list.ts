@@ -1,14 +1,13 @@
 import {
   Goal,
   HandCoins,
-  History,
   LayoutGrid,
   LucideIcon,
   SquarePen,
   UserRoundPen,
   Users,
   Wallet
-} from "lucide-react";
+} from 'lucide-react';
 
 type Submenu = {
   href: string;
@@ -35,17 +34,20 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: "",
       menus: [
         {
-          href: "/dashboard",
+          href: "/dashboard/home",
           label: "Dashboard",
           icon: LayoutGrid,
-          active: pathname === "/dashboard",
           submenus: []
-        },
+        }
+      ]
+    },
+    {
+      groupLabel: "",
+      menus: [
         {
-          href: "/dashboard",
+          href: "/dashboard/goal",
           label: "Goals",
           icon: Goal,
-          active: pathname === "/",
           submenus: []
         }
       ]
@@ -57,17 +59,14 @@ export function getMenuList(pathname: string): Group[] {
           href: "",
           label: "Profile",
           icon: SquarePen,
-          active: pathname.startsWith("/posts"),
           submenus: [
             {
               href: "/posts",
               label: "Personal Details",
-              active: pathname === "/posts"
             },
             {
               href: "/posts/new",
               label: "Change Password",
-              active: pathname === "/posts/new"
             },
           ]
         },
@@ -75,17 +74,14 @@ export function getMenuList(pathname: string): Group[] {
           href: "",
           label: "Account",
           icon: UserRoundPen,
-          active: pathname.startsWith("/posts"),
           submenus: [
             {
               href: "/posts",
               label: "Account Details",
-              active: pathname === "/posts"
             },
             {
               href: "/posts/new",
               label: "Change Pin",
-              active: pathname === "/posts/new"
             },
           ]
         },
@@ -93,14 +89,12 @@ export function getMenuList(pathname: string): Group[] {
           href: "/categories",
           label: "Wallet",
           icon: Wallet,
-          active: pathname === "/categories"
         },
-        {
-          href: "/tags",
-          label: "Wallet History",
-          icon: History,
-          active: pathname === "/tags"
-        }
+        // {
+        //   href: "/tags",
+        //   label: "Wallet History",
+        //   icon: History,
+        // }
       ]
     },
     {
@@ -110,22 +104,18 @@ export function getMenuList(pathname: string): Group[] {
           href: "/users",
           label: "Membership",
           icon: Users,
-          active: pathname === "/users",
           submenus: [
             {
               href: "/account",
               label: "Membership Pass",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Membership Renewals",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Referral Code",
-              active: pathname === "/account"
             },
           ]
         },
@@ -133,32 +123,26 @@ export function getMenuList(pathname: string): Group[] {
           href: "/users",
           label: "Community Contribution",
           icon: Users,
-          active: pathname === "/users",
           submenus: [
             {
               href: "/account",
               label: "Register Case",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Renewals and Approvals",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Voting",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Results",
-              active: pathname === "/account"
             },
             {
               href: "/account",
               label: "Execution",
-              active: pathname === "/account"
             },
           ]
         },
@@ -166,7 +150,6 @@ export function getMenuList(pathname: string): Group[] {
           href: "/account",
           label: "Business Community Join",
           icon: HandCoins,
-          active: pathname === "/account"
         },
       ]
     }
