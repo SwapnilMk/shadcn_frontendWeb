@@ -9,6 +9,7 @@ import {
     Users,
     Wallet,
 } from "lucide-react";
+import { FaDonate } from "react-icons/fa";
 
 const DashboardHeader = () => {
     return (
@@ -82,7 +83,7 @@ const DashboardHeader = () => {
                             variant="default"
                             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
                         >
-                            Donate
+                           <FaDonate/> Donate
                         </Button>
                     </div>
 

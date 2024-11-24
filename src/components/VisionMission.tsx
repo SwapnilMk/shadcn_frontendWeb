@@ -3,13 +3,10 @@ import {
     ChevronRightIcon,
     GraduationCapIcon,
     Handshake,
-    HeartHandshake,
     ShieldCheck,
     ShieldCheckIcon,
     Target,
-    UserCog,
     Users,
-    Users2,
     UsersRound
 } from "lucide-react";
 import { Link } from 'react-router-dom';
