@@ -6,9 +6,7 @@ export const Features = () => {
       <section id="features" className="container space-y-4">
         <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
           PARTY'S{" "}
-          <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
             PEOPLE
-          </span>
         </h2>
 
         <p className="md:w-3/4 mx-auto mt-4 mb-8 text-lg text-center text-muted-foreground">

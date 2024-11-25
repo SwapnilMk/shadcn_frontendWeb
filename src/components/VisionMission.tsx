@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 const VisionMission = () => {
     return (
-        <section className="w-full bg-gradient-to-b from-background to-gray-50 dark:from-gray-800 dark:to-gray-900 py-8 md:py-10">
+        <section className="w-full container py-8 md:py-10">
             <div className="container px-4 mx-auto">
                 <Tabs defaultValue="vision" className="w-full mx-auto">
                     <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-lg rounded-lg p-1">

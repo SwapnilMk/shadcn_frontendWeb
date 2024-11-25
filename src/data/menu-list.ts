@@ -90,11 +90,6 @@ export function getMenuList(_pathname?: string): Group[] {
           label: "Wallet",
           icon: Wallet,
         },
-        // {
-        //   href: "/tags",
-        //   label: "Wallet History",
-        //   icon: History,
-        // }
       ]
     },
     {

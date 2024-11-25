@@ -1,6 +1,6 @@
 import CookieConsent from "@/components/CookieConsent";
 import Footer from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/navigation/Navbar";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import i18n from "@/modules/I18n/i18n";
 import { ReactNode } from "react";

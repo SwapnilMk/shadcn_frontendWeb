@@ -1,8 +1,7 @@
 import { About } from '@/components/About';
 import Register from '@/components/form/Register';
-import { HowItWorks } from '@/components/HowItWorks';
 import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
-import CommunityContribution from '@/pages/About/CommunityContribution';
+import CommunityContribution from '@/pages/contribution/CommunityContribution';
 import GetToKnow from '@/pages/About/GetToKnow';
 import Goals from '@/pages/About/Goals';
 import LogoMediaRequest from '@/pages/About/LogoMediaRequest';
@@ -33,6 +32,7 @@ import CustomerService from '@/pages/support/CustomerService';
 import TermsAndConditions from '@/pages/TermsAndCondtions/TermsAndCondtions';
 import Vision from '@/pages/Vision/Vision';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HowItWorks from '@/pages/contribution/HowItWorks';
 
 const AppRoutes = () => {
     return (
@@ -56,8 +56,6 @@ const AppRoutes = () => {
                     <Route index element={<About />} />
                     <Route path="bpp-goals" element={<Goals />} />
                     <Route path="get-to-know-bpp" element={<GetToKnow />} />
-                    <Route path="community-contribution" element={<CommunityContribution />} />
-                    <Route path="how-it-works" element={<HowItWorks />} />
                     <Route path="commitment-progress" element={<CommitmentToProgress />} />
                     <Route path="volunteer" element={<Volunteer />} />
                     <Route path="logo-media-request" element={<LogoMediaRequest />} />
@@ -85,6 +83,13 @@ const AppRoutes = () => {
                     <Route path="earn-representation" element={<EarnRepresentation />} />
                 </Route>
 
+
+                {/* community Contribution Routes */}
+                <Route path="community-contribution">
+                    <Route path="introduction" element={<CommunityContribution />} />
+                    <Route path="how-it-works" element={<HowItWorks />} />
+                </Route>
+
                 {/* Other Routes */}
                 <Route path="vision" element={<Vision />} />
                 <Route path="mission" element={<Mission />} />
@@ -97,12 +102,12 @@ const AppRoutes = () => {
 
                 {/* <Route path="/admin" element={<AdminPanelLayout />}> */}
                 {/* <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="categories" element={<CategoriesPage />} />
-          <Route path="posts" element={<PostsPage />} />
-          <Route path="posts/new" element={<NewPostPage />} />
-          <Route path="tags" element={<TagsPage />} />
-          <Route path="users" element={<UsersPage />} />
-          <Route path="account" element={<AccountPage />} /> */}
+                    <Route path="categories" element={<CategoriesPage />} />
+                    <Route path="posts" element={<PostsPage />} />
+                    <Route path="posts/new" element={<NewPostPage />} />
+                    <Route path="tags" element={<TagsPage />} />
+                    <Route path="users" element={<UsersPage />} />
+                    <Route path="account" element={<AccountPage />} /> */}
                 {/* </Route> */}
 
 

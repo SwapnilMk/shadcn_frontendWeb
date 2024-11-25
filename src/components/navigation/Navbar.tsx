@@ -1,4 +1,4 @@
-import BppLogo from "@/assets/images/logos/Bpp.png";
+import bppLogo from "@/assets/logo/bppLogo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,9 +19,9 @@ import { Menu } from "lucide-react";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
-import { LanguageToggle } from "./lang-toggle";
-import { ModeToggle } from "./mode-toggle";
-import { Button, buttonVariants } from "./ui/button";
+import { LanguageToggle } from "../lang-toggle";
+import { ModeToggle } from "../mode-toggle";
+import { Button, buttonVariants } from "../ui/button";
 
 interface RouteProps {
   href: string;
@@ -114,12 +114,12 @@ export const businessCommunityItems = [
 export const CommunityContribution = [
   {
     title: "Introduction",
-    href: "/about/Community-contribution",
-    description: "Explore vendors and suppliers within the community.",
+    href: "/community-contribution/introduction",
+    description: "community contribution",
   },
   {
     title: "How it works",
-    href: "/about/how-it-works",
+    href: "/community-contribution/how-it-works",
     description: "Join the business community and grow your network.",
   },
 ];
@@ -130,40 +130,37 @@ export const Navbar = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
-      <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-20 px-4 w-screen flex justify-between ">
-          <NavigationMenuItem className="font-bold flex">
+    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background dark:shadow-secondary">
+      <NavigationMenu className="mx-auto max-w-full w-full">
+        <NavigationMenuList className="px-4 h-16 flex justify-between lg:justify-around ">
+          <NavigationMenuItem className="font-bold">
             <Link
               rel="noreferrer noopener"
               to="/"
-              className="ml-2 font-bold text-2xl flex justify-center items-center gap-2"
+              className="ml-2 font-bold text-xl flex justify-center items-center gap-2"
             >
               <img
-                src={BppLogo}
+                src={bppLogo}
                 className="object-contain"
-                height={75}
-                width={75}
-                alt="Bpp logo"
+                height={65}
+                width={65}
+                alt="logo"
               />
               {t('navigation.partyName')}
             </Link>
           </NavigationMenuItem>
-
           {/* mobile */}
-          <span className="flex md:hidden">
+          <span className="flex lg:hidden">
             <LanguageToggle />
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
-                  className="flex md:hidden h-5 w-5"
+                  className="flex lg:hidden h-5 w-5"
                   onClick={() => setIsOpen(true)}
                 >
                   <span className="sr-only">Menu Icon</span>
                 </Menu>
               </SheetTrigger>
-
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
@@ -185,7 +182,7 @@ export const Navbar = () => {
               </SheetContent>
             </Sheet>
           </span>
-          <NavigationMenu className="hidden md:flex">
+          <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem
                 className={`text-[17px] ${buttonVariants({
@@ -207,7 +204,7 @@ export const Navbar = () => {
                           to="/about/bpp-goals"
                         >
                           <img
-                            src={BppLogo}
+                            src={bppLogo}
                             alt="BPP Goals Background"
                             className="absolute inset-0 w-full h-full object-cover"
                           />
@@ -241,7 +238,6 @@ export const Navbar = () => {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Membership</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -277,7 +273,7 @@ export const Navbar = () => {
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
-          <div className="hidden md:flex gap-2">
+          <div className="hidden lg:flex gap-2">
             <Button className="bg-blue-600 hover:bg-blue-900" onClick={() => navigate("/auth/signup")}>Join BPP</Button>
             <LanguageToggle />
             <ModeToggle />

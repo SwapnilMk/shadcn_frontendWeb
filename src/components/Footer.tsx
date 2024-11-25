@@ -12,7 +12,7 @@ const sections = [
     links: [
       { name: 'BPP Goals', href: '/about/bpp-goals' },
       { name: 'Get To Know BPP', href: '/about/get-to-know-bpp' },
-     
+
       { name: 'Commitment to Progress', href: '/about/commitment-progress' },
       { name: 'Volunteer', href: '/about/volunteer' },
       { name: 'Logo & Media Request', href: '/about/logo-media-request' },
@@ -42,7 +42,7 @@ const sections = [
   {
     title: 'Community Contributions',
     links: [
-      { name: 'Community Contribution', href: '/about/Community-contribution' },
+      { name: 'Introduction', href: '/about/Community-contribution' },
       { name: 'How it Works', href: '#' },
     ],
   },
