@@ -33,6 +33,9 @@ import TermsAndConditions from '@/pages/TermsAndCondtions/TermsAndCondtions';
 import Vision from '@/pages/Vision/Vision';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HowItWorks from '@/pages/contribution/HowItWorks';
+import ProfilePage from '@/pages/Dashboard/Profile';
+import WalletPage from '@/pages/Dashboard/Wallet';
+import DonatePage from '@/pages/Dashboard/Donate';
 
 const AppRoutes = () => {
     return (
@@ -115,6 +118,9 @@ const AppRoutes = () => {
                 <Route path="dashboard">
                     <Route path="home" element={<DashboardPage />} />
                     <Route path="goal" element={<GoalsPage />} />
+                    <Route path="profile" element={<ProfilePage />} />
+                    <Route path="wallet" element={<WalletPage />} />
+                    <Route path="donate" element={<DonatePage />} />
                 </Route>
 
                 {/* 404 Route */}

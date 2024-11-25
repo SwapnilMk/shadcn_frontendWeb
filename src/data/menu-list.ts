@@ -1,6 +1,7 @@
 import {
   Goal,
   HandCoins,
+  HandHelping,
   LayoutGrid,
   LucideIcon,
   SquarePen,
@@ -53,6 +54,17 @@ export function getMenuList(_pathname?: string): Group[] {
       ]
     },
     {
+      groupLabel: "",
+      menus: [
+        {
+          href: "/dashboard/donate",
+          label: "Donate",
+          icon: HandHelping,
+          submenus: []
+        }
+      ]
+    },
+    {
       groupLabel: "Profile",
       menus: [
         {
@@ -61,13 +73,13 @@ export function getMenuList(_pathname?: string): Group[] {
           icon: SquarePen,
           submenus: [
             {
-              href: "/posts",
+              href: "/dashboard/profile",
               label: "Personal Details",
             },
-            {
-              href: "/posts/new",
-              label: "Change Password",
-            },
+            // {
+            //   href: "/posts/new",
+            //   label: "Change Password",
+            // },
           ]
         },
         {
@@ -86,7 +98,7 @@ export function getMenuList(_pathname?: string): Group[] {
           ]
         },
         {
-          href: "/categories",
+          href: "/dashboard/wallet",
           label: "Wallet",
           icon: Wallet,
         },

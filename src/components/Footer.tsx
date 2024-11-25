@@ -42,8 +42,8 @@ const sections = [
   {
     title: 'Community Contributions',
     links: [
-      { name: 'Introduction', href: '/about/Community-contribution' },
-      { name: 'How it Works', href: '#' },
+      { name: 'Introduction', href: '/community-contribution/introduction' },
+      { name: 'How it Works', href: '/community-contribution/how-it-works' },
     ],
   },
   {
