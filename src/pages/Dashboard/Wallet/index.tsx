@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import DashboardLayout from '@/layout/DashboardLayout';
 import { CreditCardIcon, DollarSignIcon,  ShoppingCartIcon, WalletIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const WalletPage = () => {
+    const navigate = useNavigate()
+
     return (
         <main className="flex-1 p-6">
               <DashboardLayout>
@@ -31,7 +33,7 @@ const WalletPage = () => {
                     </CardHeader>
                     <CardContent className="flex items-center justify-between">
                         <div className="text-4xl font-bold">Rs 5,234.56</div>
-                        <Button variant="outline" size="sm">
+                        <Button onClick={()=> navigate('/dashboard/withdraw')} variant="outline" size="sm">
                             Withdraw
                         </Button>
                     </CardContent>
@@ -82,7 +84,7 @@ const WalletPage = () => {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Link to="#" className="text-sm font-medium text-blue-600 hover:underline">
+                            <Link to="/dashboard/transaction" className="text-sm font-medium text-blue-600 hover:underline">
                                 View all transactions
                             </Link>
                         </CardFooter>

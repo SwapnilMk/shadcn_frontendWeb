@@ -88,11 +88,11 @@ export function getMenuList(_pathname?: string): Group[] {
           icon: UserRoundPen,
           submenus: [
             {
-              href: "/posts",
+              href: "/dashboard/account",
               label: "Account Details",
             },
             {
-              href: "/posts/new",
+              href: "/dashboard/change-pin",
               label: "Change Pin",
             },
           ]
@@ -113,15 +113,15 @@ export function getMenuList(_pathname?: string): Group[] {
           icon: Users,
           submenus: [
             {
-              href: "/account",
+              href: "/dashboard/certificate",
               label: "Membership Pass",
             },
             {
-              href: "/account",
+              href: "/dashboard/renewal",
               label: "Membership Renewals",
             },
             {
-              href: "/account",
+              href: "/dashboard/referral",
               label: "Referral Code",
             },
           ]
@@ -137,7 +137,7 @@ export function getMenuList(_pathname?: string): Group[] {
             },
             {
               href: "/account",
-              label: "Renewals and Approvals",
+              label: "Review and Approvals",
             },
             {
               href: "/account",

@@ -1,7 +1,6 @@
 import { About } from '@/components/About';
 import Register from '@/components/form/Register';
 import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
-import CommunityContribution from '@/pages/contribution/CommunityContribution';
 import GetToKnow from '@/pages/About/GetToKnow';
 import Goals from '@/pages/About/Goals';
 import LogoMediaRequest from '@/pages/About/LogoMediaRequest';
@@ -14,8 +13,21 @@ import ResetPin from '@/pages/auth/ResetPin';
 import EthicsVendorsSuppliers from '@/pages/BusinessCommunity/EthicsVendorsSuppliers';
 import VendorSupplier from '@/pages/BusinessCommunity/VendorSupplier';
 import Contact from '@/pages/Contact/Contact';
+import CommunityContribution from '@/pages/contribution/CommunityContribution';
+import HowItWorks from '@/pages/contribution/HowItWorks';
 import DashboardPage from '@/pages/Dashboard';
+import AccountSettingsPage from '@/pages/Dashboard/Account';
+import ChangePin from '@/pages/Dashboard/Account/ChangePin';
+import DonatePage from '@/pages/Dashboard/Donate';
+import DonationPage from '@/pages/Dashboard/Donate/Donation';
 import GoalsPage from '@/pages/Dashboard/Goals';
+import MembershipCertificate from '@/pages/Dashboard/Membership/Certificate';
+import ReferralPage from '@/pages/Dashboard/Membership/Referral';
+import RenewalsPage from '@/pages/Dashboard/Membership/Renewals';
+import ProfilePage from '@/pages/Dashboard/Profile';
+import WalletPage from '@/pages/Dashboard/Wallet';
+import Transactions from '@/pages/Dashboard/Wallet/Transactions';
+import WithdrawPage from '@/pages/Dashboard/Wallet/Withdraw';
 import Home from '@/pages/Home/Home';
 import CollaborativeNetwork from '@/pages/join/CollaborativeNetwork';
 import TransparentDecisionMaking from '@/pages/join/DecisionMaking';
@@ -32,10 +44,6 @@ import CustomerService from '@/pages/support/CustomerService';
 import TermsAndConditions from '@/pages/TermsAndCondtions/TermsAndCondtions';
 import Vision from '@/pages/Vision/Vision';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HowItWorks from '@/pages/contribution/HowItWorks';
-import ProfilePage from '@/pages/Dashboard/Profile';
-import WalletPage from '@/pages/Dashboard/Wallet';
-import DonatePage from '@/pages/Dashboard/Donate';
 
 const AppRoutes = () => {
     return (
@@ -119,8 +127,16 @@ const AppRoutes = () => {
                     <Route path="home" element={<DashboardPage />} />
                     <Route path="goal" element={<GoalsPage />} />
                     <Route path="profile" element={<ProfilePage />} />
+                    <Route path="account" element={<AccountSettingsPage />} />
+                    <Route path="change-pin" element={<ChangePin />} />
                     <Route path="wallet" element={<WalletPage />} />
+                    <Route path="transaction" element={<Transactions />} />
+                    <Route path="withdraw" element={<WithdrawPage />} />
+                    <Route path="referral" element={<ReferralPage />} />
+                    <Route path="renewal" element={<RenewalsPage />} />
+                    <Route path="certificate" element={<MembershipCertificate />} />
                     <Route path="donate" element={<DonatePage />} />
+                    <Route path="add-donation" element={<DonationPage />} />
                 </Route>
 
                 {/* 404 Route */}
