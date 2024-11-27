@@ -7,8 +7,7 @@ export const Features = () => {
         <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
           Community Contribution Program
         </h2>
-
-        <p className="md:w-3/4 mx-auto mt-4 mb-8 text-lg text-center text-muted-foreground">
+        <p className="mx-auto max-w-6xl mt-4 mb-8 text-md text-center text-muted-foreground">
           Bharatiya Popular Party Any Indian citizen, irrespective of caste, religion, or any
           other discrimination, who has attained the age of 18 and is willing to contribute to the
           community, is welcome to join us as a member
@@ -16,8 +15,13 @@ export const Features = () => {
           professionals, and business leaders, each one of them playing a vital role in driving
           party’s mission forward.
         </p>
+        <p className="mx-auto mt-4 max-w-6xl mb-8 text-md text-center text-muted-foreground">
+          Party’s community is made up of a diverse group of individuals: common citizens,
+          professionals, and business leaders, each one of them playing a vital role in driving
+          party’s mission forward.
+        </p>
       </section>
-      <div className="container">
+      <div className="container mt-4 max-w-6xl">
         <Tabs defaultValue="feature-1">
           <div className="flex flex-col md:flex-row h-full">
             {/* Tabs List */}
@@ -27,131 +31,73 @@ export const Features = () => {
                 className="flex w-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md border p-4 text-left text-primary hover:border-primary/40 data-[state=active]:border-primary"
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
-                  <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
+                  <p className="text-lg font-semibold md:text-xl lg:text-xl">
                     The Common Man
                   </p>
                 </div>
-                <p className="font-normal text-muted-foreground md:block">
-                  The backbone of the party, the common man is the
-                  primary beneficiary of the party’s efforts. It is for you that we fight for equitable
-                  development and opportunities. Your challenges and aspirations guide our
-                  mission, and together, we work to create a better future.
-                </p>
               </TabsTrigger>
               <TabsTrigger
                 value="feature-2"
                 className="flex w-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md border p-4 text-left text-primary hover:border-primary/40 data-[state=active]:border-primary"
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
-                  <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
-                    Professionals:
+                  <p className="text-lg font-semibold md:text-xl lg:text-xl">
+                    Professionals
                   </p>
                 </div>
-                <p className="font-normal text-muted-foreground md:block">
-                  Among the common people, there are the people with
-                  specialized expertise in various sectors and a passion to serve the
-                  community. These professionals step forward to contribute their knowledge,
-                  skills, and leadership to support the party’s objectives. These are the
-                  professionals who bring practical solutions to real-world issues.
-                </p>
               </TabsTrigger>
               <TabsTrigger
                 value="feature-3"
                 className="flex w-full flex-col items-start justify-start gap-1 whitespace-normal rounded-md border p-4 text-left text-primary hover:border-primary/40 data-[state=active]:border-primary"
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
-                  <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
-                    Business Leaders:
+                  <p className="text-lg font-semibold md:text-xl lg:text-xl">
+                    Business Leaders
                   </p>
                 </div>
-                <p className="font-normal text-muted-foreground md:block">
-                  Businesses members including entrepreneurs and
-                  institutional leaders, must be registered with the party and shall be committed
-                  to supporting the community by providing products and services at reasonable
-                  prices. Their role is very important in building a sustainable, growing economy
-                  that benefits everyone.
-                </p>
               </TabsTrigger>
             </TabsList>
-
             {/* Tabs Content */}
             <div className="flex-1 md:px-6">
               <div className="h-full flex flex-col">
                 <TabsContent value="feature-1" className="h-full">
                   <div className="p-6 bg-gray-100 rounded-md shadow-md h-full space-y-4">
                     <div>
-                      <h3 className="text-3xl font-bold">Common Man</h3>
+                      <h3 className="text-xl font-bold">Common Man</h3>
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Common Man in Bharatiya Popular party is the voter or supporter who is associated with
-                      the party and expresses loyalty and trust in party's vision, principles, and
-                      leadership. This individual may or may not have expertise in specific fields such as
-                      education, business, or services, but is actively engaged in party activities, discussions,
-                      and the exchange of ideas.
-                    </p>
-
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Common Man's role is important in shaping the grassroots of the party through their
-                      participation in events, campaigning, and voicing their opinions. At times, especially
-                      during elections or when the party faces any challenge, the common man within the party may
-                      stand for the party's interest.
-                    </p>
-
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Their involvement typically reflects the democratic nature of the party, where every
-                      member, regardless of status or expertise, has a stake in the party. In essence, this
-                      member helps build the party's social fabric and often acts as a bridge between the
-                      leadership and the broader public.
-                    </p>
-
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Such individuals may not hold positions of power or influence within the party, but their
-                      contribution, through support, loyalty, and active participation remains vital to the
-                      party's identity and progress.
+                    <p className="text-md text-muted-foreground leading-relaxed">
+                      The backbone of the party, the common man is the
+                      primary beneficiary of the party’s efforts. It is for you that we fight for equitable
+                      development and opportunities. Your challenges and aspirations guide our
+                      mission, and together, we work to create a better future.
                     </p>
                   </div>
                 </TabsContent>
                 <TabsContent value="feature-2" className="h-full">
                   <div className="p-6 bg-gray-100 rounded-md shadow-md h-full space-y-4">
                     <div>
-                      <h3 className="text-3xl font-bold">Professionals</h3>
+                      <h3 className="text-xl font-bold">Professionals</h3>
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      A professional member in the Bharatiya Popular party is someone who is highly skilled and experienced in
-                      their respective field, such as a doctor, chartered accountant, advocate, educator, or other specialists.
-                      This individual not only possesses formal qualifications but also actively applies their expertise in practice.
-                      In party's community, their role extends beyond just offering services for monetary gain rather they should be committed to the well-being of community.
-                      During times of need, such as health issues, legal challenges, or financial difficulties, a professional member steps forward to offer their knowledge and skills. For example:
-                    </p>
-                    <ul className="list-disc list-inside mt-4 text-lg text-muted-foreground leading-relaxed">
-                      <li>Doctors may provide medical consultations or advice.</li>
-                      <li>Chartered accountants can assist with financial planning, tax advice, or budgeting.</li>
-                      <li>Advocates can offer legal consultation or can help with legal processes.</li>
-                      <li>Educationists may provide guidance on learning, academic development, or career planning.</li>
-                    </ul>
-                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                      While these professionals will charge for their services, but that should be reasonable. This is important to ensure that their services remain accessible and affordable to the members of the community.
+                    <p className="text-md text-muted-foreground leading-relaxed">
+                      Among the common people, there are the people with
+                      specialized expertise in various sectors and a passion to serve the
+                      community. These professionals step forward to contribute their knowledge,
+                      skills, and leadership to support the party’s objectives. These are the
+                      professionals who bring practical solutions to real-world issues.
                     </p>
                   </div>
                 </TabsContent>
-
-
                 <TabsContent value="feature-3" className="h-full">
                   <div className="p-6 bg-gray-100 rounded-md shadow-md h-full space-y-4">
                     <div>
-                      <h3 className="text-3xl font-bold">Business Community</h3>
+                      <h3 className="text-xl font-bold">Business Community</h3>
                     </div>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      In the party, members who are considered under business community are both individuals and institutions who provide products and services to meet the needs of the community.
-                      These business members provide goods or services to the community. For example, local businesses, suppliers, and service providers such as hospitals, training centres, or IT services.
-                    </p>
-                    <ul className="list-disc list-inside mt-4 text-lg text-muted-foreground leading-relaxed">
-                      <li>Hospitals, medical professionals, and wellness centers can offer discounted or specialized medical services during health camps or emergencies.</li>
-                      <li>Local shops can provide essential products such as food, equipment, or materials needed by the community, at cost-effective rates.</li>
-                      <li>Skill development centers, educational institutions, or mentors can contribute by offering training, workshops, or certification courses for community members.</li>
-                    </ul>
-                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                      Various vendors can come forward to support community events by providing necessary goods and services, such as catering, transportation, promotional materials, etc., on reasonable rates.
+                    <p className="text-md text-muted-foreground leading-relaxed">
+                      Businesses members including entrepreneurs and
+                      institutional leaders, must be registered with the party and shall be committed
+                      to supporting the community by providing products and services at reasonable
+                      prices. Their role is very important in building a sustainable, growing economy
+                      that benefits everyone.
                     </p>
                   </div>
                 </TabsContent>
