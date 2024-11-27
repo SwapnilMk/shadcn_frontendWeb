@@ -106,7 +106,7 @@ const Carousel: React.FC = () => {
                     <div className="content">
                         <div className="title">National</div>
                         <div className="topic">Integrity</div>
-                        <div className="des">
+                        <div className="cc">
                         Bharatiya Popular Party shall bear true faith and allegiance to the constitution of India as by law established, and to the principles of socialism, secularism and democracy and would uphold the sovereignty, unity and integrity of India.
                         </div>
                         <div className="buttons">

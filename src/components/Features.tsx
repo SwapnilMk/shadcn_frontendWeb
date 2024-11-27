@@ -5,15 +5,16 @@ export const Features = () => {
     <section className="py-10">
       <section id="features" className="container space-y-4">
         <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-          PARTY'S{" "}
-            PEOPLE
+          Community Contribution Program
         </h2>
 
         <p className="md:w-3/4 mx-auto mt-4 mb-8 text-lg text-center text-muted-foreground">
-          The Party intends to create an environment where every citizen has a
-          voice, where transparency is the norm, and where decision-making is a
-          collective process. The Party is aimed to ensure that all voices are
-          heard, and all perspectives are considered.
+          Bharatiya Popular Party Any Indian citizen, irrespective of caste, religion, or any
+          other discrimination, who has attained the age of 18 and is willing to contribute to the
+          community, is welcome to join us as a member
+          Party’s community is made up of a diverse group of individuals: common citizens,
+          professionals, and business leaders, each one of them playing a vital role in driving
+          party’s mission forward.
         </p>
       </section>
       <div className="container">
@@ -27,13 +28,14 @@ export const Features = () => {
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
                   <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
-                    Common Man
+                    The Common Man
                   </p>
                 </div>
                 <p className="font-normal text-muted-foreground md:block">
-                  Common Man in Bharatiya Popular party is the voter or supporter who is associated with
-                  the party and expresses loyalty and trust in party's vision, principles, and
-                  leadership.
+                  The backbone of the party, the common man is the
+                  primary beneficiary of the party’s efforts. It is for you that we fight for equitable
+                  development and opportunities. Your challenges and aspirations guide our
+                  mission, and together, we work to create a better future.
                 </p>
               </TabsTrigger>
               <TabsTrigger
@@ -42,13 +44,15 @@ export const Features = () => {
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
                   <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
-                    Professionals
+                    Professionals:
                   </p>
                 </div>
                 <p className="font-normal text-muted-foreground md:block">
-                  A professional member in the Bharatiya Popular party is someone who is highly skilled and experienced in
-                  their respective field, such as a doctor, chartered accountant, advocate,
-                  educator, or other specialists.
+                  Among the common people, there are the people with
+                  specialized expertise in various sectors and a passion to serve the
+                  community. These professionals step forward to contribute their knowledge,
+                  skills, and leadership to support the party’s objectives. These are the
+                  professionals who bring practical solutions to real-world issues.
                 </p>
               </TabsTrigger>
               <TabsTrigger
@@ -57,11 +61,15 @@ export const Features = () => {
               >
                 <div className="flex items-center gap-2 md:flex-col md:items-start lg:gap-4">
                   <p className="text-lg font-semibold md:text-2xl lg:text-2xl">
-                    Business Community
+                    Business Leaders:
                   </p>
                 </div>
                 <p className="font-normal text-muted-foreground md:block">
-                  In the party, members who are considered under business community are both individuals and institutions who provide products and services to meet the needs of the community. These business members provide goods or services to the community.
+                  Businesses members including entrepreneurs and
+                  institutional leaders, must be registered with the party and shall be committed
+                  to supporting the community by providing products and services at reasonable
+                  prices. Their role is very important in building a sustainable, growing economy
+                  that benefits everyone.
                 </p>
               </TabsTrigger>
             </TabsList>

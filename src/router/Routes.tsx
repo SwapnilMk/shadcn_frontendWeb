@@ -18,6 +18,7 @@ import HowItWorks from '@/pages/contribution/HowItWorks';
 import DashboardPage from '@/pages/Dashboard';
 import AccountSettingsPage from '@/pages/Dashboard/Account';
 import ChangePin from '@/pages/Dashboard/Account/ChangePin';
+import CaseRegistrationForm from '@/pages/Dashboard/Community/CaseRegistration';
 import DonatePage from '@/pages/Dashboard/Donate';
 import DonationPage from '@/pages/Dashboard/Donate/Donation';
 import GoalsPage from '@/pages/Dashboard/Goals';
@@ -26,6 +27,7 @@ import ReferralPage from '@/pages/Dashboard/Membership/Referral';
 import RenewalsPage from '@/pages/Dashboard/Membership/Renewals';
 import ProfilePage from '@/pages/Dashboard/Profile';
 import WalletPage from '@/pages/Dashboard/Wallet';
+import AddFund from '@/pages/Dashboard/Wallet/AddFund';
 import Transactions from '@/pages/Dashboard/Wallet/Transactions';
 import WithdrawPage from '@/pages/Dashboard/Wallet/Withdraw';
 import Home from '@/pages/Home/Home';
@@ -131,12 +133,14 @@ const AppRoutes = () => {
                     <Route path="change-pin" element={<ChangePin />} />
                     <Route path="wallet" element={<WalletPage />} />
                     <Route path="transaction" element={<Transactions />} />
+                    <Route path="add-fund" element={<AddFund />} />
                     <Route path="withdraw" element={<WithdrawPage />} />
                     <Route path="referral" element={<ReferralPage />} />
                     <Route path="renewal" element={<RenewalsPage />} />
                     <Route path="certificate" element={<MembershipCertificate />} />
                     <Route path="donate" element={<DonatePage />} />
                     <Route path="add-donation" element={<DonationPage />} />
+                    <Route path="register-case" element={<CaseRegistrationForm />} />
                 </Route>
 
                 {/* 404 Route */}

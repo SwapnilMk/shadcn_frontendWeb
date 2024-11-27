@@ -127,12 +127,17 @@ export function getMenuList(_pathname?: string): Group[] {
           ]
         },
         {
-          href: "/users",
+          href: "/dashboard/community-contribution",
+          label: "Community Contribution",
+          icon: HandCoins,
+        },
+        {
+          href: "/dashboard/home",
           label: "Community Contribution",
           icon: Users,
           submenus: [
             {
-              href: "/account",
+              href: "/dashboard/register-case",
               label: "Register Case",
             },
             {
@@ -154,7 +159,7 @@ export function getMenuList(_pathname?: string): Group[] {
           ]
         },
         {
-          href: "/account",
+          href: "/dashboard/home",
           label: "Business Community Join",
           icon: HandCoins,
         },

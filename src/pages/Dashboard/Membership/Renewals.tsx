@@ -31,7 +31,7 @@ const RenewalsPage = () => {
                                 <CardDescription>For Common man</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold">Rs 5/yr</p>
+                                <p className="text-3xl font-bold">Rs 5/2yr</p>
                                 <ul className="mt-4 space-y-2">
                                     <li className="flex items-center">
                                         <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -57,7 +57,7 @@ const RenewalsPage = () => {
                                 <CardDescription>For Professionals</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-3xl font-bold">Rs 250/yr</p>
+                                <p className="text-3xl font-bold">Rs 250/2yr</p>
                                 <ul className="mt-4 space-y-2">
                                     <li className="flex items-center">
                                         <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
@@ -65,7 +65,7 @@ const RenewalsPage = () => {
                                     </li>
                                     <li className="flex items-center">
                                         <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                                      For Professionals
+                                        For Professionals
                                     </li>
                                     <li className="flex items-center">
                                         <svg className="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>

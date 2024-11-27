@@ -1,7 +1,7 @@
 import { ContentLayout } from '@/components/admin-panel/content-layout'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import DashboardLayout from '@/layout/DashboardLayout'
 import { Link } from 'react-router-dom'
 
@@ -34,7 +34,7 @@ const ReferralPage = () => {
                     <Card className="w-full max-w-3xl p-0">
                         <CardHeader className="border-b p-6">
                             <CardTitle className="text-xl">Your Referral Code: 5d2d0a</CardTitle>
-                            <CardDescription>Share your referral link with friends to earn rewards.</CardDescription>
+                            {/* <CardDescription>Share your referral link with friends to earn rewards.</CardDescription> */}
                         </CardHeader>
                         <CardContent className="border-t p-6">
                             <div className="grid items-start gap-6 md:grid-cols-2">

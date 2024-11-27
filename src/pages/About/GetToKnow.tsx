@@ -60,7 +60,7 @@ const GetToKnow = () => {
                             
                             <div className="bg-gray-50 rounded-2xl p-6 md:p-8 flex flex-col justify-between">
                                 <div className="text-sm font-medium text-gray-500 mb-4">
-                                    BPP
+                                    {/* BPP */}
                                 </div>
                                 <p className="text-base text-gray-700">
                                     BPP is committed to addressing societal challenges and advocating for change through peaceful, democratic means such as seminars, webinars, meetings, and rallies. By focusing on uplifting disadvantaged sections of society, promoting education, healthcare and employment and ensuring the well-being of farmers.

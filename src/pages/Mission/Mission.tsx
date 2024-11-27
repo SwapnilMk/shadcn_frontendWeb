@@ -3,7 +3,7 @@ import HeaderComponent from "@/components/HeaderComponent";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Layout from "@/layout/Layout";
-import { Flag, Star, Users } from "lucide-react";
+import { Flag, Handshake, Star, Users } from "lucide-react";
 
 export default function Mission() {
     return (
@@ -17,64 +17,103 @@ export default function Mission() {
                         { label: "Mission", href: "/mission" },
                     ]}
                     imgUrl={'null'}
-            />
-                <section className="w-full py-5 dark:bg-gray-800">
-                    <div className="container mt-12 px-4 md:px-6">
-                        <h2 className="font-bold text-3xl mb-6">
-                            Bharatiya Popular Party's Mission
-                        </h2>
-                        <Separator />
+                />
+                <section className="w-full container py-5 dark:bg-gray-800">
+                    <h4 className="text-3xl mb-3 font-bold">Mission Statement</h4>
+                    <div>
+                        <div className="space-y-3 xl:text-left">
+                            <Separator />
+                            <div className="mt-8">
+                                <h3 className="text-md my-2 font-semibold">
+                                    Party’s mission is to reach the billions of Indians through the digital app by the end of 2025, enabling everyone to benefit from community contributions. The app will be operational in December 2024 and will start with registrations in January-2025, with the goal of attracting the maximum number of people to join in its first year. This will ensure nationwide participation.
+                                </h3>
 
-                        <p className="mt-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                            At Bharatiya Popular Party, our mission is to unite the maximum population of India in a collective drive of meaningful change. We believe that the strength of our democracy lies in the active involvement of every citizen. We aim to inspire and empower individuals to take leadership roles in their communities, all while working in alignment with the party's core objectives of support, decentralization, federalism, and power-sharing.
-                        </p>
+                                <h3 className="text-md my-2 font-semibold">
+                                    The mass download of the app will help start a movement of community contribution,
+                                    benefiting people across India.
+                                </h3>
+                                <h3 className="text-md my-2 font-semibold">
+                                    In the next five years, while working through the app we aim to reach to the masses
+                                    and letting them support each other with mutual contributions. Under this we invite
+                                    the expert professionals also to be the part and active contributor of the community-
+                                    contribution.
+                                </h3>
+                                <h3 className="text-md font-semibold">
+                                    Members identified as most involved to the community, can be the potential
+                                    candidates to stand as candidates in elections.
+                                </h3>
+                                <h2 className="font-bold text-2xl mt-4 mb-6">
+                                    Our priorities include:
+                                </h2>
+                                <Separator />
+                                <div className="grid gap-6 my-8 md:grid-cols-1">
+                                    {/* Key Aspect 1: Mass Participation */}
+                                    <Card className="relative">
+                                        <CardContent className="p-6">
+                                            <div className="mb-4 flex items-center gap-2">
+                                                <Users className="h-6 w-6 text-blue-600" />
+                                                <h3 className="text-xl font-bold">Youth Empowerment</h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300">
+                                                Empowering the youth with education and employment opportunities,
+                                                providing them with the tools, resources, and opportunities to shape the future
+                                                of our nation.
+                                            </p>
+                                        </CardContent>
+                                    </Card>
 
-                        <div className="grid gap-6 my-8 md:grid-cols-1">
-                            {/* Key Aspect 1: Mass Participation */}
-                            <Card className="relative">
-                                <CardContent className="p-6">
-                                    <div className="mb-4 flex items-center gap-2">
-                                        <Users className="h-6 w-6 text-blue-600" />
-                                        <h3 className="text-xl font-bold">Mass Participation</h3>
-                                    </div>
-                                    <p className="text-gray-600 dark:text-gray-300">
-                                        We aim to engage millions of Indian citizens, ensuring that everyone, from villages to urban areas, becomes an integral part of our community. Through campaigns, outreach programs, and educational initiatives, we invite every citizen to join us in shaping the future.
+                                    {/* Key Aspect 2: Alignment with Party Objectives */}
+                                    <Card className="relative">
+                                        <CardContent className="p-6">
+                                            <div className="mb-4 flex items-center gap-2">
+                                                <Flag className="h-6 w-6 text-green-600" />
+                                                <h3 className="text-xl font-bold">Quality Education for All</h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300">
+                                                Engaging educationists who are eager to bring about a change in the system
+                                                and providing quality education for every citizen so that no one is left behind
+                                                due to any barriers.
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+
+                                    {/* Key Aspect 3: Leadership at Every Level */}
+                                    <Card className="relative">
+                                        <CardContent className="p-6">
+                                            <div className="mb-4 flex items-center gap-2">
+                                                <Star className="h-6 w-6 text-red-600" />
+                                                <h3 className="text-xl font-bold">Political Integrity</h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300">
+                                                Eradicating the influence of muscle and money power in politics and
+                                                governance, ensuring that merit, integrity, and community service drive
+                                                decision-making.
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+
+                                    <Card className="relative">
+                                        <CardContent className="p-6">
+                                            <div className="mb-4 flex items-center gap-2">
+                                                <Handshake className="h-6 w-6 text-red-600" />
+                                                <h3 className="text-xl font-bold">Gender Equality</h3>
+                                            </div>
+                                            <p className="text-gray-600 dark:text-gray-300">
+                                                Through this app we are committed to creating a platform where merit and
+                                                community contribution drive the change, ensuring a brighter future for all.
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+
+                                <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
+                                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                                        Promoting gender equality by , empowering women and marginalized groups
+                                        .by providing equal opportunities, rights, and treatment for all genders in every
+                                        aspect of life.
                                     </p>
-                                </CardContent>
-                            </Card>
-
-                            {/* Key Aspect 2: Alignment with Party Objectives */}
-                            <Card className="relative">
-                                <CardContent className="p-6">
-                                    <div className="mb-4 flex items-center gap-2">
-                                        <Flag className="h-6 w-6 text-green-600" />
-                                        <h3 className="text-xl font-bold">Alignment with Party Objectives</h3>
-                                    </div>
-                                    <p className="text-gray-600 dark:text-gray-300">
-                                        Our mission is not just to seek support, but to ensure that every individual member works in harmony with the party's core values of equity, justice, and decentralization. Together, we will work on the policies that bring real change.
-                                    </p>
-                                </CardContent>
-                            </Card>
-
-                            {/* Key Aspect 3: Leadership at Every Level */}
-                            <Card className="relative">
-                                <CardContent className="p-6">
-                                    <div className="mb-4 flex items-center gap-2">
-                                        <Star className="h-6 w-6 text-red-600" />
-                                        <h3 className="text-xl font-bold">Leadership at Every Level</h3>
-                                    </div>
-                                    <p className="text-gray-600 dark:text-gray-300">
-                                        We believe that leadership should not be confined to the top. Our mission is to empower citizens to take the lead in their communities, encouraging local leaders who work dedicatedly to solve problems and create opportunities for their peers. Whether through organizing local events, leading social initiatives, or advocating for change, everyone has to contribute to the community.
-                                    </p>
-                                </CardContent>
-                            </Card>
-                        </div>
-
-                        <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
-                            <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">Community Contribution</h3>
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                Our vision is to promote a culture of service and active contribution. By creating a sense of responsibility and ownership, we encourage individuals to participate in community-driven efforts, like improving infrastructure, supporting education, or tackling social issues. For, the part, every contribution counts, and together, we can make a lasting impact.
-                            </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

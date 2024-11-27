@@ -7,11 +7,14 @@ import {
     LogOut,
     UserRoundPen,
     Users,
+    Vote,
     Wallet,
 } from "lucide-react";
 import { FaDonate } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const DashboardHeader = () => {
+    const navigate = useNavigate()
     return (
         <Card className="w-full mb-6 border-0">
             <CardContent className="p-5">
@@ -22,9 +25,16 @@ const DashboardHeader = () => {
                             Dashboard
                         </h1>
                         <div className="text-lg text-gray-600">
-                            Welcome back, <span className="font-medium">Swapnil</span>! 
+                            Welcome back, <span className="font-medium">Swapnil</span>!
                         </div>
                     </div>
+
+                    <div>
+                        <div className="text-center ml-28 text-2xl font-bold text-gray-600">
+                            Community Contribution
+                        </div>
+                    </div>
+
                     <div className="flex gap-4">
                         <Card className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-lg shadow-sm hover:shadow transition-all duration-200">
                             <CardContent className="flex items-center gap-3 p-3">
@@ -62,7 +72,7 @@ const DashboardHeader = () => {
                                 size="icon"
                                 className="h-8 w-8 rounded-full hover:bg-gray-100"
                             >
-                                <UserRoundPen className="h-4 w-4 text-gray-600"/>
+                                <UserRoundPen className="h-4 w-4 text-gray-600" />
                             </Button>
                         </div>
                         <div className="flex items-center gap-2">
@@ -78,12 +88,20 @@ const DashboardHeader = () => {
                     </div>
 
                     {/* Center Section */}
-                    <div className="flex items-center">
+                    <div className="flex gap-3">
                         <Button
                             variant="default"
                             className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                            onClick={() => navigate('/dashboard/donate')}
                         >
-                           <FaDonate/> Donate
+                            <FaDonate /> Donate
+                        </Button>
+                        <Button
+                            variant="default"
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+                            onClick={() => navigate('/dashboard/votes')}
+                        >
+                            <Vote /> Votes
                         </Button>
                     </div>
 
@@ -99,8 +117,8 @@ const DashboardHeader = () => {
                                 <span className="text-sm font-medium">Valid until: Mar 26, 2028</span>
                             </div>
                         </div>
-                        <Badge 
-                            variant="outline" 
+                        <Badge
+                            variant="outline"
                             className="text-sm px-4 py-1 border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200"
                         >
                             0 Referrals

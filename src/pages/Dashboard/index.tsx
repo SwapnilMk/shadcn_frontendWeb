@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import IndiaTopoJSON from '@/assets/maps/india.json';
 import MaharashtraTopoJSON from '@/assets/maps/maharashtra.json';
+import WelcomeDialog from "@/components/dialogs/WelcomeDialog";
 
 
 // Define types for the geography data
@@ -47,22 +48,22 @@ export default function DashboardPage() {
   // const { settings, setSettings } = sidebar;
   return (
     <DashboardLayout>
-    <ContentLayout title="Dashboard">
-      <DashboardHeader/>
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Dashboard</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-        <div className="grid grid-cols-1 my-3 gap-4 w-full">
+      <ContentLayout title="Dashboard">
+        <DashboardHeader />
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Dashboard</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <div className="grid grid-cols-2 my-3 gap-4 w-full">
           {/* Map Card */}
           <Card className="w-full h-[500px]">
             <CardHeader>
@@ -71,10 +72,10 @@ export default function DashboardPage() {
               </CardTitle>
               <Tabs defaultValue="state">
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="state">State</TabsTrigger>
                   <TabsTrigger value="national">National</TabsTrigger>
+                  <TabsTrigger value="state">State</TabsTrigger>
                 </TabsList>
-                <TabsContent value="state">
+                <TabsContent value="national">
                   <CardContent className="">
                     <ComposableMap
                       projection="geoMercator"
@@ -115,7 +116,7 @@ export default function DashboardPage() {
                     </ComposableMap>
                   </CardContent>
                 </TabsContent>
-                <TabsContent value="national">
+                <TabsContent value="state">
                   <CardContent className="h-[400px]">
                     <ComposableMap
                       projection="geoMercator"
@@ -159,8 +160,12 @@ export default function DashboardPage() {
               </Tabs>
             </CardHeader>
           </Card>
-          </div>
-    </ContentLayout>
+          <Card className="w-full h-[500px]">
+            
+          </Card>
+          <WelcomeDialog />
+        </div>
+      </ContentLayout>
     </DashboardLayout>
   );
 }

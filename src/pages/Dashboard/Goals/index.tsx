@@ -2,8 +2,8 @@ import { ContentLayout } from "@/components/admin-panel/content-layout"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { Card, CardContent } from "@/components/ui/card"
 import DashboardLayout from "@/layout/DashboardLayout"
+import { BadgeDollarSign, Building2, Church, Factory, GraduationCap, Heart, Scale, Sword, Users, Wheat } from 'lucide-react'
 import { Link } from "react-router-dom"
-import { Building2, Users, Heart, Sword, Church, Factory, BadgeDollarSign, Scale, Wheat, GraduationCap } from 'lucide-react';
 
 const goals = [
   {
