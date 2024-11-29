@@ -12,12 +12,14 @@ import {
     SelectTrigger,
     SelectValue
 } from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
 import DashboardLayout from '@/layout/DashboardLayout'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const CaseRegistrationForm = () => {
+
     const [formData, setFormData] = useState({
         fullName: '',
         membershipId: '',
@@ -45,60 +47,9 @@ const CaseRegistrationForm = () => {
         { value: 'other', label: 'Other' }
     ];
 
-    // const validateForm = () => {
-    //     const newErrors = {};
-
-    //     if (!formData.fullName.trim()) {
-    //         newErrors.fullName = 'Full Name is required';
-    //     }
-
-    //     if (!formData.emailAddress.trim()) {
-    //         newErrors.emailAddress = 'Email Address is required';
-    //     } else if (!/\S+@\S+\.\S+/.test(formData.emailAddress)) {
-    //         newErrors.emailAddress = 'Email Address is invalid';
-    //     }
-
-    //     if (!formData.phoneNumber.trim()) {
-    //         newErrors.phoneNumber = 'Phone Number is required';
-    //     } else if (!/^\+?[0-9]{10,14}$/.test(formData.phoneNumber)) {
-    //         newErrors.phoneNumber = 'Phone Number is invalid';
-    //     }
-
-    //     if (!formData.issueTitle) {
-    //         newErrors.issueTitle = 'Issue Title is required';
-    //     }
-
-    //     if (!formData.issueDescription.trim()) {
-    //         newErrors.issueDescription = 'Issue Description is required';
-    //     }
-
-    //     if (formData.supportTypes.length === 0) {
-    //         newErrors.supportTypes = 'Please select at least one support type';
-    //     }
-
-    //     if (formData.supportTypes.includes('other') && !formData.otherSupportType.trim()) {
-    //         newErrors.otherSupportType = 'Please specify the other support type';
-    //     }
-
-    //     if (!formData.supportDescription.trim()) {
-    //         newErrors.supportDescription = 'Support Description is required';
-    //     }
-
-    //     if (!formData.consent) {
-    //         newErrors.consent = 'You must provide consent to submit the form';
-    //     }
-
-    //     setErrors(newErrors);
-    //     return Object.keys(newErrors).length === 0;
-    // };
-
     const handleSubmit = (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        // if (validateForm()) {
-        //     // Here you would typically send the form data to a backend service
-        //     console.log('Form submitted:', formData);
-        //     setSubmitted(true);
-        // }
+
     };
 
     const handleChange = (e: { target: { name: any; value: any } }) => {
@@ -110,30 +61,8 @@ const CaseRegistrationForm = () => {
     };
 
     const handleSupportTypeChange = (_type: string) => {
-        // setFormData(prevState => {
-        //     const currentTypes = prevState.supportTypes;
-        //     const newTypes = currentTypes.includes(type)
-        //         ? currentTypes.filter(t => t !== type)
-        //         : [...currentTypes, type];
-        //     return { ...prevState, supportTypes: newTypes };
-        // });
+       
     };
-
-    // if (submitted) {
-    //     return (
-    //         <ContentLayout title="Case Registration">
-    //             <div className="max-w-2xl mx-auto mt-8">
-    //                 <Alert variant="default">
-    //                     <AlertCircle className="h-4 w-4" />
-    //                     <AlertTitle>Form Submitted Successfully</AlertTitle>
-    //                     <AlertDescription>
-    //                         Thank you for submitting your case. Our community will review your request and get back to you soon.
-    //                     </AlertDescription>
-    //                 </Alert>
-    //             </div>
-    //         </ContentLayout>
-    //     );
-    // }
 
     return (
         <DashboardLayout>
@@ -148,7 +77,7 @@ const CaseRegistrationForm = () => {
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
-                            <Link to="/dashboard/donate">Community Contribution</Link>
+                                <Link to="/dashboard/community-contribution">Community Contribution</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
@@ -157,13 +86,14 @@ const CaseRegistrationForm = () => {
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
-            <div className="max-w-2xl mx-auto mt-8">
+            <div className=" mx-auto mt-8">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Community Contribution: Case Registration</CardTitle>
-                        <CardDescription>
+                        <CardTitle className='text-2xl font-bold'>Case Registration</CardTitle>
+                        <CardDescription className='py-4'>
                             Please provide detailed information about the issue you are facing and the support you are seeking.
                         </CardDescription>
+                        <Separator />
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
@@ -315,6 +245,8 @@ const CaseRegistrationForm = () => {
                                     />
                                 </div>
                             </div>
+
+                              
 
                             <div className="space-y-4">
                                 <h3 className="text-lg font-semibold">5. Consent</h3>

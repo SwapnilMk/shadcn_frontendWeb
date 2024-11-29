@@ -10,7 +10,7 @@ export default function Vision() {
         <>
             <Layout>
                 <HeaderComponent 
-                    heading="Our Vision" 
+                    heading="Vision Statement" 
                     text="Our Vision" 
                     breadcrumbLinks={[
                         { label: "Home", href: "/" },

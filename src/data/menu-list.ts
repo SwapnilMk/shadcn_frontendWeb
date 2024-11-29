@@ -131,33 +131,33 @@ export function getMenuList(_pathname?: string): Group[] {
           label: "Community Contribution",
           icon: HandCoins,
         },
-        {
-          href: "/dashboard/home",
-          label: "Community Contribution",
-          icon: Users,
-          submenus: [
-            {
-              href: "/dashboard/register-case",
-              label: "Register Case",
-            },
-            {
-              href: "/account",
-              label: "Review and Approvals",
-            },
-            {
-              href: "/account",
-              label: "Voting",
-            },
-            {
-              href: "/account",
-              label: "Results",
-            },
-            {
-              href: "/account",
-              label: "Execution",
-            },
-          ]
-        },
+        // {
+        //   href: "/dashboard/home",
+        //   label: "Community Contribution",
+        //   icon: Users,
+        //   submenus: [
+        //     {
+        //       href: "/dashboard/register-case",
+        //       label: "Register Case",
+        //     },
+        //     {
+        //       href: "/account",
+        //       label: "Review and Approvals",
+        //     },
+        //     {
+        //       href: "/account",
+        //       label: "Voting",
+        //     },
+        //     {
+        //       href: "/account",
+        //       label: "Results",
+        //     },
+        //     {
+        //       href: "/account",
+        //       label: "Execution",
+        //     },
+        //   ]
+        // },
         {
           href: "/dashboard/home",
           label: "Business Community Join",

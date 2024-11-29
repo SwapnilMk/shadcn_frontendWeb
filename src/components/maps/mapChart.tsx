@@ -84,7 +84,7 @@ const MapChart: React.FC<MapChartProps> = ({ SelectedTab, state, dist }) => {
         if (SelectedTab === 'state') {
             return properties.district || '';
         }
-        return properties.name || properties.ST_NM || '';
+        return properties.district || properties.ST_NM || '';
     };
 
     const currentProjection = useMemo((): ProjectionConfig => {

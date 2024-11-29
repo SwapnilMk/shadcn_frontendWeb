@@ -4,19 +4,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Layout from "@/layout/Layout";
 import { Flag, Handshake, Star, Users } from "lucide-react";
+import mission from '@/assets/images/headerBanners/mission.jpg'
 
 export default function Mission() {
     return (
         <>
             <Layout>
                 <HeaderComponent
-                    heading="Our Mission"
+                    heading="Mission Statement"
                     text="Our Mission"
                     breadcrumbLinks={[
                         { label: "Home", href: "/" },
                         { label: "Mission", href: "/mission" },
                     ]}
-                    imgUrl={'null'}
+                    imgUrl={mission}
                 />
                 <section className="w-full container py-5 dark:bg-gray-800">
                     <h4 className="text-3xl mb-3 font-bold">Mission Statement</h4>

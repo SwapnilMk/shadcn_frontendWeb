@@ -19,6 +19,8 @@ import DashboardPage from '@/pages/Dashboard';
 import AccountSettingsPage from '@/pages/Dashboard/Account';
 import ChangePin from '@/pages/Dashboard/Account/ChangePin';
 import CaseRegistrationForm from '@/pages/Dashboard/Community/CaseRegistration';
+import Contribution from '@/pages/Dashboard/Community/contribution';
+import Voting from '@/pages/Dashboard/Community/Voting';
 import DonatePage from '@/pages/Dashboard/Donate';
 import DonationPage from '@/pages/Dashboard/Donate/Donation';
 import GoalsPage from '@/pages/Dashboard/Goals';
@@ -141,6 +143,10 @@ const AppRoutes = () => {
                     <Route path="donate" element={<DonatePage />} />
                     <Route path="add-donation" element={<DonationPage />} />
                     <Route path="register-case" element={<CaseRegistrationForm />} />
+                    
+                    
+                    <Route path="community-contribution" element={<Contribution />} />
+                    <Route path="voting" element={<Voting />} />
                 </Route>
 
                 {/* 404 Route */}
