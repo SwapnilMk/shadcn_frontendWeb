@@ -1,6 +1,8 @@
 "use client";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import WelcomeDialog from "@/components/dialogs/WelcomeDialog";
+import MapChart from "@/components/maps/mapChart";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,18 +15,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useSidebar } from "@/hooks/use-sidebar";
 import { useStore } from "@/hooks/use-store";
 import DashboardLayout from "@/layout/DashboardLayout";
-import { Link } from 'react-router-dom';
-import WelcomeDialog from "@/components/dialogs/WelcomeDialog";
-import MapChart from "@/components/maps/mapChart";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-import { User2Icon, ActivityIcon, PlusIcon, UsersIcon, CreditCardIcon, WalletIcon, CheckCircleIcon } from 'lucide-react';
 import { ResponsiveLine } from "@nivo/line";
+import { ActivityIcon, CheckCircleIcon, CreditCardIcon, PlusIcon, User2Icon, UsersIcon, WalletIcon } from 'lucide-react';
 import { ClassAttributes, HTMLAttributes } from "react";
+import { Link } from 'react-router-dom';
 import { JSX } from "react/jsx-runtime";
 
 const DashboardPage: React.FC = () => {
@@ -51,20 +45,9 @@ const DashboardPage: React.FC = () => {
         </Breadcrumb>
         <div className="grid grid-cols-2 my-3 gap-4 w-full">
           <Card className="w-full h-[500px] p-4">
-            <Tabs defaultValue="state">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="state">State</TabsTrigger>
-                <TabsTrigger value="national">National</TabsTrigger>
-              </TabsList>
-              <CardContent className="h-[calc(500px-4rem)]">
-                <TabsContent value="state">
-                  <MapChart SelectedTab='state' state='maharashtra' dist='raigarh' />
-                </TabsContent>
-                <TabsContent value="national">
-                  <MapChart SelectedTab='national' state={null} />
-                </TabsContent>
-              </CardContent>
-            </Tabs>
+            <CardContent className="h-[calc(500px-4rem)]">
+              <MapChart SelectedTab='national' state={null} />
+            </CardContent>
           </Card>
           <Card>
             <CardHeader>

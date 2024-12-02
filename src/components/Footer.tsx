@@ -12,7 +12,6 @@ const sections = [
     links: [
       { name: 'BPP Goals', href: '/about/bpp-goals' },
       { name: 'Get To Know BPP', href: '/about/get-to-know-bpp' },
-
       { name: 'Commitment to Progress', href: '/about/commitment-progress' },
       { name: 'Volunteer', href: '/about/volunteer' },
       { name: 'Logo & Media Request', href: '/about/logo-media-request' },
@@ -26,7 +25,6 @@ const sections = [
       { name: 'Active Membership Term', href: '/membership/membership-term' },
       { name: 'Sign in & Register', href: '/login' },
       { name: 'Membership Renewals', href: '/membership/renewals' },
-      // { name: 'Forget Pin', href: '/forgot-pin' },
     ],
   },
   {
@@ -65,63 +63,81 @@ const Footer = () => {
     <section className="border-t mt-6">
       <div className="py-6 container">
         <footer>
-          <div className="grid grid-cols-12 text-gray-600 md:gap-8">
-            {/* Left Column (Logo and Text) */}
-            <div className="col-span-2">
-              <img src={bppFlag} className="mb-10 mr-auto h-20 w-auto md:mb-0" />
-              <h3 className="mb-2 text-sm font-bold my-2 text-blue-700 dark:text-blue-400">Bharatiya Popular Party</h3>
-              <div className='my-2 text-muted-foreground font-bold text-xs'>
+          {/* Main Content Grid - Responsive Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-12 text-gray-600 gap-6 md:gap-8">
+            {/* Left Column (Logo and Text) - Full width on mobile, 2 cols on larger screens */}
+            <div className="md:col-span-3 lg:col-span-2 text-center md:text-left">
+              <img
+                src={bppFlag}
+                alt="BPP Flag"
+                className="mx-auto md:mr-auto md:ml-0 mb-4 h-20 w-auto"
+              />
+              <h3 className="mb-2 text-sm font-bold text-blue-700 dark:text-blue-400">
+                Bharatiya Popular Party
+              </h3>
+              <div className='my-2 text-muted-foreground font-bold text-xs text-center md:text-left'>
                 Navi Mumbai, Maharashtra India
               </div>
-              <div className='my-3 text-muted-foreground text-xs'>
+              <div className='my-3 text-muted-foreground text-xs text-center md:text-left'>
                 Join the BPP's Platform and be a part of a dynamic and transparent community. Your voice matters, and together, we can drive meaningful change.
               </div>
             </div>
-            {/* Right Column (Other Sections) */}
-            <div className="col-span-10 mx-auto grid grid-cols-2 lg:grid-cols-5 md:gap-5">
-              {sections.map((section, sectionIdx) => (
-                <div key={sectionIdx}>
-                  <h3 className="mb-2 text-xs font-bold dark:text-white">{section.title}</h3>
-                  <ul className="space-y-2 text-xs text-muted-foreground">
-                    {section.links.map((link, linkIdx) => (
-                      <li
-                        key={linkIdx}
-                        className="hover:text-primary font-normal hover:underline"
-                      >
-                        <Link to={link.href}>{link.name}</Link>
-                      </li>
-                    ))}
+
+            {/* Right Column (Sections) - Responsive Grid */}
+            <div className="md:col-span-9 lg:col-span-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+                {sections.map((section, sectionIdx) => (
+                  <div key={sectionIdx} className="mx-auto w-full">
+                    <h3 className="mb-2 text-xs font-bold dark:text-white text-center md:text-left">
+                      {section.title}
+                    </h3>
+                    <ul className="space-y-2 text-xs text-muted-foreground text-center md:text-left">
+                      {section.links.map((link, linkIdx) => (
+                        <li
+                          key={linkIdx}
+                          className="hover:text-primary font-normal hover:underline"
+                        >
+                          <Link to={link.href}>{link.name}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+
+                {/* Member Support Section */}
+                <div className="mx-auto w-full">
+                  <h3 className="mb-2 text-xs font-bold dark:text-white text-center md:text-left">
+                    Member Support
+                  </h3>
+                  <ul className="space-y-2 text-xs text-muted-foreground text-center md:text-left">
+                    <li className="font-normal hover:text-primary hover:underline">
+                      <Link to="/customer-support">BPP Member Services</Link>
+                    </li>
+                    <li className="font-normal hover:text-primary hover:underline">
+                      <a href="#">BPP APP Technical Support</a>
+                    </li>
+                    <li className="font-normal hover:text-primary hover:underline">
+                      <a href="#">Accessibility</a>
+                    </li>
                   </ul>
                 </div>
-              ))}
-              {/* Member Support Section */}
-              <div>
-                <h3 className="mb-2 text-xs font-bold dark:text-white">Member Support</h3>
-                <ul className="space-y-2 text-xs text-muted-foreground">
-                  <li className="font-normal hover:text-primary hover:underline">
-                    <Link to="/customer-support">BPP Member Services</Link>
-                  </li>
-                  <li className="font-normal hover:text-primary hover:underline">
-                    <a href="#">BPP APP Technical Support</a>
-                  </li>
-                  <li className="font-normal hover:text-primary hover:underline">
-                    <a href="#">Accessibility</a>
-                  </li>
-                </ul>
               </div>
-
             </div>
           </div>
+
           {/* Separator */}
           <Separator className="my-3" />
-          <div className='flex container justify-between'>
-            <div className='flex gap-8'>
-              <div>
+
+          {/* Bottom Sections - Responsive Flex and Grid */}
+          <div className='flex flex-col md:flex-row container justify-between items-center space-y-4 md:space-y-0'>
+            <div className='flex flex-col md:flex-row items-center gap-4 md:gap-8'>
+              <div className='flex items-center space-x-4'>
                 <LanguageToggle />
                 <ModeToggle />
               </div>
+
               {/* Social Media Icons */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <Link to="#" className="group">
                   <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <TwitterIcon className="h-4 w-4" />
@@ -144,9 +160,11 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div className="justify-center items-center  sm:flex sm:space-y-0 sm:space-x-4">
+
+            {/* App Store and Google Play Buttons - Responsive Layout */}
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
               <a href="#"
-                className="w-full sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-3 py-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                className="w-full sm:w-auto flex bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-3 py-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 mb-2 sm:mb-0">
                 <svg className="mr-3 w-5 h-5" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="apple"
                   role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                   <path fill="currentColor"
@@ -174,43 +192,26 @@ const Footer = () => {
             </div>
           </div>
 
-
-
-          {/* Bottom Section */}
-          <section className='grid grid-cols-12 my-3'>
-            <p className="text-xs text-center col-span-4 text-muted-foreground">
+          {/* Bottom Section - Responsive Layout */}
+          <section className='grid grid-cols-1 md:grid-cols-12 my-3 text-center md:text-left'>
+            <p className="text-xs text-muted-foreground md:col-span-4">
               © 2024 Bharatiya Popular Party. All rights reserved.
             </p>
-            <div className='text-xs col-span-8'>
-              <ul className="text-muted-foreground flex flex-wrap justify-around w-3/4 mx-auto">
-                <li className="font-medium hover:text-primary">
-                  <Link to="/">Site Map</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/terms-and-conditions">Terms and Conditions</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/privacy-policy">Privacy Policy</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/">Cookies</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/">Feedback</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/">Disclaimer</Link>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <Link to="/contact">Contact Us</Link>
-                </li>
+            <div className='text-xs md:col-span-8 mt-4 md:mt-0'>
+              <ul className="text-muted-foreground flex flex-wrap justify-center md:justify-around w-full md:w-3/4 mx-auto space-x-3 md:space-x-0">
+                <li className="font-medium hover:text-primary"><Link to="/">Site Map</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/terms-and-conditions">Terms and Conditions</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/privacy-policy">Privacy Policy</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/">Cookies</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/">Feedback</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/">Disclaimer</Link></li>
+                <li className="font-medium hover:text-primary"><Link to="/contact">Contact Us</Link></li>
               </ul>
             </div>
           </section>
         </footer>
       </div>
     </section>
-
   );
 };
 

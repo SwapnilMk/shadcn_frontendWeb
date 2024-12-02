@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import Layout from '@/layout/Layout';
-import { AlertTriangle, Book, CreditCard, FileText, Globe, Mail, Scale, Server, Shield, Users, LucideIcon } from "lucide-react";
+import { AlertTriangle, Book, CreditCard, FileText, Globe, LucideIcon, Mail, Scale, Server, Shield, Users } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 interface SectionProps {
@@ -58,9 +58,7 @@ const TermsOfService = () => {
                             As a registered member of the website and/or as a visitor, you will get an insight on the updates and detailed information of the happenings and developments within and by the party.
                         </p>
                     </Section>
-
                     <Separator />
-
                     <Section icon={Users} title="Membership Registration" highlight={true}>
                         <p>To become a member of Bharatiya Popular Party, you may be required to provide:</p>
                         <div className="grid md:grid-cols-2 gap-4 mt-4">
@@ -84,9 +82,7 @@ const TermsOfService = () => {
                             </div>
                         </div>
                     </Section>
-
                     <Separator />
-
                     <Section icon={CreditCard} title="Membership Fee">
                         <div className="bg-muted p-6 rounded-lg">
                             <p className="mb-4">

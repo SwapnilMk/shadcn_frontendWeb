@@ -28,6 +28,8 @@ import MembershipCertificate from '@/pages/Dashboard/Membership/Certificate';
 import ReferralPage from '@/pages/Dashboard/Membership/Referral';
 import RenewalsPage from '@/pages/Dashboard/Membership/Renewals';
 import ProfilePage from '@/pages/Dashboard/Profile';
+import Track from '@/pages/Dashboard/Track';
+import TrackingDetails from '@/pages/Dashboard/Track/TrackingDetails';
 import WalletPage from '@/pages/Dashboard/Wallet';
 import AddFund from '@/pages/Dashboard/Wallet/AddFund';
 import Transactions from '@/pages/Dashboard/Wallet/Transactions';
@@ -147,6 +149,10 @@ const AppRoutes = () => {
                     
                     <Route path="community-contribution" element={<Contribution />} />
                     <Route path="voting" element={<Voting />} />
+
+
+                    <Route path="track" element={<Track />} />
+                    <Route path="track-details" element={<TrackingDetails />} />
                 </Route>
 
                 {/* 404 Route */}

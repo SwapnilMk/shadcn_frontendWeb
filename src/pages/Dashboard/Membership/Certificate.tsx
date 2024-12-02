@@ -6,10 +6,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import DashboardLayout from "@/layout/DashboardLayout";
 import { QrCode } from "lucide-react";
 import { Link } from "react-router-dom";
+import bppcard from '@/assets/images/BPPcard.png'
 
 const MembershipCertificate = () => {
-    const certificateUrl = 'https://placehold.co/800x700';
-    const certificatePreviewUrl = 'https://placehold.co/800x700';
+    const certificateUrl = bppcard;
+    const certificatePreviewUrl = bppcard;
 
     return (
         <DashboardLayout>

@@ -130,9 +130,9 @@ export const Navbar = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background dark:shadow-secondary">
-      <NavigationMenu className="mx-auto max-w-full w-full">
-        <NavigationMenuList className="px-4 h-16 flex justify-between lg:justify-around ">
+    <header className="sticky border-b-[1px] top-0 z-100 w-full max-w-full bg-white dark:border-b-slate-700 dark:bg-background dark:shadow-secondary">
+      <NavigationMenu className="mx-auto">
+        <NavigationMenuList className="px-4 h-16 flex  ">
           <NavigationMenuItem className="font-bold">
             <Link
               rel="noreferrer noopener"

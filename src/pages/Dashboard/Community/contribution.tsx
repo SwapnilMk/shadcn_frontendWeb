@@ -4,7 +4,6 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import DashboardLayout from "@/layout/DashboardLayout"
 import { CalendarIcon } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
@@ -34,20 +33,10 @@ const Contribution = () => {
                 </Breadcrumb>
                 <div className="grid grid-cols-1 lg:grid-cols-2 my-3 gap-4 w-full">
                     <Card className="w-full h-[500px] p-4">
-                        <Tabs defaultValue="state">
-                            <TabsList className="grid w-full grid-cols-2">
-                                <TabsTrigger value="state">State</TabsTrigger>
-                                <TabsTrigger value="national">National</TabsTrigger>
-                            </TabsList>
+
                             <CardContent className="h-[calc(500px-4rem)]">
-                                <TabsContent value="state">
                                     <MapChart SelectedTab='state' state='maharashtra' dist='raigarh' />
-                                </TabsContent>
-                                <TabsContent value="national">
-                                    <MapChart SelectedTab='national' state={null} />
-                                </TabsContent>
                             </CardContent>
-                        </Tabs>
                     </Card>
                     <Card className="h-full overflow-hidden">
                         <CardHeader>

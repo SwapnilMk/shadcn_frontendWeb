@@ -1,8 +1,9 @@
 import HeaderComponent from '@/components/HeaderComponent';
 import Layout from '@/layout/Layout';
-import bppflag from '@/assets/images/logos/bppflag.png'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import GetToKnowImg from '@/assets/images/headerBanners/GetToKnow.png';
+import bppflag from '@/assets/images/logos/bppflag.png';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button"
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +18,7 @@ const GetToKnow = () => {
                     { label: "About Us", href: "/about" },
                     { label: "Get To Know BPP", href: "/about/get-to-know-bpp" }
                 ]}
-                imgUrl={bppflag}
+                imgUrl={GetToKnowImg}
             />
             
             <section className="py-8 md:py-6 lg:py-8">

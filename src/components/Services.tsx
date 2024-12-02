@@ -1,6 +1,8 @@
-import { FileText, PhoneCall, Wallet, UserCheck, ClipboardCheck, Scale, Users, Briefcase,  PanelLeftDashed } from "lucide-react";
+import flowchart3 from "@/assets/charts/bpp_flowchart3.svg";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { Briefcase, ClipboardCheck, FileText, PanelLeftDashed, PhoneCall, Scale, UserCheck, Users, Wallet } from "lucide-react";
+
 
 interface ServiceProps {
   title: string;
@@ -96,49 +98,40 @@ export const CommunityProcess = () => {
               </Card>
             ))}
           </div>
+          <div className="my-8">
+            <h2 className="text-3xl md:text-4xl font-bold">Review by the Administration</h2>
+            <p className="text-muted-foreground text-xl mt-4 mb-8">
+              The concern will be addresses and review by the BPP administration, that consist off State heads, district heads and rural, or block heads.
+              Administration will assess and accept or reject the case on the basis of urgency, relevance and verification.
+            </p>
+            <div className="flex flex-col gap-3">
+              {verificationSteps.map(({ icon, title, description }) => (
+                <Card key={title}>
+                  <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
+                    <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
+                      {icon}
+                    </div>
+                    <div>
+                      <CardTitle>{title}</CardTitle>
+                      <CardDescription className="text-md mt-2">
+                        {description}
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="flex items-center justify-center">
           <img
-            src="https://placehold.co/800x930"
+            src={flowchart3}
             className="w-[300px] md:w-[500px] lg:w-full object-contain"
             alt="Registration process"
           />
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 mb-16">
-        <div className="flex items-center justify-center order-2 lg:order-1">
-          <img
-            src="https://placehold.co/800x900"
-            className="w-[300px] md:w-[500px] lg:w-full object-contain"
-            alt="Verification process"
-          />
-        </div>
-        <div className="order-1 lg:order-2">
-          <h2 className="text-3xl md:text-4xl font-bold">Review by the Administration</h2>
-          <p className="text-muted-foreground text-xl mt-4 mb-8">
-            The concern will be addresses and review by the BPP administration, that consist off State heads, district heads and rural, or block heads.
-            Administration will assess and accept or reject the case on the basis of urgency, relevance and verification.
-          </p>
-          <div className="flex flex-col gap-3">
-            {verificationSteps.map(({ icon, title, description }) => (
-              <Card key={title}>
-                <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
-                    {icon}
-                  </div>
-                  <div>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription className="text-md mt-2">
-                      {description}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
 
       <div className="grid lg:grid-cols-2 gap-8">
         <div>
