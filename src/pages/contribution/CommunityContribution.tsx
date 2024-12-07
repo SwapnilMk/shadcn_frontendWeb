@@ -10,7 +10,7 @@ const CommunityContribution = () => {
         <Layout>
             <HeaderComponent
                 heading="Community Contribution"
-                text="Community Contribution"
+                text="We can't help everyone, but everyone can help someone."
                 breadcrumbLinks={[
                     { label: "Home", href: "/" },
                     { label: "Community Contribution", href: "/community-contribution/introduction" }

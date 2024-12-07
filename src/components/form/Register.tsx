@@ -27,71 +27,73 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { zodResolver } from '@hookform/resolvers/zod';
+// import { zodResolver } from '@hookform/resolvers/zod';
+import { useAuth } from "@/context/AuthContext";
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { IconBrandApple } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react';
 import { Control, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { toast } from 'sonner';
+import { toast } from "sonner";
 import { z } from 'zod';
 import { CaptchaDialog } from '../dialogs/CaptchaDialog';
 import { TermsDialog } from '../dialogs/TermsDialog';
 import BottomGradient from '../features/BottomGradient';
+import { Toaster } from '../ui/sonner';
 
 // Form schemas for each step
 const initialFormSchema = z.object({
-    email: z.string().min(1, { message: 'Email or phone is required' }),
-    terms: z.boolean().refine((val) => val === true, {
-        message: 'You must accept the terms and conditions',
-    }),
+    // email: z.string().min(1, { message: 'Email or phone is required' }),
+    // terms: z.boolean().refine((val) => val === true, {
+    //     message: 'You must accept the terms and conditions',
+    // }),
 });
 
 const otpFormSchema = z.object({
-    otp: z.string().length(6, { message: 'OTP must be 6 digits' }),
+    // otp: z.string().length(6, { message: 'OTP must be 6 digits' }),
 });
 
 const userDetailsSchema = z.object({
-    firstName: z.string().min(2, { message: 'First name must be at least 2 characters' }),
-    middleName: z.string().optional(),
-    lastName: z.string().min(2, { message: 'Last name must be at least 2 characters' }),
-    dob: z.string().min(1, { message: 'Date of birth is required' }),
-    age: z.string().min(1, { message: 'Age is required' }),
-    voterId: z.string().min(10, { message: 'Invalid voter ID' }),
-    aadharNumber: z.string().length(12, { message: 'Aadhar number must be 12 digits' }),
-    gender: z.string().min(1, { message: 'Gender is required' }),
-    phone: z.string().min(10, { message: 'Invalid phone number' }),
-    email: z.string().min(1, { message: 'Email or phone is required' }),
+    // firstName: z.string().min(2, { message: 'First name must be at least 2 characters' }),
+    // middleName: z.string().optional(),
+    // lastName: z.string().min(2, { message: 'Last name must be at least 2 characters' }),
+    // dob: z.string().min(1, { message: 'Date of birth is required' }),
+    // age: z.string().min(1, { message: 'Age is required' }),
+    // voterId: z.string().min(10, { message: 'Invalid voter ID' }),
+    // aadharNumber: z.string().length(12, { message: 'Aadhar number must be 12 digits' }),
+    // gender: z.string().min(1, { message: 'Gender is required' }),
+    // phone: z.string().min(10, { message: 'Invalid phone number' }),
+    // email: z.string().min(1, { message: 'Email or phone is required' }),
 });
 
 const addressSchema = z.object({
-    addressLine1: z.string().min(5, { message: 'Address line 1 is required' }),
-    addressLine2: z.string().optional(),
-    cityVillage: z.string().min(2, { message: 'City/Village is required' }),
-    taluka: z.string().min(2, { message: 'Taluka is required' }),
-    district: z.string().min(2, { message: 'District is required' }),
-    state: z.string().min(2, { message: 'State is required' }),
-    pincode: z.string().length(6, { message: 'Invalid pincode' }),
+    // addressLine1: z.string().min(5, { message: 'Address line 1 is required' }),
+    // addressLine2: z.string().optional(),
+    // cityVillage: z.string().min(2, { message: 'City/Village is required' }),
+    // taluka: z.string().min(2, { message: 'Taluka is required' }),
+    // district: z.string().min(2, { message: 'District is required' }),
+    // state: z.string().min(2, { message: 'State is required' }),
+    // pincode: z.string().length(6, { message: 'Invalid pincode' }),
 });
 
 const credentialsSchema = z.object({
-    username: z.string().min(4, { message: 'Username must be at least 4 characters' }),
-    password: z
-        .string()
-        .min(8, { message: 'Password must be at least 8 characters' })
-        .regex(/[A-Z]/, { message: 'Password must contain at least one uppercase letter' })
-        .regex(/[a-z]/, { message: 'Password must contain at least one lowercase letter' })
-        .regex(/[0-9]/, { message: 'Password must contain at least one number' }),
-    confirmPassword: z.string(),
-    pin: z.string().length(4, { message: 'PIN must be exactly 4 digits' })
-        .regex(/^\d+$/, { message: 'PIN must contain only numbers' }),
-    confirmPin: z.string()
-}).refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-}).refine((data) => data.pin === data.confirmPin, {
-    message: "PINs don't match",
-    path: ["confirmPin"],
+    //     username: z.string().min(4, { message: 'Username must be at least 4 characters' }),
+    //     password: z
+    //         .string()
+    //         .min(8, { message: 'Password must be at least 8 characters' })
+    //         .regex(/[A-Z]/, { message: 'Password must contain at least one uppercase letter' })
+    //         .regex(/[a-z]/, { message: 'Password must contain at least one lowercase letter' })
+    //         .regex(/[0-9]/, { message: 'Password must contain at least one number' }),
+    //     confirmPassword: z.string(),
+    //     pin: z.string().length(4, { message: 'PIN must be exactly 4 digits' })
+    //         .regex(/^\d+$/, { message: 'PIN must contain only numbers' }),
+    //     confirmPin: z.string()
+    // }).refine((data) => data.password === data.confirmPassword, {
+    //     message: "Passwords don't match",
+    //     path: ["confirmPassword"],
+    // }).refine((data) => data.pin === data.confirmPin, {
+    //     message: "PINs don't match",
+    //     path: ["confirmPin"],
 });
 
 
@@ -104,67 +106,71 @@ const Register = () => {
     const [timer, setTimer] = useState(120); // 2 minutes in seconds
     const [showResend, setShowResend] = useState(false);
 
+    const { register } = useAuth();
+
+
     // Initial form (Email + Terms)
     const initialForm = useForm<z.infer<typeof initialFormSchema>>({
-        resolver: zodResolver(initialFormSchema),
-        defaultValues: {
-            email: '',
-            terms: false,
-        },
+        // resolver: zodResolver(initialFormSchema),
+        // defaultValues: {
+        //     email: '',
+        //     terms: false,
+        // },
     });
 
     // OTP form
     const otpForm = useForm<z.infer<typeof otpFormSchema>>({
-        resolver: zodResolver(otpFormSchema),
-        defaultValues: {
-            otp: '',
-        },
+        // resolver: zodResolver(otpFormSchema),
+        // defaultValues: {
+        //     otp: '',
+        // },
     });
 
     const userDetailsForm = useForm<z.infer<typeof userDetailsSchema>>({
-        resolver: zodResolver(userDetailsSchema),
-        defaultValues: {
-            firstName: '',
-            middleName: '',
-            lastName: '',
-            dob: '',
-            age: '',
-            voterId: '',
-            aadharNumber: '',
-            gender: '',
-            phone: '',
-        },
+        // resolver: zodResolver(userDetailsSchema),
+        // defaultValues: {
+        //     firstName: '',
+        //     middleName: '',
+        //     lastName: '',
+        //     dob: '',
+        //     age: '',
+        //     voterId: '',
+        //     aadharNumber: '',
+        //     gender: '',
+        //     phone: '',
+        // },
     });
 
     const addressForm = useForm<z.infer<typeof addressSchema>>({
-        resolver: zodResolver(addressSchema),
-        defaultValues: {
-            addressLine1: '',
-            addressLine2: '',
-            cityVillage: '',
-            taluka: '',
-            district: '',
-            state: '',
-            pincode: '',
-        },
+        // resolver: zodResolver(addressSchema),
+        // defaultValues: {
+        //     addressLine1: '',
+        //     addressLine2: '',
+        //     cityVillage: '',
+        //     taluka: '',
+        //     district: '',
+        //     state: '',
+        //     pincode: '',
+        // },
     });
 
     const credentialsForm = useForm<z.infer<typeof credentialsSchema>>({
-        resolver: zodResolver(credentialsSchema),
-        defaultValues: {
-            username: '',
-            password: '',
-            confirmPassword: '',
-            pin: '',
-            confirmPin: ''
-        },
+        // resolver: zodResolver(credentialsSchema),
+        // defaultValues: {
+        //     username: '',
+        //     password: '',
+        //     confirmPassword: '',
+        //     pin: '',
+        //     confirmPin: ''
+        // },
     });
 
 
     const handleInitialSubmit = async (values: React.SetStateAction<{}>) => {
         setFormData({ ...formData, ...values });
+        console.log('your email confirmation code is: 332453')
         setStep(2);
-        setShowCaptcha(true);
+        // setShowCaptcha(true);
     };
 
     const handleCaptchaSuccess = () => {
@@ -187,11 +193,45 @@ const Register = () => {
         setStep(5);
     };
 
-    const handleCredentialsSubmit = (values: z.infer<typeof credentialsSchema>) => {
-        const finalData = { ...formData, ...values };
-        console.log('Final form data:', finalData);
-        alert('error while submit data')
-        toast.success('Registration successful!');
+    const handleCredentialsSubmit = async (values: z.infer<typeof credentialsSchema>) => {
+        const finalData = {
+            firstName: "swapnil",
+            middleName: "kishor",
+            lastName: "mahadik",
+            email: "mswapnil218@gmail.com",
+            phone: "7057332679",
+            dateOfBirth: "2000-02-07",
+            gender: "Male",
+            addressLine1: "Dr No 204 Rakhi Appartment seawoods",
+            addressLine2: "Sector 44 plot no 143",
+            cityOrVillage: "chouk",
+            taluka: "Khalapur",
+            district: "Raigad",
+            state: "Maharashtra",
+            pincode: "410206",
+            username: "Swapnil",
+            password: "Admin@123",
+            aadharCard: "HHO789321988",
+            voterId: "27893339888",
+            pin: "7057",
+        };
+
+      
+
+        try {
+            // Call the register method
+            await register(finalData);
+            toast.success("Registration Successful!", {
+                description: "Sunday, December 07, 2023 at 9:00 AM",
+                action: {
+                    label: "Close",
+                    onClick: () => console.log("Undo"),
+                },
+            });
+        } catch (error) {
+            console.error("Registration failed:", error);
+            toast.error("Registration failed. Please try again.");
+        }
     };
 
     const handleSuccess = (credentialResponse: any) => {
@@ -270,11 +310,11 @@ const Register = () => {
                                                 />
                                             </FormControl>
                                             <FormMessage />
-                                            {contactType && (
+                                            {/* {contactType && (
                                                 <div className="text-sm text-green-600">
                                                     Detected: {contactType === 'phone' ? 'Phone Number' : 'Email Address'}
                                                 </div>
-                                            )}
+                                            )} */}
                                         </FormItem>
                                     )}
                                 />
@@ -385,7 +425,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>First Name</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="First name" {...field} />
+                                                    <Input placeholder="First name"
+                                                    //  {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -398,7 +440,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Middle Name</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Middle name" {...field} />
+                                                    <Input placeholder="Middle name"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -411,7 +455,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Last Name</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Last name" {...field} />
+                                                    <Input placeholder="Last name"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -428,7 +474,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Date of Birth</FormLabel>
                                                 <FormControl>
-                                                    <Input type="date" {...field} />
+                                                    <Input type="date"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -441,7 +489,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Age</FormLabel>
                                                 <FormControl>
-                                                    <Input type="number" placeholder="Age" {...field} />
+                                                    <Input type="number" placeholder="Age"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -481,7 +531,9 @@ const Register = () => {
                                                 <FormItem>
                                                     <FormLabel>Email Address</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="Enter email address" {...field} />
+                                                        <Input placeholder="Enter email address"
+                                                        // {...field} 
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -495,7 +547,9 @@ const Register = () => {
                                                 <FormItem>
                                                     <FormLabel>Phone Number</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="Enter phone number" {...field} />
+                                                        <Input placeholder="Enter phone number"
+                                                        // {...field} 
+                                                        />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -513,7 +567,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Voter ID</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter Voter ID" {...field} />
+                                                    <Input placeholder="Enter Voter ID"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -526,7 +582,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Aadhar Number</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter Aadhar Number" {...field} />
+                                                    <Input placeholder="Enter Aadhar Number"
+                                                    // {...field}
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -554,7 +612,9 @@ const Register = () => {
                                         <FormItem>
                                             <FormLabel>Address Line 1</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="House/Flat No., Building Name, Street" {...field} />
+                                                <Input placeholder="House/Flat No., Building Name, Street"
+                                                // {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -569,7 +629,9 @@ const Register = () => {
                                         <FormItem>
                                             <FormLabel>Address Line 2</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Area, Landmark" {...field} />
+                                                <Input placeholder="Area, Landmark"
+                                                // {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -585,7 +647,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>City/Village</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter city/village" {...field} />
+                                                    <Input placeholder="Enter city/village"
+                                                    // {...field}
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -598,7 +662,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Taluka</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter taluka" {...field} />
+                                                    <Input placeholder="Enter taluka"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -611,7 +677,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>District</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter district" {...field} />
+                                                    <Input placeholder="Enter district"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -628,7 +696,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>State</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter state" {...field} />
+                                                    <Input placeholder="Enter state"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -641,7 +711,9 @@ const Register = () => {
                                             <FormItem>
                                                 <FormLabel>Pincode</FormLabel>
                                                 <FormControl>
-                                                    <Input placeholder="Enter pincode" {...field} />
+                                                    <Input placeholder="Enter pincode"
+                                                    // {...field} 
+                                                    />
                                                 </FormControl>
                                                 <FormMessage />
                                             </FormItem>
@@ -666,7 +738,9 @@ const Register = () => {
                                         <FormItem>
                                             <FormLabel>Username</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="Choose a username" {...field} />
+                                                <Input placeholder="Choose a username"
+                                                // {...field} 
+                                                />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -684,8 +758,8 @@ const Register = () => {
                                                     <Input
                                                         type="password"
                                                         placeholder="Create a password"
-                                                        {...field}
-                                                        value={field.value || ''}
+                                                    // {...field}
+                                                    // value={field.value || ''}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -702,8 +776,8 @@ const Register = () => {
                                                     <Input
                                                         type="password"
                                                         placeholder="Confirm your password"
-                                                        {...field}
-                                                        value={field.value || ''}
+                                                    // {...field}
+                                                    // value={field.value || ''}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -724,8 +798,8 @@ const Register = () => {
                                                     <Input
                                                         type="password"
                                                         placeholder="Enter your PIN"
-                                                        {...field}
-                                                        value={field.value || ''}
+                                                    // {...field}
+                                                    // value={field.value || ''}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -742,8 +816,8 @@ const Register = () => {
                                                     <Input
                                                         type="password"
                                                         placeholder="Confirm your PIN"
-                                                        {...field}
-                                                        value={field.value || ''}
+                                                    // {...field}
+                                                    // value={field.value || ''}
                                                     />
                                                 </FormControl>
                                                 <FormMessage />
@@ -793,6 +867,7 @@ const Register = () => {
                     log in
                 </Link>
             </div>
+            <Toaster />
         </section>
     );
 };
