@@ -1,4 +1,5 @@
 import { About } from '@/components/About';
+import MultiStepForm from '@/components/form/mutistepForm';
 import Register from '@/components/form/Register';
 import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
 import GetToKnow from '@/pages/About/GetToKnow';
@@ -61,6 +62,7 @@ const AppRoutes = () => {
                 {/* Auth Routes */}
                 <Route path="auth">
                     <Route path="signup" element={<Register />} />
+                    {/* <Route path="signup" element={<MultiStepForm />} /> */}
                     <Route path="login" element={<Login />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
                     <Route path="forgot-pin" element={<ForgetPin />} />
