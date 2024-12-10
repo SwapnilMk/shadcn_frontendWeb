@@ -8,7 +8,7 @@ import LogoMediaRequest from '@/pages/About/LogoMediaRequest';
 import Volunteer from '@/pages/About/Volunteer';
 import ForgetPin from '@/pages/auth/ForgetPin';
 import ForgotPassword from "@/pages/auth/ForgotPassword";
-import Login from '@/pages/auth/Login';
+import Login from '@/components/form/loginForm/index'
 import ResetPassword from '@/pages/auth/ResetPassword';
 import ResetPin from '@/pages/auth/ResetPin';
 import EthicsVendorsSuppliers from '@/pages/BusinessCommunity/EthicsVendorsSuppliers';
@@ -61,8 +61,8 @@ const AppRoutes = () => {
 
                 {/* Auth Routes */}
                 <Route path="auth">
-                    <Route path="signup" element={<Register />} />
-                    {/* <Route path="signup" element={<MultiStepForm />} /> */}
+                    {/* <Route path="signup" element={<Register />} /> */}
+                    <Route path="signup" element={<MultiStepForm />} />
                     <Route path="login" element={<Login />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
                     <Route path="forgot-pin" element={<ForgetPin />} />

@@ -1,9 +1,8 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React from "react";
 import { FormWrapper } from "./FormWrapper";
 
-type AddressFormProps = {
+type AddressData = {
     addressLine1: string;
     addressLine2: string;
     cityOrVillage: string;
@@ -11,10 +10,13 @@ type AddressFormProps = {
     district: string;
     state: string;
     pincode: string;
-    setFieldValue: (field: string, value: string) => void;
 };
 
-const AddressForm: React.FC<AddressFormProps> = ({
+type AddressFormProps = AddressData & {
+    updateFields: (fields: Partial<AddressData>) => void;
+};
+
+export function AddressForm({
     addressLine1,
     addressLine2,
     cityOrVillage,
@@ -22,8 +24,8 @@ const AddressForm: React.FC<AddressFormProps> = ({
     district,
     state,
     pincode,
-    setFieldValue,
-}) => {
+    updateFields,
+}: AddressFormProps) {
     return (
         <FormWrapper title="Address Details">
             <div className="grid gap-4">
@@ -34,7 +36,7 @@ const AddressForm: React.FC<AddressFormProps> = ({
                         id="addressLine1"
                         placeholder="House/Flat No., Building Name, Street"
                         value={addressLine1}
-                        onChange={(e) => setFieldValue("addressLine1", e.target.value)}
+                        onChange={(e) => updateFields({ addressLine1: e.target.value })}
                     />
                 </div>
 
@@ -45,7 +47,7 @@ const AddressForm: React.FC<AddressFormProps> = ({
                         id="addressLine2"
                         placeholder="Area, Landmark"
                         value={addressLine2}
-                        onChange={(e) => setFieldValue("addressLine2", e.target.value)}
+                        onChange={(e) => updateFields({ addressLine2: e.target.value })}
                     />
                 </div>
 
@@ -57,16 +59,16 @@ const AddressForm: React.FC<AddressFormProps> = ({
                             id="cityOrVillage"
                             placeholder="Enter city/village"
                             value={cityOrVillage}
-                            onChange={(e) => setFieldValue("cityOrVillage", e.target.value)}
+                            onChange={(e) => updateFields({ cityOrVillage: e.target.value })}
                         />
                     </div>
                     <div>
-                        <Label htmlFor="taluka">Taluka</Label>
+                        <Label htmlFor="taluka">Taluka/Block</Label>
                         <Input
                             id="taluka"
                             placeholder="Enter taluka"
                             value={taluka}
-                            onChange={(e) => setFieldValue("taluka", e.target.value)}
+                            onChange={(e) => updateFields({ taluka: e.target.value })}
                         />
                     </div>
                     <div>
@@ -75,7 +77,7 @@ const AddressForm: React.FC<AddressFormProps> = ({
                             id="district"
                             placeholder="Enter district"
                             value={district}
-                            onChange={(e) => setFieldValue("district", e.target.value)}
+                            onChange={(e) => updateFields({ district: e.target.value })}
                         />
                     </div>
                 </div>
@@ -88,7 +90,7 @@ const AddressForm: React.FC<AddressFormProps> = ({
                             id="state"
                             placeholder="Enter state"
                             value={state}
-                            onChange={(e) => setFieldValue("state", e.target.value)}
+                            onChange={(e) => updateFields({ state: e.target.value })}
                         />
                     </div>
                     <div>
@@ -97,13 +99,11 @@ const AddressForm: React.FC<AddressFormProps> = ({
                             id="pincode"
                             placeholder="Enter pincode"
                             value={pincode}
-                            onChange={(e) => setFieldValue("pincode", e.target.value)}
+                            onChange={(e) => updateFields({ pincode: e.target.value })}
                         />
                     </div>
                 </div>
             </div>
         </FormWrapper>
     );
-};
-
-export default AddressForm;
+}

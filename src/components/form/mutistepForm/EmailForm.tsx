@@ -1,119 +1,48 @@
-import { TermsDialog } from "@/components/dialogs/TermsDialog";
 import { Checkbox } from "@/components/ui/checkbox";
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useState } from "react";
 import { FormWrapper } from "./FormWrapper";
 
-type EmailFormProps = {
+type EmailData = {
     email: string;
-    setEmail: (email: string) => void;
 };
 
-const EmailForm: React.FC<EmailFormProps> = ({ email, setEmail }) => {
-    const [isChecked, setIsChecked] = useState(false);
+type EmailFormProps = EmailData & {
+    updateFields: (fields: Partial<EmailData>) => void;
+};
 
+export function EmailForm({ email, updateFields }: EmailFormProps) {
     return (
         <FormWrapper title="Email">
             <Label>Email/Phone Number</Label>
             <Input
-                placeholder="Email/Phone Number"
+                autoFocus
+                required
+                type="text"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <div className="flex flex-row items-start space-x-3 space-y-0">
+                placeholder="Email/Phone Number"
+                onChange={(e) => updateFields({ email: e.target.value })} />
+            <div className="flex flex-row items-center space-x-3 space-y-0">
                 <Checkbox />
-                <div className="space-y-1 leading-none">
+                <div className="leading-none">
                     <Label className="text-sm">
-                        By creating an account, I agree to Bharatiya Popular Party{" "}
-                        <span
-                            className="underline cursor-pointer text-blue-600"
-                        // onClick={() => setTermsDialog("terms")}
-                        >
-                            Terms of Service
+                        I accept the Bharatiya Popular Party's Membership,{" "}
+                        <span className="underline cursor-pointer text-blue-600">
+                            Terms & Conditions
                         </span>{" "}
-                        and{" "}
-                        <span
-                            className="underline cursor-pointer text-blue-600"
-                        // onClick={() => setTermsDialog("privacy")}
-                        >
-                            Privacy Policy
-                        </span>
+                       & Constitution and also confirm that I am 18+ and not a member of any other political party.
                     </Label>
                 </div>
             </div>
-            <div className="flex flex-row items-start space-x-3 space-y-0">
-
+            <div className="flex flex-row items-center space-x-3 space-y-0">
                 <Checkbox />
-                <div className="space-y-1 leading-none">
+                <div className="leading-none">
                     <Label className="text-sm">
-                        Eligible for individuals 18 years and above.
+                        I wish to enroll as a Primary Member of the Bharatiya Popular Party and accept Article 2 (Objectives) of its Constitution.
                     </Label>
                 </div>
             </div>
+
         </FormWrapper>
     );
-};
-
-export default EmailForm;
-
-const TermsFormField: React.FC = () => {
-    const [termsDialog, setTermsDialog] = React.useState<"terms" | "privacy" | null>(null);
-
-    return (
-        <>
-            <div className="flex flex-row items-start space-x-3 space-y-0">
-                <Checkbox />
-                <div className="space-y-1 leading-none">
-                    <Label className="text-sm">
-                        By creating an account, I agree to Bharatiya Popular Party{" "}
-                        <span
-                            className="underline cursor-pointer text-blue-600"
-                            onClick={() => setTermsDialog("terms")}
-                        >
-                            Terms of Service
-                        </span>{" "}
-                        and{" "}
-                        <span
-                            className="underline cursor-pointer text-blue-600"
-                            onClick={() => setTermsDialog("privacy")}
-                        >
-                            Privacy Policy
-                        </span>
-                    </Label>
-                </div>
-            </div>
-            <TermsDialog
-                isOpen={!!termsDialog}
-                onOpenChange={(open) => setTermsDialog(open ? termsDialog : null)}
-                type={termsDialog || "terms"}
-            />
-        </>
-    );
-};
-
-type AgeFormFieldProps = {
-    isChecked: boolean;
-    setIsChecked: (checked: boolean) => void;
-};
-
-const AgeFormField: React.FC<AgeFormFieldProps> = ({ isChecked, setIsChecked }) => {
-    return (
-        <FormField
-            name="age"
-            render={() => (
-                <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl className="mt-1">
-                        <Checkbox checked={isChecked} onCheckedChange={setIsChecked} />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm">
-                            Eligible for individuals 18 years and above.
-                        </FormLabel>
-                    </div>
-                </FormItem>
-            )}
-        />
-    );
-};
+}

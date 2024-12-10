@@ -1,6 +1,4 @@
 import { Input } from "@/components/ui/input";
-import React from "react";
-import { FormWrapper } from "./FormWrapper";
 import { Label } from "@/components/ui/label";
 import {
     Select,
@@ -9,8 +7,10 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { FormWrapper } from "./FormWrapper";
 
-type UserDetailsFormProps = {
+type PersonalDetailData = {
+    title: string;
     firstName: string;
     middleName: string;
     lastName: string;
@@ -18,12 +18,14 @@ type UserDetailsFormProps = {
     age: string;
     gender: string;
     phone: string;
-    voterId: string;
-    aadharCard: string;
-    setFieldValue: (field: string, value: string) => void;
 };
 
-const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
+type PersonalDetailFormProps = PersonalDetailData & {
+    updateFields: (fields: Partial<PersonalDetailData>) => void;
+};
+
+export function PersonalDetailForm({
+    title,
     firstName,
     middleName,
     lastName,
@@ -31,21 +33,40 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
     age,
     gender,
     phone,
-    voterId,
-    aadharCard,
-    setFieldValue,
-}) => {
+    updateFields,
+}: PersonalDetailFormProps) {
     return (
         <FormWrapper title="User Details">
             <div className="grid gap-6">
                 {/* Row 1: Name Fields */}
                 <div className="grid grid-cols-3 gap-4">
                     <div>
+                        <Label>Title</Label>
+                        <Select
+                            onValueChange={(value) => updateFields({ title: value })}
+                            value={title}
+                        >
+                            <SelectTrigger>
+                                <SelectValue placeholder="Select title" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Mr">Mr</SelectItem>
+                                <SelectItem value="Ms">Ms</SelectItem>
+                                <SelectItem value="Mrs">Mrs</SelectItem>
+                                <SelectItem value="Dr">Dr</SelectItem>
+                                <SelectItem value="CA">CA</SelectItem>
+                                <SelectItem value="CS">CS</SelectItem>
+                                <SelectItem value="Adv">Adv</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                    <div>
                         <Label>First Name</Label>
                         <Input
                             placeholder="First name"
                             value={firstName}
-                            onChange={(e) => setFieldValue("firstName", e.target.value)}
+                            onChange={(e) => updateFields({ firstName: e.target.value })}
                         />
                     </div>
                     <div>
@@ -53,18 +74,22 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
                         <Input
                             placeholder="Middle name"
                             value={middleName}
-                            onChange={(e) => setFieldValue("middleName", e.target.value)}
+                            onChange={(e) => updateFields({ middleName: e.target.value })}
                         />
                     </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-2">
                     <div>
                         <Label>Last Name</Label>
                         <Input
                             placeholder="Last name"
                             value={lastName}
-                            onChange={(e) => setFieldValue("lastName", e.target.value)}
+                            onChange={(e) => updateFields({ lastName: e.target.value })}
                         />
                     </div>
                 </div>
+
 
                 {/* Row 2: DOB and Age */}
                 <div className="grid grid-cols-2 gap-4">
@@ -73,7 +98,7 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
                         <Input
                             type="date"
                             value={dateOfBirth}
-                            onChange={(e) => setFieldValue("dateOfBirth", e.target.value)}
+                            onChange={(e) => updateFields({ dateOfBirth: e.target.value })}
                         />
                     </div>
                     <div>
@@ -82,7 +107,7 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
                             type="number"
                             placeholder="Age"
                             value={age}
-                            onChange={(e) => setFieldValue("age", e.target.value)}
+                            onChange={(e) => updateFields({ age: e.target.value })}
                         />
                     </div>
                 </div>
@@ -92,8 +117,8 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
                     <div>
                         <Label>Gender</Label>
                         <Select
-                            onValueChange={(value) => setFieldValue("gender", value)}
-                            defaultValue={gender}
+                            onValueChange={(value) => updateFields({ gender: value })}
+                            value={gender}
                         >
                             <SelectTrigger>
                                 <SelectValue placeholder="Select gender" />
@@ -110,33 +135,11 @@ const UserDetailsForm: React.FC<UserDetailsFormProps> = ({
                         <Input
                             placeholder="Enter phone number"
                             value={phone}
-                            onChange={(e) => setFieldValue("phone", e.target.value)}
-                        />
-                    </div>
-                </div>
-
-                {/* Row 4: IDs */}
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <Label>Voter ID</Label>
-                        <Input
-                            placeholder="Enter Voter ID"
-                            value={voterId}
-                            onChange={(e) => setFieldValue("voterId", e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <Label>Aadhar Number</Label>
-                        <Input
-                            placeholder="Enter Aadhar Number"
-                            value={aadharCard}
-                            onChange={(e) => setFieldValue("aadharCard", e.target.value)}
+                            onChange={(e) => updateFields({ phone: e.target.value })}
                         />
                     </div>
                 </div>
             </div>
         </FormWrapper>
     );
-};
-
-export default UserDetailsForm;
+}
