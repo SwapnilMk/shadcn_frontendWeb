@@ -26,21 +26,9 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
   return (
     <FormWrapper title="Credentials Details">
       <div className="grid gap-4">
-        {/* Username */}
-        {/* <div>
-          <Label htmlFor="username">Username</Label>
-          <Input
-            id="username"
-            placeholder="Choose a username"
-            value={username}
-            onChange={(e) => updateFields({ username: e.target.value })}
-          />
-        </div> */}
-
-        {/* Password and Confirm Password in same row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Password <span className="text-red-700">*</span></Label>
             <Input
               id="password"
               type="password"
@@ -50,7 +38,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
             />
           </div>
           <div>
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Label htmlFor="confirmPassword">Confirm Password <span className="text-red-700">*</span></Label>
             <Input
               id="confirmPassword"
               type="password"
@@ -61,28 +49,11 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
               }
             />
           </div>
-        </div>
-
-        {/* Pin and Confirm Pin in same row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="pin">PIN</Label>
+            <Label htmlFor="referal">Referal code ( Optional )</Label>
             <Input
-              id="pin"
-              type="password"
-              placeholder="Enter your PIN"
-              value={pin}
-              onChange={(e) => updateFields({ pin: e.target.value })}
-            />
-          </div>
-          <div>
-            <Label htmlFor="confirmPin">Confirm PIN</Label>
-            <Input
-              id="confirmPin"
-              type="password"
-              placeholder="Confirm your PIN"
-              value={confirmPin}
-              onChange={(e) => updateFields({ confirmPin: e.target.value })}
+              id="referal"
+              placeholder="referal code"
             />
           </div>
         </div>

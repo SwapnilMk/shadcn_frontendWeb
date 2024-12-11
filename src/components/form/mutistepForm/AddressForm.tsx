@@ -30,8 +30,9 @@ export function AddressForm({
         <FormWrapper title="Address Details">
             <div className="grid gap-4">
                 {/* Address Line 1 */}
+                <div className="text-center text-xs text-muted-foreground text-semibold">* Provide Address as given in Aadhaar Card</div>
                 <div>
-                    <Label htmlFor="addressLine1">Address Line 1</Label>
+                    <Label htmlFor="addressLine1">Address Line 1 <span className="text-red-700">*</span></Label>
                     <Input
                         id="addressLine1"
                         placeholder="House/Flat No., Building Name, Street"
@@ -54,7 +55,7 @@ export function AddressForm({
                 {/* City/Village, Taluka, District Row */}
                 <div className="grid grid-cols-3 gap-4">
                     <div>
-                        <Label htmlFor="cityOrVillage">City/Village</Label>
+                        <Label htmlFor="cityOrVillage">City/Village <span className="text-red-700">*</span></Label>
                         <Input
                             id="cityOrVillage"
                             placeholder="Enter city/village"
@@ -63,7 +64,7 @@ export function AddressForm({
                         />
                     </div>
                     <div>
-                        <Label htmlFor="taluka">Taluka/Block</Label>
+                        <Label htmlFor="taluka">Taluka/Block <span className="text-red-700">*</span></Label>
                         <Input
                             id="taluka"
                             placeholder="Enter taluka"
@@ -72,7 +73,7 @@ export function AddressForm({
                         />
                     </div>
                     <div>
-                        <Label htmlFor="district">District</Label>
+                        <Label htmlFor="district">District <span className="text-red-700">*</span></Label>
                         <Input
                             id="district"
                             placeholder="Enter district"
@@ -85,7 +86,7 @@ export function AddressForm({
                 {/* State and Pincode Row */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <Label htmlFor="state">State</Label>
+                        <Label htmlFor="state">State <span className="text-red-700">*</span></Label>
                         <Input
                             id="state"
                             placeholder="Enter state"
@@ -94,7 +95,7 @@ export function AddressForm({
                         />
                     </div>
                     <div>
-                        <Label htmlFor="pincode">Pincode</Label>
+                        <Label htmlFor="pincode">Pincode <span className="text-red-700">*</span></Label>
                         <Input
                             id="pincode"
                             placeholder="Enter pincode"

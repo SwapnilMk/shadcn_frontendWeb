@@ -1,3 +1,4 @@
+import { DatePicker } from "@/components/DatePicker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -35,13 +36,27 @@ export function PersonalDetailForm({
     phone,
     updateFields,
 }: PersonalDetailFormProps) {
+
+    const calculateAge = (dob: Date | undefined): string => {
+        if (!dob) return "";
+        const today = new Date();
+        const birthDate = new Date(dob);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age.toString();
+    };
+
     return (
         <FormWrapper title="User Details">
             <div className="grid gap-6">
                 {/* Row 1: Name Fields */}
+                <div className="text-center text-xs text-muted-foreground text-semibold">* Enter your details exactly given in Aadhaar Card</div>
                 <div className="grid grid-cols-3 gap-4">
                     <div>
-                        <Label>Title</Label>
+                        <Label>Title <span className="text-red-700">*</span></Label>
                         <Select
                             onValueChange={(value) => updateFields({ title: value })}
                             value={title}
@@ -62,7 +77,7 @@ export function PersonalDetailForm({
                     </div>
 
                     <div>
-                        <Label>First Name</Label>
+                        <Label>First Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="First name"
                             value={firstName}
@@ -70,7 +85,7 @@ export function PersonalDetailForm({
                         />
                     </div>
                     <div>
-                        <Label>Middle Name</Label>
+                        <Label>Middle Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="Middle name"
                             value={middleName}
@@ -81,7 +96,7 @@ export function PersonalDetailForm({
 
                 <div className="grid grid-cols-1 gap-2">
                     <div>
-                        <Label>Last Name</Label>
+                        <Label>Last Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="Last name"
                             value={lastName}
@@ -94,20 +109,23 @@ export function PersonalDetailForm({
                 {/* Row 2: DOB and Age */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <Label>Date of Birth</Label>
-                        <Input
-                            type="date"
-                            value={dateOfBirth}
-                            onChange={(e) => updateFields({ dateOfBirth: e.target.value })}
+                        <Label>Date of Birth <span className="text-red-700">*</span></Label>
+                        <DatePicker
+                            date={dateOfBirth ? new Date(dateOfBirth) : undefined}
+                            setDate={(date) => {
+                                updateFields({ dateOfBirth: date ? date.toISOString().split('T')[0] : undefined });
+                                updateFields({ age: calculateAge(date) }); // Update age
+                            }}
+                            endYear={2090}
                         />
                     </div>
                     <div>
-                        <Label>Age</Label>
+                        <Label>Age <span className="text-red-700">*</span></Label>
                         <Input
                             type="number"
                             placeholder="Age"
                             value={age}
-                            onChange={(e) => updateFields({ age: e.target.value })}
+                            readOnly
                         />
                     </div>
                 </div>
@@ -115,7 +133,7 @@ export function PersonalDetailForm({
                 {/* Row 3: Additional Fields */}
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <Label>Gender</Label>
+                        <Label>Gender <span className="text-red-700">*</span></Label>
                         <Select
                             onValueChange={(value) => updateFields({ gender: value })}
                             value={gender}
@@ -131,7 +149,7 @@ export function PersonalDetailForm({
                         </Select>
                     </div>
                     <div>
-                        <Label>Phone Number</Label>
+                        <Label>Phone Number <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="Enter phone number"
                             value={phone}

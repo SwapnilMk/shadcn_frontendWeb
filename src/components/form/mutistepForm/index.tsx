@@ -137,7 +137,8 @@ const MultiStepForm = () => {
 
         // Handle first step - Send OTP
         if (currentStepIndex === 0) {
-     
+            next()
+            return
             // Validate email/phone before sending OTP
             if (!data.email) {
                 toast.error('Please enter a valid email or phone number');
@@ -159,7 +160,6 @@ const MultiStepForm = () => {
 
         // Handle OTP Verification step
         else if (currentStepIndex === 1) {
-            console.log("validateOpt")
             next();
             return
 
@@ -237,15 +237,6 @@ const MultiStepForm = () => {
         }
     }
 
-    //for google authentication
-    const handleSuccess = (credentialResponse: any) => {
-        console.log("google login success", credentialResponse);
-    };
-
-    const handleError = () => {
-        console.log("error while google auth");
-    };
-
     return (
         <section className="max-w-xl w-full mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
             <div className="flex flex-col gap-4">
@@ -308,36 +299,6 @@ const MultiStepForm = () => {
                                             <Button type="submit" className='w-full'>
                                                 Next
                                             </Button>
-                                        </div>
-                                    </>
-                                )}
-
-                                {isFirstStep && (
-                                    <>
-                                        <div className="flex items-center">
-                                            <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
-                                            <span className="mx-4 text-neutral-500 dark:text-neutral-400">or</span>
-                                            <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
-                                        </div>
-
-                                        <div className="flex flex-col space-y-2">
-                                            <GoogleOAuthProvider
-                                                clientId='40485041347-qnmoggj1apem94hdq55svkjmtk5706ku.apps.googleusercontent.com'>
-                                                <GoogleLogin
-                                                    onSuccess={handleSuccess}
-                                                    onError={handleError}
-                                                    theme="outline"
-                                                    shape="rectangular"
-                                                    size="large"
-                                                />
-                                            </GoogleOAuthProvider>
-                                            <button className="relative group/btn flex items-center justify-center px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900">
-                                                <IconBrandApple className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
-                                                <span className="ml-2 text-neutral-700 dark:text-neutral-300 text-sm">
-                                                    Continue With Apple
-                                                </span>
-                                                <BottomGradient />
-                                            </button>
                                         </div>
                                     </>
                                 )}
