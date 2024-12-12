@@ -1,14 +1,12 @@
-import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import React from "react";
 import { FormWrapper } from "./FormWrapper";
 
 type CredentialsData = {
-  username: string;
   password: string;
   confirmPassword: string;
-  pin: string;
-  confirmPin: string;
+  referralCode: string;
 };
 
 type CredentialsFormProps = CredentialsData & {
@@ -16,11 +14,9 @@ type CredentialsFormProps = CredentialsData & {
 };
 
 const CredentialsForm: React.FC<CredentialsFormProps> = ({
-  username,
   password,
   confirmPassword,
-  pin,
-  confirmPin,
+  referralCode,
   updateFields,
 }) => {
   return (
@@ -32,6 +28,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
             <Input
               id="password"
               type="password"
+              required
               placeholder="Create a password"
               value={password}
               onChange={(e) => updateFields({ password: e.target.value })}
@@ -42,6 +39,7 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
             <Input
               id="confirmPassword"
               type="password"
+              required
               placeholder="Confirm your password"
               value={confirmPassword}
               onChange={(e) =>
@@ -50,10 +48,15 @@ const CredentialsForm: React.FC<CredentialsFormProps> = ({
             />
           </div>
           <div>
-            <Label htmlFor="referal">Referal code ( Optional )</Label>
+            <Label htmlFor="referralCode">Referal code ( Optional )</Label>
             <Input
-              id="referal"
+              id="referralCode"
+              type="text"
               placeholder="referal code"
+              value={referralCode}
+              onChange={(e) =>
+                updateFields({ referralCode: e.target.value })
+              }
             />
           </div>
         </div>

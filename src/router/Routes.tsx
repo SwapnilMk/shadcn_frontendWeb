@@ -1,6 +1,6 @@
 import { About } from '@/components/About';
+import Login from '@/components/form/loginForm/index';
 import MultiStepForm from '@/components/form/mutistepForm';
-import Register from '@/components/form/Register';
 import CommitmentToProgress from '@/pages/About/CommitmentToProgress';
 import GetToKnow from '@/pages/About/GetToKnow';
 import Goals from '@/pages/About/Goals';
@@ -8,7 +8,6 @@ import LogoMediaRequest from '@/pages/About/LogoMediaRequest';
 import Volunteer from '@/pages/About/Volunteer';
 import ForgetPin from '@/pages/auth/ForgetPin';
 import ForgotPassword from "@/pages/auth/ForgotPassword";
-import Login from '@/components/form/loginForm/index'
 import ResetPassword from '@/pages/auth/ResetPassword';
 import ResetPin from '@/pages/auth/ResetPin';
 import EthicsVendorsSuppliers from '@/pages/BusinessCommunity/EthicsVendorsSuppliers';

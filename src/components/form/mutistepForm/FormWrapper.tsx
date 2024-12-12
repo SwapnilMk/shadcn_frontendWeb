@@ -5,7 +5,7 @@ type FormWrapperProps = {
     children: ReactNode
 }
 
-export function FormWrapper({ title, children }: FormWrapperProps) {
+export function FormWrapper({ children }: FormWrapperProps) {
     return (
         <>
             <div

@@ -58,6 +58,7 @@ export function PersonalDetailForm({
                     <div>
                         <Label>Title <span className="text-red-700">*</span></Label>
                         <Select
+                        required
                             onValueChange={(value) => updateFields({ title: value })}
                             value={title}
                         >
@@ -80,6 +81,7 @@ export function PersonalDetailForm({
                         <Label>First Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="First name"
+                            required
                             value={firstName}
                             onChange={(e) => updateFields({ firstName: e.target.value })}
                         />
@@ -88,6 +90,7 @@ export function PersonalDetailForm({
                         <Label>Middle Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="Middle name"
+                            required
                             value={middleName}
                             onChange={(e) => updateFields({ middleName: e.target.value })}
                         />
@@ -99,6 +102,7 @@ export function PersonalDetailForm({
                         <Label>Last Name <span className="text-red-700">*</span></Label>
                         <Input
                             placeholder="Last name"
+                            required
                             value={lastName}
                             onChange={(e) => updateFields({ lastName: e.target.value })}
                         />
@@ -125,6 +129,7 @@ export function PersonalDetailForm({
                             type="number"
                             placeholder="Age"
                             value={age}
+                            required
                             readOnly
                         />
                     </div>
@@ -137,6 +142,7 @@ export function PersonalDetailForm({
                         <Select
                             onValueChange={(value) => updateFields({ gender: value })}
                             value={gender}
+                            required
                         >
                             <SelectTrigger>
                                 <SelectValue placeholder="Select gender" />
@@ -153,6 +159,7 @@ export function PersonalDetailForm({
                         <Input
                             placeholder="Enter phone number"
                             value={phone}
+                            required
                             onChange={(e) => updateFields({ phone: e.target.value })}
                         />
                     </div>

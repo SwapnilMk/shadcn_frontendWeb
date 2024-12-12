@@ -36,6 +36,7 @@ export function AddressForm({
                     <Input
                         id="addressLine1"
                         placeholder="House/Flat No., Building Name, Street"
+                        required
                         value={addressLine1}
                         onChange={(e) => updateFields({ addressLine1: e.target.value })}
                     />
@@ -48,6 +49,7 @@ export function AddressForm({
                         id="addressLine2"
                         placeholder="Area, Landmark"
                         value={addressLine2}
+                        required
                         onChange={(e) => updateFields({ addressLine2: e.target.value })}
                     />
                 </div>
@@ -60,6 +62,7 @@ export function AddressForm({
                             id="cityOrVillage"
                             placeholder="Enter city/village"
                             value={cityOrVillage}
+                            required
                             onChange={(e) => updateFields({ cityOrVillage: e.target.value })}
                         />
                     </div>
@@ -69,6 +72,7 @@ export function AddressForm({
                             id="taluka"
                             placeholder="Enter taluka"
                             value={taluka}
+                            required
                             onChange={(e) => updateFields({ taluka: e.target.value })}
                         />
                     </div>
@@ -78,6 +82,7 @@ export function AddressForm({
                             id="district"
                             placeholder="Enter district"
                             value={district}
+                            required
                             onChange={(e) => updateFields({ district: e.target.value })}
                         />
                     </div>
@@ -91,6 +96,7 @@ export function AddressForm({
                             id="state"
                             placeholder="Enter state"
                             value={state}
+                            required
                             onChange={(e) => updateFields({ state: e.target.value })}
                         />
                     </div>
@@ -100,6 +106,7 @@ export function AddressForm({
                             id="pincode"
                             placeholder="Enter pincode"
                             value={pincode}
+                            required
                             onChange={(e) => updateFields({ pincode: e.target.value })}
                         />
                     </div>

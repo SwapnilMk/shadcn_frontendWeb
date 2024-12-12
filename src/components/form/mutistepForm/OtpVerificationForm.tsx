@@ -7,13 +7,14 @@ import { FormWrapper } from "./FormWrapper";
 
 type OtpVerificationData = {
     otp: string;
+    email: string;
 };
 
 type OtpVerificationProps = OtpVerificationData & {
     updateFields: (fields: Partial<OtpVerificationData>) => void;
 };
 
-export function OtpVerificationForm({ otp, updateFields }: OtpVerificationProps) {
+export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificationProps) {
     const [timer, setTimer] = useState(120);
     const [showResend, setShowResend] = useState(false);
 
@@ -41,31 +42,36 @@ export function OtpVerificationForm({ otp, updateFields }: OtpVerificationProps)
         return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
     };
 
-    const handleOtpChange = (index: number, value: string) => {
-        const otpArray = otp.split(""); // Split the current OTP into an array
-        otpArray[index] = value; // Update the character at the specified index
-        const newOtp = otpArray.join(""); // Join the array back into a string
-        updateFields({ otp: newOtp }); // Update the parent form state
+    const handleOtpComplete = (value: string) => {
+        updateFields({ otp: value });
     };
+
+    function maskEmail(email: string): string {
+        const [username, domain] = email.split('@');
+        if (!username || !domain) return email;
+        return `${username.charAt(0)}${'*'.repeat(username.length - 2)}${username.charAt(username.length - 1)}@${domain}`;
+    }
 
     return (
         <FormWrapper title="OTP Verification">
-            <Label>Enter OTP sent to your email</Label>
+            {email && (
+                <Label className="text-center">
+                    Enter OTP sent to your email:{" "}
+                    {maskEmail(email)}
+                </Label>
+            )}
             <div className="space-y-4">
-                <InputOTP maxLength={6}>
-                    <div className="flex justify-between w-full space-x-2">
-                        <InputOTPGroup className="flex space-x-2 w-full">
-                            {Array.from({ length: 6 }).map((_, index) => (
-                                <InputOTPSlot
-                                    key={index}
-                                    index={index}
-                                    className="flex-1"
-                                    value={otp[index] || ""}
-                                    onChange={(e) => handleOtpChange(index, e.target.value)}
-                                />
-                            ))}
-                        </InputOTPGroup>
-                    </div>
+                <InputOTP
+                    maxLength={6}
+                    value={otp}
+                    onChange={handleOtpComplete}
+                    required
+                >
+                    <InputOTPGroup className="flex justify-between w-full space-x-2">
+                        {Array.from({ length: 6 }).map((_, index) => (
+                            <InputOTPSlot key={index} index={index} />
+                        ))}
+                    </InputOTPGroup>
                 </InputOTP>
                 <div className="text-sm text-gray-500 text-center">
                     Time remaining: {formatTime(timer)}

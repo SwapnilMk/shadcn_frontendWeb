@@ -2,6 +2,7 @@ import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FormWrapper } from "./FormWrapper";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type EducationalDetailsData = {
     qualification: string;
@@ -27,6 +28,7 @@ const EducationalDetailsForm: React.FC<EducationalDetailsFormProps> = ({
                     <Label htmlFor="qualification">Qualification</Label>
                     <Input
                         id="qualification"
+                        required
                         placeholder="Enter your qualification"
                         value={qualification}
                         onChange={(e) => updateFields({ qualification: e.target.value })}
@@ -36,12 +38,21 @@ const EducationalDetailsForm: React.FC<EducationalDetailsFormProps> = ({
                 {/* Profession */}
                 <div>
                     <Label htmlFor="profession">Profession</Label>
-                    <Input
-                        id="profession"
-                        placeholder="Enter your profession"
+                    <Select
+                        required
+                        onValueChange={(value) => updateFields({ profession: value })}
                         value={profession}
-                        onChange={(e) => updateFields({ profession: e.target.value })}
-                    />
+                    >
+                        <SelectTrigger>
+                            <SelectValue placeholder="Select profession" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Medical">Medical</SelectItem>
+                            <SelectItem value="Legal">Legal</SelectItem>
+                            <SelectItem value="Social">Social</SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
 
                 {/* Position */}
@@ -49,6 +60,7 @@ const EducationalDetailsForm: React.FC<EducationalDetailsFormProps> = ({
                     <Label htmlFor="position">Position</Label>
                     <Input
                         id="position"
+                        required
                         placeholder="Enter your position"
                         value={position}
                         onChange={(e) => updateFields({ position: e.target.value })}
