@@ -12,11 +12,14 @@ interface AuthContextType {
     isAuthenticated: boolean;
     login: (credentials: LoginCredentials) => Promise<void>;
     register: (registrationData: RegistrationData) => Promise<void>;
+    sendOtp: (email: string) => Promise<void>;
+    verifyOtp: (email: string, otp: string) => Promise<void>;
     logout: () => void;
     loading: boolean;
 }
 
 interface RegistrationData {
+    title: string;
     firstName: string;
     middleName: string;
     lastName: string;
@@ -24,38 +27,43 @@ interface RegistrationData {
     phone: string;
     dateOfBirth: string;
     gender: string;
+    age: string;
     addressLine1: string;
-    addressLine2?: string;
+    addressLine2: string;
     cityOrVillage: string;
     taluka: string;
     district: string;
     state: string;
     pincode: string;
-    username: string;
-    password: string;
-    aadharCard: string;
+    qualification: string;
+    profession: string;
+    position: string;
+    aadhaarNumber: string;
     voterId: string;
-    pin: string;
+    aadhaarCard: File | null;
+    voterCard: File | null;
+    password: string;
+    referralCode: string,
 }
 
 interface LoginCredentials {
-    username: string;
+    email: string;
     password: string;
 }
 
 const AuthContext = createContext<AuthContextType>({
     user: null,
     isAuthenticated: false,
-    login: async () => {},
-    register: async () => {},
-    logout: () => {},
+    login: async () => { },
+    register: async () => { },
+    sendOtp: async () => { },
+    verifyOtp: async () => { },
+    logout: () => { },
     loading: false,
 });
 
 // Provider component
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({
-    children,
-}) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -79,31 +87,51 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         }
     };
 
-    // Register method (updated to use /members endpoint)
+    // Register method
     const register = async (registrationData: RegistrationData) => {
         try {
             setLoading(true);
             const { ...payload } = registrationData;
-
-            // Updated endpoint for members registration
             const response = await postData("members", payload);
-            console.log(response);
             console.log("Registration successful!");
-            toast.success("Registration successful!");
+            toast.success("Registration successful!", response);
         } catch (error) {
             console.error("Registration error:", error);
-            if (error instanceof Error && "response" in error) {
-                const serverError = error as {
-                    response?: { data?: { message: string } };
-                };
-                const errorMessage =
-                    serverError.response?.data?.message || "Registration failed";
-                console.log("Registration error:", errorMessage);
-                toast.error(errorMessage);
-            } else {
-                console.error("An unexpected error occurred");
-                toast.error("An unexpected error occurred");
-            }
+            toast.error("Registration failed");
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    
+
+    // Send OTP method
+    const sendOtp = async (email: string) => {
+        try {
+            setLoading(true);
+            const response = await postData("/send-otp", { email });
+            toast.success("OTP sent successfully!");
+            console.log("OTP sent successfully!", response);
+        } catch (error) {
+            console.error("Error sending OTP:", error);
+            toast.error("Failed to send OTP");
+            throw error;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Verify OTP method
+    const verifyOtp = async (email: string, otp: string) => {
+        try {
+            setLoading(true);
+            const response = await postData("/validate-otp", { email, otp });
+            toast.success("OTP verified successfully!");
+            console.log("OTP verified successfully!", response);
+        } catch (error) {
+            console.error("Error verifying OTP:", error);
+            toast.error("Failed to verify OTP");
             throw error;
         } finally {
             setLoading(false);
@@ -121,8 +149,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     React.useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            // Verify token with backend or set a default user
-            // You might want to add a token verification API call here
+            // You can add token verification logic here
         }
     }, []);
 
@@ -133,6 +160,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
                 isAuthenticated: !!user,
                 login,
                 register,
+                sendOtp,
+                verifyOtp,
                 logout,
                 loading,
             }}

@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { FormWrapper } from "./FormWrapper";
+import { useAuth } from "@/context/AuthContext";
 
 type OtpVerificationData = {
     otp: string;
@@ -17,12 +18,21 @@ type OtpVerificationProps = OtpVerificationData & {
 export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificationProps) {
     const [timer, setTimer] = useState(120);
     const [showResend, setShowResend] = useState(false);
+        const {sendOtp } = useAuth();
 
-    const handleResendOTP = () => {
-        setTimer(120);
-        setShowResend(false);
-        toast.success("OTP resent successfully");
+    const handleResendOTP  = async() => {
+        try {
+            // Make an API call to resend the OTP (you need to implement this on the backend)
+            await sendOtp(email); // Send OTP using AuthContext method
+            toast.success('OTP sent successfully');
+            setTimer(120);
+            setShowResend(false);
+            toast.success("OTP resent successfully");
+        } catch (error) {
+            toast.error("Failed to resend OTP. Please try again.");
+        }
     };
+
 
     useEffect(() => {
         let interval: NodeJS.Timeout | undefined;
@@ -73,7 +83,7 @@ export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificatio
                         ))}
                     </InputOTPGroup>
                 </InputOTP>
-                <div className="text-sm text-gray-500 text-center">
+                <div className="text-sm text-center text-gray-500">
                     Time remaining: {formatTime(timer)}
                 </div>
                 {showResend && (

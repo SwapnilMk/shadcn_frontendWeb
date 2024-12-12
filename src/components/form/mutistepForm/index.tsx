@@ -13,6 +13,7 @@ import { EmailForm } from './EmailForm';
 import { OtpVerificationForm } from './OtpVerificationForm';
 import { PersonalDetailForm } from './PersonalDetailForm';
 import { RegistrationForm } from './RegistrationDetails';
+import { useAuth } from "@/context/AuthContext";
 
 type FormData = {
 
@@ -99,8 +100,8 @@ const INITIAL_DATA: FormData = {
     // Registration Details
     aadhaarNumber: "",
     voterId: "",
-    aadhaarCard: null,  // Initialize as null (no file selected)
-    voterCard: null,    // Initialize as null (no file selected)
+    aadhaarCard: null,  // Initialize as null
+    voterCard: null,    // Initialize as null
 
     // Credentials Information
     password: "",
@@ -114,6 +115,7 @@ const INITIAL_DATA: FormData = {
 const MultiStepForm = () => {
     const [data, setData] = useState(INITIAL_DATA);
     const navigate = useNavigate();
+    const { register, sendOtp, verifyOtp } = useAuth();
 
     //Function that update the fields inside FormData
     function updateFields(fields: Partial<FormData>) {
@@ -134,68 +136,46 @@ const MultiStepForm = () => {
         ])
 
 
-    // const BASE_URL = 'http://ec2-13-232-238-37.ap-south-1.compute.amazonaws.com:8080/api/v1';
-
-    function onSubmitHandler(e: FormEvent) {
+    const onSubmitHandler = async (e: FormEvent) => {
         e.preventDefault();
 
-        // Handle first step - Send OTP
         if (currentStepIndex === 0) {
-
+            // Handle first step - Send OTP
             if (!data.termsAccepted || !data.partyObjectivesAccepted) {
-                toast.error('Please accept all terms and conditions')
+                toast.error('Please accept all terms and conditions');
                 return;
             }
 
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
             if (!data.email || !emailRegex.test(data.email)) {
-                toast.error('Please enter a valid email or phone number');
+                toast.error('Please enter a valid email');
                 return;
             }
 
-            next()
-        }
-
-        // Send OTP API Call
-        //     axios.post(`${BASE_URL}/send-otp`, {
-        //         email: data.email
-        //     })
-        //         .then(response => {
-        //             toast.success('OTP sent successfully');
-        //             next(); // Move to OTP verification step
-        //         })
-        //         .catch(error => {
-        //             toast.error(error.response?.data?.message || 'Failed to send OTP');
-        //         });
-        // }
-
-        // Handle OTP Verification step
-
-        else if (currentStepIndex === 1) {
-            next();
-
-            // Validate OTP
+            try {
+                await sendOtp(data.email); // Send OTP using AuthContext method
+                toast.success('OTP sent successfully');
+                next(); // Move to OTP verification step
+            } catch (error) {
+                toast.error('Failed to send OTP');
+            }
+        } else if (currentStepIndex === 1) {
+            // Handle OTP verification
             if (data.otp.length !== 6) {
                 toast.error('Please enter a valid 6-digit OTP');
+                return;
             }
 
-            // Validate OTP API Call
-            //     axios.post(`${BASE_URL}/validate-otp`, {
-            //         email: data.email,
-            //         otp: data.otp
-            //     })
-            //         .then(response => {
-            //             toast.success('OTP verified successfully');
-            //             next();
-
-            //         .catch(error => {
-            //             toast.error(error.response?.data?.message || 'OTP validation failed');
-            //         });
-            // }
-
-            // Handle Personal Details step
+            try {
+                await verifyOtp(data.email, data.otp); // Verify OTP using AuthContext method
+                toast.success('OTP verified successfully');
+                next(); // Proceed to the next step after verification
+            } catch (error) {
+                toast.error('OTP validation failed');
+            }
         }
+
         else if (currentStepIndex === 2) {
             // Add validation for personal details
             const requiredFields = [
@@ -216,33 +196,21 @@ const MultiStepForm = () => {
         // Final step - Submit entire form
         else if (isLastStep) {
             console.log(data)
-           
-            toast.success("Registration Successful!", {
-                description: "Sunday, December 07, 2023 at 9:00 AM",
-                action: {
-                    label: "Close",
-                    onClick: () => console.log("Undo"),
-                },
-            });
 
+            register(data)
+                .then(() => {
+                    toast.success("Registration Successful! Redirecting to the dashboard...");
+                    setTimeout(() => {
+                        navigate('/dashboard/home');
+                    }, 3000);
+                })
+                .catch((error) => {
+                    console.error("Registration failed:", error);
+                    toast.error("Registration failed. Please try again.");
+                });
 
-            // Wait for 5 seconds before navigating to the dashboard
-            setTimeout(() => {
-                navigate('/dashboard/home');
-            }, 5000); // 5000 milliseconds = 5 seconds
-
-            return
+            return;
         }
-
-        // Final form submission API call
-        //     axios.post(`${BASE_URL}/register`, data)
-        //         .then(response => {
-        //             toast.success('Account created successfully');
-        //         })
-        //         .catch(error => {
-        //             toast.error(error.response?.data?.message || 'Registration failed');
-        //         });
-        // }
 
         // For steps without special handling, just move to next step
         else if (!isLastStep) {
@@ -253,18 +221,18 @@ const MultiStepForm = () => {
 
 
     return (
-        <section className="max-w-xl w-full mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
+        <section className="flex items-center w-full h-screen max-w-xl mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
             <div className="flex flex-col gap-4">
-                <Card className="mx-auto w-full p-4">
+                <Card className="w-full p-4 mx-auto">
                     <CardHeader>
-                        <div className="flex gap-2 items-center justify-center text-xl font-bold text-blue-800">
+                        <div className="flex items-center justify-center gap-2 text-xl font-bold text-blue-800">
                             <img
                                 src={bpplogo}
                                 alt=""
                                 className="w-[120px] object-contain rounded-lg"
                             />
                         </div>
-                        <h2 className="font-black text-2xl my-2 text-neutral-800 text-center dark:text-neutral-200">
+                        <h2 className="my-2 text-2xl font-black text-center text-neutral-800 dark:text-neutral-200">
                             Welcome to <br /> <span style={{ color: '#79A5F2' }}>Bharatiya Popular Party</span>
                         </h2>
                     </CardHeader>
@@ -322,9 +290,9 @@ const MultiStepForm = () => {
                     </CardContent>
                 </Card>
                 <div className="flex justify-center gap-1 text-sm">
-                    <Link to='/auth/signup' className="underline font-semibold">sign up as a business</Link>{' '}
+                    <Link to='/auth/signup' className="font-semibold underline">sign up as a business</Link>{' '}
                     <p>or</p>{' '}
-                    <Link to="/auth/login" className="underline font-semibold">
+                    <Link to="/auth/login" className="font-semibold underline">
                         log in
                     </Link>
                 </div>
