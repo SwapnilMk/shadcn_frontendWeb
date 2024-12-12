@@ -7,6 +7,7 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import { QrCode } from "lucide-react";
 import { Link } from "react-router-dom";
 import bppcard from '@/assets/images/BPPcard.png'
+import PayDialog from "@/components/dialogs/PayDialog";
 
 const MembershipCertificate = () => {
     const certificateUrl = bppcard;
@@ -88,6 +89,7 @@ const MembershipCertificate = () => {
                         </Card>
                     </div>
                 </section>
+                <PayDialog />
             </ContentLayout>
         </DashboardLayout>
     );

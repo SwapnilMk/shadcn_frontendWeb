@@ -1,4 +1,5 @@
 import { ContentLayout } from '@/components/admin-panel/content-layout'
+import PayDialog from '@/components/dialogs/PayDialog'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
@@ -79,6 +80,7 @@ const RenewalsPage = () => {
                         </Card>
                     </div>
                 </div>
+                <PayDialog />
             </ContentLayout>
         </DashboardLayout>
     )

@@ -1,4 +1,5 @@
 import { ContentLayout } from '@/components/admin-panel/content-layout'
+import PayDialog from '@/components/dialogs/PayDialog'
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -62,6 +63,7 @@ const ReferralPage = () => {
                     </div>
                     </main>
                 </ContentLayout>
+                <PayDialog />
             </DashboardLayout>
         </div>
     )

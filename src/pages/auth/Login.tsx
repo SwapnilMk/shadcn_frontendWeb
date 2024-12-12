@@ -104,7 +104,7 @@
 //                                                     <div className="flex justify-between items-center">
 //                                                         <FormLabel htmlFor="password">Password</FormLabel>
 //                                                         <Link
-//                                                             to="/forgot-password"
+//                                                             to="/auth/forgot-password"
 //                                                             className="ml-auto inline-block text-sm underline"
 //                                                         >
 //                                                             Forgot your password?
@@ -135,7 +135,7 @@
 //                     </Card>
 //                     <div className="mx-auto flex gap-1 text-sm">
 //                         <p>Don&apos;t have an account yet?</p>
-//                         <Link to="/signup" className="underline">
+//                         <Link to="/auth/signup" className="underline">
 //                             Sign up
 //                         </Link>
 //                     </div>

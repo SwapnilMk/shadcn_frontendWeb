@@ -157,7 +157,7 @@ const MultiStepForm = () => {
             next()
         }
 
-            // Send OTP API Call
+        // Send OTP API Call
         //     axios.post(`${BASE_URL}/send-otp`, {
         //         email: data.email
         //     })
@@ -171,7 +171,7 @@ const MultiStepForm = () => {
         // }
 
         // Handle OTP Verification step
-    
+
         else if (currentStepIndex === 1) {
             next();
 
@@ -196,45 +196,45 @@ const MultiStepForm = () => {
 
             // Handle Personal Details step
         }
-            else if (currentStepIndex === 2) {
-                // Add validation for personal details
-                const requiredFields = [
-                    'firstName', 'lastName', 'dateOfBirth',
-                    'gender', 'phone'
-                ];
+        else if (currentStepIndex === 2) {
+            // Add validation for personal details
+            const requiredFields = [
+                'firstName', 'lastName', 'dateOfBirth',
+                'gender', 'phone'
+            ];
 
-                const missingFields = requiredFields.filter(field => !((data as any)[field]));
+            const missingFields = requiredFields.filter(field => !((data as any)[field]));
 
-                if (missingFields.length > 0) {
-                    toast.error(`Please fill in the following fields: ${missingFields.join(', ')}`);
-                    return;
-                }
-
-                next(); // Move to next step or final submission
+            if (missingFields.length > 0) {
+                toast.error(`Please fill in the following fields: ${missingFields.join(', ')}`);
+                return;
             }
 
-            // Final step - Submit entire form
-            else if (isLastStep) {
-                console.log(data)
-                return
-                toast.success("Registration Successful!", {
-                    description: "Sunday, December 07, 2023 at 9:00 AM",
-                    action: {
-                        label: "Close",
-                        onClick: () => console.log("Undo"),
-                    },
-                });
+            next(); // Move to next step or final submission
+        }
+
+        // Final step - Submit entire form
+        else if (isLastStep) {
+            console.log(data)
+           
+            toast.success("Registration Successful!", {
+                description: "Sunday, December 07, 2023 at 9:00 AM",
+                action: {
+                    label: "Close",
+                    onClick: () => console.log("Undo"),
+                },
+            });
 
 
-                // Wait for 5 seconds before navigating to the dashboard
-                setTimeout(() => {
-                    navigate('/dashboard/home');
-                }, 5000); // 5000 milliseconds = 5 seconds
+            // Wait for 5 seconds before navigating to the dashboard
+            setTimeout(() => {
+                navigate('/dashboard/home');
+            }, 5000); // 5000 milliseconds = 5 seconds
 
-                return
-            }
+            return
+        }
 
-            // Final form submission API call
+        // Final form submission API call
         //     axios.post(`${BASE_URL}/register`, data)
         //         .then(response => {
         //             toast.success('Account created successfully');
@@ -247,44 +247,66 @@ const MultiStepForm = () => {
         // For steps without special handling, just move to next step
         else if (!isLastStep) {
             console.log(data)
-                return next();
-            }
-            }
-    
+            return next();
+        }
+    }
 
-        return (
-            <section className="max-w-xl w-full mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
-                <div className="flex flex-col gap-4">
-                    <Card className="mx-auto w-full p-4">
-                        <CardHeader>
-                            <div className="flex gap-2 items-center justify-center text-xl font-bold text-blue-800">
-                                <img
-                                    src={bpplogo}
-                                    alt=""
-                                    className="w-[120px] object-contain rounded-lg"
-                                />
-                            </div>
-                            <h2 className="font-black text-2xl my-2 text-neutral-800 text-center dark:text-neutral-200">
-                                Welcome to <br /> <span style={{ color: '#79A5F2' }}>Bharatiya Popular Party</span>
-                            </h2>
-                        </CardHeader>
-                        <CardContent>
-                            <form className="space-y-8" onSubmit={onSubmitHandler}>
-                                <div className="grid gap-4">
-                                    {step}
 
-                                    {isFirstStep && (
-                                        <Button type="submit">
+    return (
+        <section className="max-w-xl w-full mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
+            <div className="flex flex-col gap-4">
+                <Card className="mx-auto w-full p-4">
+                    <CardHeader>
+                        <div className="flex gap-2 items-center justify-center text-xl font-bold text-blue-800">
+                            <img
+                                src={bpplogo}
+                                alt=""
+                                className="w-[120px] object-contain rounded-lg"
+                            />
+                        </div>
+                        <h2 className="font-black text-2xl my-2 text-neutral-800 text-center dark:text-neutral-200">
+                            Welcome to <br /> <span style={{ color: '#79A5F2' }}>Bharatiya Popular Party</span>
+                        </h2>
+                    </CardHeader>
+                    <CardContent>
+                        <form className="space-y-8" onSubmit={onSubmitHandler}>
+                            <div className="grid gap-4">
+                                {step}
+
+                                {isFirstStep && (
+                                    <Button type="submit">
+                                        Next
+                                    </Button>
+                                )}
+                                {currentStepIndex === 1 && (
+                                    <Button type="submit" className="w-full">
+                                        Verify OTP
+                                    </Button>
+                                )}
+
+                                {currentStepIndex === 2 && (
+                                    <div className="flex justify-between gap-2">
+                                        <Button type="button" className='w-full' onClick={back}>
+                                            Back
+                                        </Button>
+                                        <Button type="submit" className='w-full'>
                                             Next
                                         </Button>
-                                    )}
-                                    {currentStepIndex === 1 && (
-                                        <Button type="submit" className="w-full">
-                                            Verify OTP
-                                        </Button>
-                                    )}
+                                    </div>
+                                )}
 
-                                    {currentStepIndex === 2 && (
+                                {isLastStep && (
+                                    <div className="flex justify-between gap-2">
+                                        <Button type="button" className='w-full' onClick={back}>
+                                            Back
+                                        </Button>
+                                        <Button type="submit" className="w-full">
+                                            Finish
+                                        </Button>
+                                    </div>
+                                )}
+                                {!isFirstStep && currentStepIndex !== 1 && currentStepIndex !== 2 && !isLastStep && (
+                                    <>
                                         <div className="flex justify-between gap-2">
                                             <Button type="button" className='w-full' onClick={back}>
                                                 Back
@@ -293,45 +315,23 @@ const MultiStepForm = () => {
                                                 Next
                                             </Button>
                                         </div>
-                                    )}
-
-                                    {isLastStep && (
-                                        <div className="flex justify-between gap-2">
-                                            <Button type="button" className='w-full' onClick={back}>
-                                                Back
-                                            </Button>
-                                            <Button type="submit" className="w-full">
-                                                Finish
-                                            </Button>
-                                        </div>
-                                    )}
-                                    {!isFirstStep && currentStepIndex !== 1 && currentStepIndex !== 2 && !isLastStep && (
-                                        <>
-                                            <div className="flex justify-between gap-2">
-                                                <Button type="button" className='w-full' onClick={back}>
-                                                    Back
-                                                </Button>
-                                                <Button type="submit" className='w-full'>
-                                                    Next
-                                                </Button>
-                                            </div>
-                                        </>
-                                    )}
-                                </div>
-                            </form>
-                        </CardContent>
-                    </Card>
-                    <div className="flex justify-center gap-1 text-sm">
-                        <Link to='/signup' className="underline font-semibold">sign up as a business</Link>{' '}
-                        <p>or</p>{' '}
-                        <Link to="/login" className="underline font-semibold">
-                            log in
-                        </Link>
-                    </div>
-                    <Toaster />
+                                    </>
+                                )}
+                            </div>
+                        </form>
+                    </CardContent>
+                </Card>
+                <div className="flex justify-center gap-1 text-sm">
+                    <Link to='/auth/signup' className="underline font-semibold">sign up as a business</Link>{' '}
+                    <p>or</p>{' '}
+                    <Link to="/auth/login" className="underline font-semibold">
+                        log in
+                    </Link>
                 </div>
-            </section>
-        );
-    };
+                <Toaster />
+            </div>
+        </section>
+    );
+};
 
 export default MultiStepForm;

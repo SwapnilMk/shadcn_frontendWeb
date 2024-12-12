@@ -1,10 +1,10 @@
+import bpplogo from '@/assets/images/logos/Bpp.png';
 import { Button } from '@/components/ui/button';
 import {
     Card,
     CardContent,
-    CardDescription,
     CardHeader,
-    CardTitle,
+    CardTitle
 } from '@/components/ui/card';
 import {
     Form,
@@ -17,7 +17,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 import { Toaster } from '@/components/ui/sonner';
-import { UserRound } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -44,10 +43,10 @@ const Login = () => {
                 },
             });
 
-           // Wait for 5 seconds before navigating to the dashboard
-           setTimeout(() => {
-            navigate('/dashboard/home');
-        }, 5000); // 5000 milliseconds = 5 seconds
+            // Wait for 5 seconds before navigating to the dashboard
+            setTimeout(() => {
+                navigate('/dashboard/home');
+            }, 5000); // 5000 milliseconds = 5 seconds
 
         } catch (error) {
             console.error('Form submission error', error);
@@ -59,11 +58,19 @@ const Login = () => {
         <section className="py-20">
             <div className="container">
                 <div className="flex flex-col gap-4">
-                    <Card className="mx-auto w-full max-w-md">
+                    <Card className="mx-auto w-full max-w-lg">
                         <CardHeader className="items-center">
-                            <UserRound className="size-10 rounded-full bg-accent p-2.5 text-muted-foreground" />
-                            <CardTitle className="text-xl">Log in with your email phone & username</CardTitle>
-                            <CardDescription>Enter your information to login</CardDescription>
+                            <div className="flex gap-2 items-center justify-center text-xl font-bold text-blue-800">
+                                <img
+                                    src={bpplogo}
+                                    alt=""
+                                    className="w-[120px] object-contain rounded-lg"
+                                />
+                            </div>
+                            <h2 className="font-black text-2xl my-2 text-neutral-800 text-center dark:text-neutral-200">
+                                Welcome to <br /> <span style={{ color: '#79A5F2' }}>Bharatiya Popular Party</span>
+                            </h2>
+                            <CardTitle className="text-xl">Log in with your email & phone</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <Form {...form}>
@@ -96,7 +103,7 @@ const Login = () => {
                                                     <div className="flex justify-between items-center">
                                                         <FormLabel htmlFor="password">Password</FormLabel>
                                                         <Link
-                                                            to="/forgot-password"
+                                                            to="/auth/forgot-password"
                                                             className="ml-auto inline-block text-sm underline"
                                                         >
                                                             Forgot your password?
@@ -117,9 +124,6 @@ const Login = () => {
                                         <Button type="submit" className="w-full">
                                             Login
                                         </Button>
-                                        <Button variant="outline" className="w-full">
-                                            Login with Google
-                                        </Button>
                                     </div>
                                 </form>
                             </Form>
@@ -127,11 +131,11 @@ const Login = () => {
                     </Card>
                     <div className="mx-auto flex gap-1 text-sm">
                         <p>Don&apos;t have an account yet?</p>
-                        <Link to="/signup" className="underline">
+                        <Link to="/auth/signup" className="underline">
                             Sign up
                         </Link>
                     </div>
-                    <Toaster/>
+                    <Toaster />
                 </div>
             </div>
         </section>

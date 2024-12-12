@@ -1,4 +1,5 @@
 import { ContentLayout } from "@/components/admin-panel/content-layout"
+import PayDialog from "@/components/dialogs/PayDialog"
 import MapChart from "@/components/maps/mapChart"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
@@ -48,6 +49,7 @@ const Contribution = () => {
                     </Card>
                 </div>
             </ContentLayout>
+            <PayDialog />
         </DashboardLayout>
     )
 }

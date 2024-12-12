@@ -153,7 +153,7 @@ const Carousel: React.FC = () => {
                         </div>
                         <div className="buttons">
 
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@ const Carousel: React.FC = () => {
                         </div>
                         <div className="buttons">
 
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@ const Carousel: React.FC = () => {
                         </div>
                         <div className="buttons">
 
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -194,7 +194,7 @@ const Carousel: React.FC = () => {
                         BPP is committed to promoting decent work and sustained economic growth by creating job opportunities, ensuring fair wages and improving working conditions for all citizens. The party aims to empower individuals particularly in rural and marginalized communities through skill development, entrepreneurship and access to employment.
                         </div>
                         <div className="buttons">
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ const Carousel: React.FC = () => {
                         BPP is dedicated to the upliftment of farmers by ensuring fair prices for their product, providing access to modern farming techniques and improving infrastructure in rural areas. The focus will be on increasing farmer’s income through better market access, sustainable agricultural practices and timely financial support.
                         </div>
                         <div className="buttons">
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@ const Carousel: React.FC = () => {
                         BPP believes that education is one of the most powerful and proven vehicles for sustainable development. The goal is to ensure that all girls and boys complete primary and secondary schooling. It also eliminate gender and wealth disparities and achieve universal access to a quality higher education. 
                         </div>
                         <div className="buttons">
-                            <Button onClick={()=> navigate('/signup')}>REGISTER NOW</Button>
+                            <Button onClick={()=> navigate('/auth/signup')}>REGISTER NOW</Button>
                         </div>
                     </div>
                 </div>

@@ -33,7 +33,7 @@ export const Hero = () => {
         <div className="space-y-4 md:space-y-0 md:space-x-4">
           <Button
             className="w-full md:w-1/3"
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/auth/login")}
           >
             Get Started
           </Button>
@@ -45,7 +45,7 @@ export const Hero = () => {
             className={`w-full md:w-1/3 ${buttonVariants({
               variant: "outline",
             })}`}
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/auth/signup")}
           >
             Register Now
           </a>

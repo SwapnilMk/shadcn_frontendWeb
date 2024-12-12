@@ -23,7 +23,7 @@ const sections = [
       { name: 'Join Now', href: '/auth/signup' },
       { name: 'Membership Privilege', href: '/membership/membership-privilege' },
       { name: 'Active Membership Term', href: '/membership/membership-term' },
-      { name: 'Sign in & Register', href: '/login' },
+      { name: 'Sign in & Register', href: '/auth/login' },
       { name: 'Membership Renewals', href: '/membership/renewals' },
     ],
   },
