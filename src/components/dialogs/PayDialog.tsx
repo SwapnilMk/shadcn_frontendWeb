@@ -7,20 +7,13 @@ import {
     DialogHeader,
     DialogTitle
 } from "@/components/ui/dialog";
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const PayDialog = () => {
     const navigate = useNavigate()
-    const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        // Open dialog automatically when component renders
-        setIsOpen(true);
-    }, []);
 
     return (
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <Dialog open={true} >
             <DialogContent className="sm:max-w-[575px]">
                 <DialogHeader>
                     <DialogTitle className='text-3xl font-bold'>Pay Now to use Our services</DialogTitle>
@@ -37,7 +30,7 @@ const PayDialog = () => {
                 <DialogFooter>
                     <Button
                         variant="outline"
-                        onClick={() => setIsOpen(false)}
+                        // onClick={() => setIsOpen(false)}
                     >
                         Cancel
                     </Button>

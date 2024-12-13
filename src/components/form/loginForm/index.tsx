@@ -17,12 +17,16 @@ import {
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
 import { Toaster } from '@/components/ui/sonner';
-import { useForm } from 'react-hook-form';
+import { useAuth } from '@/context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { login } = useAuth();
+
+    // Initialize the useForm hook
     const form = useForm({
         defaultValues: {
             email: '',
@@ -30,27 +34,23 @@ const Login = () => {
         },
     });
 
-    // This function now just shows the toast
     async function onSubmit(values: { email: string; password: string }) {
         try {
-            // Show success toast directly on form submit
-            console.log(values);
-            toast.success("Login Successful!", {
-                description: "TuesDay, December 10, 2023 at 04:30 PM",
-                action: {
-                    label: "Close",
-                    onClick: () => console.log("Undo"),
-                },
+            // Call login function from context
+            await login(values);
+
+            // Show success toast
+            toast.success('Login Successful!', {
+                description: 'Redirecting to the dashboard...',
             });
 
-            // Wait for 5 seconds before navigating to the dashboard
+            // Redirect to dashboard after 5 seconds
             setTimeout(() => {
                 navigate('/dashboard/home');
-            }, 5000); // 5000 milliseconds = 5 seconds
-
+            }, 5000);
         } catch (error) {
-            console.error('Form submission error', error);
-            toast.error('Failed to submit the form. Please try again.');
+            console.error('Login error:', error);
+            toast.error('Failed to log in. Please check your credentials.');
         }
     }
 
@@ -63,7 +63,7 @@ const Login = () => {
                             <div className="flex gap-2 items-center justify-center text-xl font-bold text-blue-800">
                                 <img
                                     src={bpplogo}
-                                    alt=""
+                                    alt="BPP Logo"
                                     className="w-[120px] object-contain rounded-lg"
                                 />
                             </div>

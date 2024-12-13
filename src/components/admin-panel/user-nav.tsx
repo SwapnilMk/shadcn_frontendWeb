@@ -1,6 +1,6 @@
 "use client";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LayoutGrid, LogOut, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -20,8 +20,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from '@/context/AuthContext';
 
 export function UserNav() {
+  const { logout } = useAuth();
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout();
+    navigate("/auth/login");
+  };
   return (
     <DropdownMenu>
       <TooltipProvider disableHoverableContent>
@@ -68,7 +76,10 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => { }}>
+        <DropdownMenuItem
+          className="hover:cursor-pointer"
+          onClick={handleLogout}
+        >
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out
         </DropdownMenuItem>

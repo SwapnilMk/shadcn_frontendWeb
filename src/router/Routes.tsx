@@ -50,8 +50,11 @@ import CustomerService from '@/pages/support/CustomerService';
 import TermsAndConditions from '@/pages/TermsAndCondtions/TermsAndCondtions';
 import Vision from '@/pages/Vision/Vision';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ProtectedRoute } from './ProtectedRoute';
+import { useAuth } from '@/context/AuthContext';
 
 const AppRoutes = () => {
+    const { isAuthenticated } = useAuth();
     return (
         <BrowserRouter>
             <Routes>
@@ -130,31 +133,34 @@ const AppRoutes = () => {
 
 
 
-                <Route path="dashboard">
-                    <Route path="home" element={<DashboardPage />} />
-                    <Route path="goal" element={<GoalsPage />} />
-                    <Route path="profile" element={<ProfilePage />} />
-                    <Route path="account" element={<AccountSettingsPage />} />
-                    <Route path="change-pin" element={<ChangePin />} />
-                    <Route path="wallet" element={<WalletPage />} />
-                    <Route path="transaction" element={<Transactions />} />
-                    <Route path="add-fund" element={<AddFund />} />
-                    <Route path="withdraw" element={<WithdrawPage />} />
-                    <Route path="referral" element={<ReferralPage />} />
-                    <Route path="renewal" element={<RenewalsPage />} />
-                    <Route path="certificate" element={<MembershipCertificate />} />
-                    <Route path="donate" element={<DonatePage />} />
-                    <Route path="add-donation" element={<DonationPage />} />
-                    <Route path="register-case" element={<CaseRegistrationForm />} />
-                    
-                    
-                    <Route path="community-contribution" element={<Contribution />} />
-                    <Route path="voting" element={<Voting />} />
-
-
-                    <Route path="track" element={<Track />} />
-                    <Route path="track-details" element={<TrackingDetails />} />
-                </Route>
+                <Route
+                    path="dashboard/*"
+                    element={
+                        <ProtectedRoute isAuthenticated={isAuthenticated}>
+                            <Routes>
+                                <Route path="home" element={<DashboardPage />} />
+                                <Route path="goal" element={<GoalsPage />} />
+                                <Route path="profile" element={<ProfilePage />} />
+                                <Route path="account" element={<AccountSettingsPage />} />
+                                <Route path="change-pin" element={<ChangePin />} />
+                                <Route path="wallet" element={<WalletPage />} />
+                                <Route path="transaction" element={<Transactions />} />
+                                <Route path="add-fund" element={<AddFund />} />
+                                <Route path="withdraw" element={<WithdrawPage />} />
+                                <Route path="referral" element={<ReferralPage />} />
+                                <Route path="renewal" element={<RenewalsPage />} />
+                                <Route path="certificate" element={<MembershipCertificate />} />
+                                <Route path="donate" element={<DonatePage />} />
+                                <Route path="add-donation" element={<DonationPage />} />
+                                <Route path="register-case" element={<CaseRegistrationForm />} />
+                                <Route path="community-contribution" element={<Contribution />} />
+                                <Route path="voting" element={<Voting />} />
+                                <Route path="track" element={<Track />} />
+                                <Route path="track-details" element={<TrackingDetails />} />
+                            </Routes>
+                        </ProtectedRoute>
+                    }
+                />
 
                 {/* 404 Route */}
                 <Route path="*" element={<PageNotFound />} />

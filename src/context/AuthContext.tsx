@@ -1,4 +1,5 @@
 import { postData } from "@/api/apiClient";
+import Cookies from 'js-cookie';
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { toast } from "sonner";
 
@@ -43,7 +44,7 @@ interface RegistrationData {
     aadhaarCard: File | null;
     voterCard: File | null;
     password: string;
-    referralCode: string,
+    referralCode: string;
 }
 
 interface LoginCredentials {
@@ -51,36 +52,25 @@ interface LoginCredentials {
     password: string;
 }
 
-const AuthContext = createContext<AuthContextType>({
-    user: null,
-    isAuthenticated: false,
-    login: async () => { },
-    register: async () => { },
-    sendOtp: async () => { },
-    verifyOtp: async () => { },
-    logout: () => { },
-    loading: false,
-});
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Provider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(
+        Cookies.get('userDetails') ? JSON.parse(Cookies.get('userDetails') || '{}') : null
+    );
     const [loading, setLoading] = useState(false);
 
     // Login method
     const login = async (credentials: LoginCredentials) => {
         try {
             setLoading(true);
-            const response = await postData("auth/login", credentials);
-            localStorage.setItem("token", response.token);
-            setUser({
-                username: response.username,
-                email: response.email,
-            });
-            console.log("Login successful!");
+            const response = await postData("/login", credentials);
+            Cookies.set('authToken', response.token, { expires: 4 });
+            setUser({ username: response.username, email: response.email });
+            toast.success("Login successful!");
         } catch (error) {
-            console.error("Login error:", error);
-            console.log("Login failed. Please check your credentials.");
+            toast.error("Login failed. Please check your credentials.");
             throw error;
         } finally {
             setLoading(false);
@@ -91,12 +81,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const register = async (registrationData: RegistrationData) => {
         try {
             setLoading(true);
-            const { ...payload } = registrationData;
-            const response = await postData("members", payload);
-            console.log("Registration successful!");
+            const response = await postData("/members", registrationData);
             toast.success("Registration successful!", response);
         } catch (error) {
-            console.error("Registration error:", error);
             toast.error("Registration failed");
             throw error;
         } finally {
@@ -104,17 +91,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     };
 
-    
-
     // Send OTP method
     const sendOtp = async (email: string) => {
         try {
             setLoading(true);
-            const response = await postData("/send-otp", { email });
+            await postData("/send-otp", { email });
             toast.success("OTP sent successfully!");
-            console.log("OTP sent successfully!", response);
         } catch (error) {
-            console.error("Error sending OTP:", error);
             toast.error("Failed to send OTP");
             throw error;
         } finally {
@@ -127,10 +110,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         try {
             setLoading(true);
             const response = await postData("/validate-otp", { email, otp });
+            Cookies.set('authToken', response.token, { expires: 4 });
             toast.success("OTP verified successfully!");
-            console.log("OTP verified successfully!", response);
         } catch (error) {
-            console.error("Error verifying OTP:", error);
             toast.error("Failed to verify OTP");
             throw error;
         } finally {
@@ -140,24 +122,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Logout method
     const logout = () => {
-        localStorage.removeItem("token");
+        Cookies.remove('authToken');
         setUser(null);
-        console.log("Logged out successfully");
+        toast.success("Logged out successfully");
     };
-
-    // Check authentication on initial load
-    React.useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            // You can add token verification logic here
-        }
-    }, []);
 
     return (
         <AuthContext.Provider
             value={{
                 user,
-                isAuthenticated: !!user,
+                isAuthenticated: !!Cookies.get('authToken'),
                 login,
                 register,
                 sendOtp,
@@ -171,7 +145,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     );
 };
 
-export const useAuth = () => {
+export const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {
         throw new Error("useAuth must be used within an AuthProvider");

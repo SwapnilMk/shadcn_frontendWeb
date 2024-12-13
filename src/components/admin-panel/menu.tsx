@@ -1,5 +1,5 @@
 "use client";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Ellipsis, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getMenuList } from "@/data/menu-list";
@@ -12,6 +12,7 @@ import {
   TooltipContent,
   TooltipProvider
 } from "@/components/ui/tooltip";
+import { useAuth } from '@/context/AuthContext';
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -19,7 +20,15 @@ interface MenuProps {
 
 export function Menu({ isOpen }: MenuProps) {
   const location = useLocation();
+  const { logout } = useAuth();
+    const navigate = useNavigate()
   const menuList = getMenuList(location.pathname);
+
+
+  const handleLogout = () => {
+    logout();
+    navigate("/auth/login");
+  };
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">
@@ -115,7 +124,7 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => { }}
+                    onClick={handleLogout}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >
