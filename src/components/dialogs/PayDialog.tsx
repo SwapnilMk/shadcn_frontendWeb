@@ -30,7 +30,7 @@ const PayDialog = () => {
                 <DialogFooter>
                     <Button
                         variant="outline"
-                        // onClick={() => setIsOpen(false)}
+                    // onClick={() => setIsOpen(false)}
                     >
                         Cancel
                     </Button>

@@ -2,6 +2,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { FormWrapper } from "./FormWrapper";
+import { toast } from "sonner";
+import { FileInput } from "@/components/FileInput";
 
 type RegistrationData = {
     aadhaarNumber: string;
@@ -19,12 +21,6 @@ export function RegistrationForm({
     voterId,
     updateFields,
 }: RegistrationFormProps) {
-    // Handler to update file input
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'aadhaarCard' | 'voterCard') => {
-        const file = e.target.files?.[0] || null;
-        updateFields({ [field]: file });
-    };
-
 
 
     return (
@@ -54,22 +50,33 @@ export function RegistrationForm({
                     </div>
 
                     <div>
-                        <Label htmlFor="aadhaarCard">Aadhar Card <span className="text-red-700">*</span></Label>
-                        <Input
-                            type="file"
+                        <FileInput
                             id="aadhaarCard"
+                            label="Aadhaar Card"
                             required
-                            onChange={(e) => handleFileChange(e, 'aadhaarCard')}
+                            onChange={(file) => {
+                                if (file && !['image/jpeg', 'application/pdf'].includes(file.type)) {
+                                    toast.error('Please upload a valid file (JPEG or PDF)');
+                                    return;
+                                }
+                                updateFields({ aadhaarCard: file });
+                            }}
                         />
+
                     </div>
 
                     <div>
-                        <Label htmlFor="voterCard">Voter / Electoral Card <span className="text-red-700">*</span></Label>
-                        <Input
-                            type="file"
+                        <FileInput
                             id="voterCard"
+                            label="Voter / Electoral Card"
                             required
-                            onChange={(e) => handleFileChange(e, 'voterCard')}
+                            onChange={(file) => {
+                                if (file && !['image/jpeg', 'application/pdf'].includes(file.type)) {
+                                    toast.error('Please upload a valid file (JPEG or PDF)');
+                                    return;
+                                }
+                                updateFields({ voterCard: file });
+                            }}
                         />
                     </div>
 

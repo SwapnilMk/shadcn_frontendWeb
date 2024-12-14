@@ -7,7 +7,7 @@ import { FormWrapper } from "./FormWrapper";
 import { useAuth } from "@/context/AuthContext";
 
 type OtpVerificationData = {
-    otp: string;
+    otpNumber: string;
     email: string;
 };
 
@@ -15,7 +15,7 @@ type OtpVerificationProps = OtpVerificationData & {
     updateFields: (fields: Partial<OtpVerificationData>) => void;
 };
 
-export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificationProps) {
+export function OtpVerificationForm({ otpNumber, email, updateFields }: OtpVerificationProps) {
     const [timer, setTimer] = useState(120);
     const [showResend, setShowResend] = useState(false);
         const {sendOtp } = useAuth();
@@ -53,7 +53,7 @@ export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificatio
     };
 
     const handleOtpComplete = (value: string) => {
-        updateFields({ otp: value });
+        updateFields({ otpNumber: value });
     };
 
     function maskEmail(email: string): string {
@@ -73,7 +73,7 @@ export function OtpVerificationForm({ otp, email, updateFields }: OtpVerificatio
             <div className="space-y-4">
                 <InputOTP
                     maxLength={6}
-                    value={otp}
+                    value={otpNumber}
                     onChange={handleOtpComplete}
                     required
                 >

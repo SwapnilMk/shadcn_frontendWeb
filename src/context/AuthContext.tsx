@@ -14,7 +14,7 @@ interface AuthContextType {
     login: (credentials: LoginCredentials) => Promise<void>;
     register: (registrationData: RegistrationData) => Promise<void>;
     sendOtp: (email: string) => Promise<void>;
-    verifyOtp: (email: string, otp: string) => Promise<void>;
+    verifyOtp: (email: string, otpNumber: string) => Promise<void>;
     logout: () => void;
     loading: boolean;
 }
@@ -81,7 +81,26 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const register = async (registrationData: RegistrationData) => {
         try {
             setLoading(true);
-            const response = await postData("/members", registrationData);
+            
+            // Create FormData object
+            const formData = new FormData();
+            
+            // Iterate through all keys in registrationData
+            (Object.keys(registrationData) as Array<keyof RegistrationData>).forEach(key => {
+                const value = registrationData[key];
+                
+                // Special handling for File objects
+                if (value instanceof File) {
+                    formData.append(key, value, value.name);
+                } 
+                // For other primitive types
+                else if (value !== null && value !== undefined) {
+                    formData.append(key, String(value));
+                }
+            });
+    
+            // Update postData to handle FormData
+            const response = await postData("/signup", formData);
             toast.success("Registration successful!", response);
         } catch (error) {
             toast.error("Registration failed");
@@ -90,7 +109,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             setLoading(false);
         }
     };
-
     // Send OTP method
     const sendOtp = async (email: string) => {
         try {
@@ -106,10 +124,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
 
     // Verify OTP method
-    const verifyOtp = async (email: string, otp: string) => {
+    const verifyOtp = async (email: string, otpNumber: string) => {
         try {
             setLoading(true);
-            const response = await postData("/validate-otp", { email, otp });
+            const response = await postData("/validate-otp", { email, otpNumber });
             Cookies.set('authToken', response.token, { expires: 4 });
             toast.success("OTP verified successfully!");
         } catch (error) {

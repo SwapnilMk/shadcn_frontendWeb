@@ -138,26 +138,26 @@ const Footer = () => {
 
               {/* Social Media Icons */}
               <div className="flex items-center justify-center gap-2">
-                <Link to="#" className="group">
+                <a target='_blank' href="https://x.com/BharatiyaP20295" className="group">
                   <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <TwitterIcon className="h-4 w-4" />
                   </div>
-                </Link>
-                <Link to="#" className="group">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61570250152842" target='_blank' className="group">
                   <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <FacebookIcon className="h-4 w-4" />
                   </div>
-                </Link>
-                <Link to="#" className="group">
+                </a>
+                <a target='_blank' href="https://www.instagram.com/bharatiya_popular_party" className="group">
                   <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <InstagramIcon className="h-4 w-4" />
                   </div>
-                </Link>
-                <Link to="#" className="group">
+                </a>
+                <a target='_blank' href="https://www.linkedin.com/in/bharatiya-popular-party-b28543340/" className="group">
                   <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     <LinkedinIcon className="h-4 w-4" />
                   </div>
-                </Link>
+                </a>
               </div>
             </div>
 

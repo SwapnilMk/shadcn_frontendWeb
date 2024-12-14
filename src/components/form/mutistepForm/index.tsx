@@ -32,7 +32,7 @@ type FormData = {
     age: string;             // User's age (can calculate from DOB)
 
     // OTP Verification
-    otp: string;             // One-time password for verification email otp/ phone otp
+    otpNumber: string;             // One-time password for verification email otp/ phone otp
 
     // Address Information
     addressLine1: string;    // First line of address
@@ -81,7 +81,7 @@ const INITIAL_DATA: FormData = {
     age: "",
 
     // OTP Verification
-    otp: "",
+    otpNumber: "",
 
     // Address Information
     addressLine1: "",
@@ -162,13 +162,13 @@ const MultiStepForm = () => {
             }
         } else if (currentStepIndex === 1) {
             // Handle OTP verification
-            if (data.otp.length !== 6) {
+            if (data.otpNumber.length !== 6) {
                 toast.error('Please enter a valid 6-digit OTP');
                 return;
             }
 
             try {
-                await verifyOtp(data.email, data.otp); // Verify OTP using AuthContext method
+                await verifyOtp(data.email, data.otpNumber); // Verify OTP using AuthContext method
                 toast.success('OTP verified successfully');
                 next(); // Proceed to the next step after verification
             } catch (error) {
@@ -195,7 +195,7 @@ const MultiStepForm = () => {
 
         // Final step - Submit entire form
         else if (isLastStep) {
-            console.log(data)
+            console.log('here',data)
 
             register(data)
                 .then(() => {
