@@ -6,6 +6,7 @@ import { toast } from "sonner";
 interface User {
     username?: string;
     email?: string;
+    phone?: string;
 }
 
 interface AuthContextType {
@@ -13,8 +14,8 @@ interface AuthContextType {
     isAuthenticated: boolean;
     login: (credentials: LoginCredentials) => Promise<void>;
     register: (registrationData: RegistrationData) => Promise<void>;
-    sendOtp: (email: string) => Promise<void>;
-    verifyOtp: (email: string, otpNumber: string) => Promise<void>;
+    sendOtp: (contact: string, type: 'email' | 'phoneNumber') => Promise<void>;
+    verifyOtp: (contact: string, otpNumber: string, type: 'email' | 'phoneNumber') => Promise<void>;
     logout: () => void;
     loading: boolean;
 }
@@ -25,7 +26,7 @@ interface RegistrationData {
     middleName: string;
     lastName: string;
     email: string;
-    phone: string;
+    phoneNumber: string;
     dateOfBirth: string;
     gender: string;
     age: string;
@@ -81,24 +82,24 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const register = async (registrationData: RegistrationData) => {
         try {
             setLoading(true);
-            
+
             // Create FormData object
             const formData = new FormData();
-            
+
             // Iterate through all keys in registrationData
             (Object.keys(registrationData) as Array<keyof RegistrationData>).forEach(key => {
                 const value = registrationData[key];
-                
+
                 // Special handling for File objects
                 if (value instanceof File) {
                     formData.append(key, value, value.name);
-                } 
+                }
                 // For other primitive types
                 else if (value !== null && value !== undefined) {
                     formData.append(key, String(value));
                 }
             });
-    
+
             // Update postData to handle FormData
             const response = await postData("/signup", formData);
             toast.success("Registration successful!", response);
@@ -110,33 +111,62 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         }
     };
     // Send OTP method
-    const sendOtp = async (email: string) => {
+    const sendOtp = async (contact: string, type: 'email' | 'phoneNumber') => {
         try {
             setLoading(true);
-            await postData("/send-otp", { email });
-            toast.success("OTP sent successfully!");
+            // Validate input based on type
+            if (type === 'email' && !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(contact)) {
+                throw new Error('Invalid email format');
+            }
+            if (type === 'phoneNumber' && !/^(\+91)?[6-9]\d{9}$/.test(contact)) {
+                throw new Error('Invalid phone number format');
+            }
+
+            // Prepare payload based on type
+            const payload = type === 'email' ? { email: contact } : { phoneNumber: contact };
+
+            console.log(payload)
+            // Send OTP request with dynamic payload
+            await postData('/send-otp', payload);
+            toast.success(`OTP sent successfully to your ${type}!`);
         } catch (error) {
-            toast.error("Failed to send OTP");
+            const errorMessage = error instanceof Error ? error.message : 'Failed to send OTP';
+            toast.error(errorMessage);
             throw error;
         } finally {
             setLoading(false);
         }
     };
 
+
     // Verify OTP method
-    const verifyOtp = async (email: string, otpNumber: string) => {
+    const verifyOtp = async (contact: string, otpNumber: string, type: 'email' | 'phoneNumber') => {
         try {
             setLoading(true);
-            const response = await postData("/validate-otp", { email, otpNumber });
+            // Validate input based on type
+            if (type === 'email' && !/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(contact)) {
+                throw new Error('Invalid email format');
+            }
+            if (type === 'phoneNumber' && !/^(\+91)?[6-9]\d{9}$/.test(contact)) {
+                throw new Error('Invalid phone number format');
+            }
+
+            // Prepare payload based on type
+            const payload = type === 'email' ? { email: contact, otpNumber } : { phoneNumber: contact, otpNumber };
+
+            // Verify OTP request with dynamic payload
+            const response = await postData('/validate-otp', payload);
             Cookies.set('authToken', response.token, { expires: 4 });
-            toast.success("OTP verified successfully!");
+            toast.success('OTP verified successfully!');
+            return response;
         } catch (error) {
-            toast.error("Failed to verify OTP");
+            toast.error('Failed to verify OTP');
             throw error;
         } finally {
             setLoading(false);
         }
     };
+
 
     // Logout method
     const logout = () => {

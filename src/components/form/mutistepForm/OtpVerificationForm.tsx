@@ -8,22 +8,26 @@ import { useAuth } from "@/context/AuthContext";
 
 type OtpVerificationData = {
     otpNumber: string;
-    email: string;
+    email?: string;
+    phoneNumber?: string;
 };
 
 type OtpVerificationProps = OtpVerificationData & {
     updateFields: (fields: Partial<OtpVerificationData>) => void;
 };
 
-export function OtpVerificationForm({ otpNumber, email, updateFields }: OtpVerificationProps) {
+export function OtpVerificationForm({ otpNumber, email, phoneNumber, updateFields }: OtpVerificationProps) {
     const [timer, setTimer] = useState(120);
     const [showResend, setShowResend] = useState(false);
-        const {sendOtp } = useAuth();
+    const { sendOtp } = useAuth();
 
-    const handleResendOTP  = async() => {
+    const handleResendOTP = async () => {
         try {
-            // Make an API call to resend the OTP (you need to implement this on the backend)
-            await sendOtp(email); // Send OTP using AuthContext method
+            if (email) {
+                await sendOtp(email!, 'email'); // Send email OTP
+            } else if (phoneNumber) {
+                await sendOtp(phoneNumber!, 'phoneNumber'); // Send phone OTP
+            }
             toast.success('OTP sent successfully');
             setTimer(120);
             setShowResend(false);

@@ -26,7 +26,7 @@ type FormData = {
     middleName: string;      // User's middle name (optional)
     lastName: string;        // User's last name
     email: string;           // User's email address
-    phone: string;           // User's phone number
+    phoneNumber: string;           // User's phone number
     dateOfBirth: string;     // Date of birth (format: YYYY-MM-DD)
     gender: string;          // Male, Female, Other
     age: string;             // User's age (can calculate from DOB)
@@ -75,7 +75,7 @@ const INITIAL_DATA: FormData = {
     middleName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     dateOfBirth: "",
     gender: "",
     age: "",
@@ -146,31 +146,46 @@ const MultiStepForm = () => {
                 return;
             }
 
+            // Validate either email or phone
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            const phoneRegex = /^(\+91)?[6-9]\d{9}$/;
 
-            if (!data.email || !emailRegex.test(data.email)) {
-                toast.error('Please enter a valid email');
+            const isEmail = data.email && emailRegex.test(data.email);
+            const isPhone = data.phoneNumber && phoneRegex.test(data.phoneNumber);
+
+            if (!isEmail && !isPhone) {
+                toast.error('Please enter a valid email or phone number');
                 return;
             }
 
             try {
-                await sendOtp(data.email); // Send OTP using AuthContext method
+                // Determine whether to send OTP to email or phone
+                if (isEmail) {
+                    await sendOtp(data.email!, 'email'); // Send email OTP
+                } else if (isPhone) {
+                    await sendOtp(data.phoneNumber!, 'phoneNumber'); // Send phone OTP
+                }
+
                 toast.success('OTP sent successfully');
                 next(); // Move to OTP verification step
             } catch (error) {
                 toast.error('Failed to send OTP');
             }
         } else if (currentStepIndex === 1) {
-            // Handle OTP verification
+            // Handle second step - Verify OTP
             if (data.otpNumber.length !== 6) {
                 toast.error('Please enter a valid 6-digit OTP');
                 return;
             }
 
             try {
-                await verifyOtp(data.email, data.otpNumber); // Verify OTP using AuthContext method
+                // Verify OTP
+                const verificationTarget = data.email || data.phoneNumber;
+                const verificationType = data.email ? 'email' : 'phoneNumber';
+                await verifyOtp(verificationTarget!, data.otpNumber, verificationType);
+
                 toast.success('OTP verified successfully');
-                next(); // Proceed to the next step after verification
+                next(); // Move to the next step after verification
             } catch (error) {
                 toast.error('OTP validation failed');
             }
@@ -180,7 +195,7 @@ const MultiStepForm = () => {
             // Add validation for personal details
             const requiredFields = [
                 'firstName', 'lastName', 'dateOfBirth',
-                'gender', 'phone'
+                'gender', 'phoneNumber'
             ];
 
             const missingFields = requiredFields.filter(field => !((data as any)[field]));
@@ -195,7 +210,7 @@ const MultiStepForm = () => {
 
         // Final step - Submit entire form
         else if (isLastStep) {
-            console.log('here',data)
+            console.log('here', data)
 
             register(data)
                 .then(() => {
@@ -221,9 +236,9 @@ const MultiStepForm = () => {
 
 
     return (
-        <section className="flex items-center w-full h-screen max-w-xl mx-auto rounded-none md:rounded-3xl md:p-8 py-14">
+        <section className="flex items-center h-screen mx-auto max-w-xl rounded-none md:rounded-3xl md:p-8 py-14">
             <div className="flex flex-col gap-4">
-                <Card className="w-full p-4 mx-auto">
+                <Card className=" max-w-xl p-4 mx-auto">
                     <CardHeader>
                         <div className="flex items-center justify-center gap-2 text-xl font-bold text-blue-800">
                             <img

@@ -3,13 +3,14 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { InfoIcon } from "lucide-react";
+import { InfoIcon, Mail, Phone } from "lucide-react";
 import { useState } from "react";
-import { FormWrapper } from "./FormWrapper";
 import { Link } from "react-router-dom";
+import { FormWrapper } from "./FormWrapper";
 
 type EmailData = {
-    email: string;
+    email?: string;
+    phoneNumber?: string;
     termsAccepted?: boolean;
     partyObjectivesAccepted?: boolean;
 };
@@ -18,10 +19,33 @@ type EmailFormProps = EmailData & {
     updateFields: (fields: Partial<EmailData>) => void;
 };
 
-export function EmailForm({ email, updateFields }: EmailFormProps) {
+export function EmailForm({ email, phoneNumber, updateFields }: EmailFormProps) {
     const [isTermsDialogOpen, setTermsDialogOpen] = useState(false);
     const [termsAccepted, setTermsAccepted] = useState(false);
     const [partyObjectivesAccepted, setPartyObjectivesAccepted] = useState(false);
+
+    const [inputValue, setInputValue] = useState(email || phoneNumber || '');
+
+    const handleInputChange = (value: string) => {
+        // Regular expressions for validation
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const phoneRegex = /^[6-9]\d{9}$/; // Indian mobile number format
+
+        // Update local input state
+        setInputValue(value);
+
+        // Detect input type
+        if (emailRegex.test(value)) {
+            updateFields({ email: value, phoneNumber: "" });
+        } else if (phoneRegex.test(value)) {
+            // Automatically prepend +91 if not already present
+            const formattedPhoneNumber = value.startsWith("+91") ? value : `+91${value}`;
+            setInputValue(formattedPhoneNumber); // Update local input state with +91
+            updateFields({ phoneNumber: formattedPhoneNumber, email: "" });
+        } else {
+            updateFields({ email: "", phoneNumber: "" });
+        }
+    };
 
     const handleTermsClick = () => {
         setTermsDialogOpen(true);
@@ -38,7 +62,7 @@ export function EmailForm({ email, updateFields }: EmailFormProps) {
     };
 
     return (
-        <FormWrapper title="Email" >
+        <FormWrapper title="Contact Information">
             <div className="flex items-center">
                 <Label className="mr-2">Email/Phone Number <span className="text-red-700">*</span></Label>
                 <TooltipProvider>
@@ -47,18 +71,25 @@ export function EmailForm({ email, updateFields }: EmailFormProps) {
                             <InfoIcon className="h-4 w-4 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent side="right" align="center">
-                            <p>The email or phone number</p>
-                            <p>will be used for OTP verification.</p>
+                            <p>Enter either your email or phone number</p>
+                            <p>for OTP verification.</p>
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
             </div>
-            <Input
-                autoFocus
-                type="text"
-                value={email}
-                placeholder="Email/Phone Number"
-                onChange={(e) => updateFields({ email: e.target.value })} />
+            <div className="relative">
+                <Input
+                    autoFocus
+                    type="text"
+                    value={inputValue}
+                    placeholder="Email or Phone Number"
+                    onChange={(e) => handleInputChange(e.target.value)}
+                />
+                <div className="pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-muted-foreground/80 peer-disabled:opacity-50">
+                    {email && <Mail size={16} strokeWidth={2} aria-hidden="true" />}
+                    {phoneNumber && <Phone size={16} strokeWidth={2} aria-hidden="true" />}
+                </div>
+            </div>
             <div className="flex flex-row items-center space-x-3 space-y-0">
                 <Checkbox
                     checked={termsAccepted}

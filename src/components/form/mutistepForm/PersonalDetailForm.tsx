@@ -18,7 +18,8 @@ type PersonalDetailData = {
     dateOfBirth: string;
     age: string;
     gender: string;
-    phone: string;
+    phoneNumber: string;
+    email: string;
 };
 
 type PersonalDetailFormProps = PersonalDetailData & {
@@ -33,7 +34,8 @@ export function PersonalDetailForm({
     dateOfBirth,
     age,
     gender,
-    phone,
+    phoneNumber,
+    email,
     updateFields,
 }: PersonalDetailFormProps) {
 
@@ -58,7 +60,7 @@ export function PersonalDetailForm({
                     <div>
                         <Label>Title <span className="text-red-700">*</span></Label>
                         <Select
-                        required
+                            required
                             onValueChange={(value) => updateFields({ title: value })}
                             value={title}
                         >
@@ -155,13 +157,28 @@ export function PersonalDetailForm({
                         </Select>
                     </div>
                     <div>
-                        <Label>Phone Number <span className="text-red-700">*</span></Label>
-                        <Input
-                            placeholder="Enter phone number"
-                            value={phone}
-                            required
-                            onChange={(e) => updateFields({ phone: e.target.value })}
-                        />
+                        {email && (
+                            <div>
+                                <Label>Phone Number <span className="text-red-700">*</span></Label>
+                                <Input
+                                    placeholder="Enter phone number"
+                                    value={phoneNumber}
+                                    required
+                                    onChange={(e) => updateFields({ phoneNumber: e.target.value })}
+                                />
+                            </div>
+                        )}
+                        {phoneNumber && (
+                            <div>
+                                <Label>Email Address <span className="text-red-700">*</span></Label>
+                                <Input
+                                    placeholder="Enter email address"
+                                    value={email}
+                                    required
+                                    onChange={(e) => updateFields({ email: e.target.value })}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
