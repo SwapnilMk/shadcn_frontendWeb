@@ -10,34 +10,31 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const PayDialog = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
-        <Dialog open={true} >
-            <DialogContent className="sm:max-w-[575px]">
+        <Dialog open={true}>
+            <DialogContent className="sm:max-w-[575px] p-6">
                 <DialogHeader>
-                    <DialogTitle className='text-3xl font-bold'>Pay Now to use Our services</DialogTitle>
-                    <DialogDescription className='font-semibold text-lg'>
+                    <DialogTitle className="text-3xl font-bold text-center">Pay Now to use Our services</DialogTitle>
+                    <DialogDescription className="font-semibold text-lg text-center mb-4">
                         You have successfully joined the BPP platform.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="py-2">
-                    <p className="text-sm text-muted-foreground">
-                        To become a primary member and unlock the access to our services, please pay the joining fee of <span className='font-bold'>Rs. 5/-.</span>  This will give you the access to the platform and enable you to avail membership benefits, including counselling on legal, professional, and educational matters.
+                <div className="py-4">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                        Bharatiya Public Party is committed to provide you with the benefits of Community Contribution. 
+                        By paying this nominal fee of ₹5, you will gain access to valuable services like counselling and 
+                        support on medical, legal, educational and social issues.
                     </p>
                 </div>
 
-                <DialogFooter>
-                    <Button
-                        variant="outline"
-                    // onClick={() => setIsOpen(false)}
-                    >
-                        Cancel
-                    </Button>
+                <DialogFooter className="space-x-4">
                     <Button
                         onClick={() => {
-                            navigate('/dashboard/add-fund')
+                            navigate('/dashboard/add-fund');
                         }}
+                        className="w-full sm:w-auto"
                     >
                         Pay Now
                     </Button>

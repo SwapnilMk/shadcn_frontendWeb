@@ -6,9 +6,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import DashboardLayout from "@/layout/DashboardLayout"
 import { ArrowLeftIcon, CreditCardIcon } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const AddFund = () => {
+    const navigate = useNavigate()
     return (
         <DashboardLayout>
             <ContentLayout title="Dashboard">
@@ -48,7 +49,7 @@ const AddFund = () => {
                     </CardDescription>
                 </CardContent>
                 <CardFooter className="flex justify-end p-4">
-                    <Button>Pay Rs 5.00</Button>
+                    <Button onClick={()=> navigate('/dashboard/payment-gateway')}>Pay Rs 5.00</Button>
                 </CardFooter>
             </Card>
             <Card>

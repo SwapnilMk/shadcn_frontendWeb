@@ -2,6 +2,7 @@
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import WelcomeDialog from "@/components/dialogs/WelcomeDialog";
+import MarqueNews from "@/components/features/MarqueNews";
 import MapChart from "@/components/maps/mapChart";
 import {
   Breadcrumb,
@@ -43,6 +44,7 @@ const DashboardPage: React.FC = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
+        <MarqueNews />
         <div className="grid grid-cols-2 my-3 gap-4 w-full">
           <Card className="w-full h-[500px] p-4">
             <CardContent className="h-[calc(500px-4rem)]">

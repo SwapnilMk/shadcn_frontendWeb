@@ -52,6 +52,7 @@ import Vision from '@/pages/Vision/Vision';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { useAuth } from '@/context/AuthContext';
+import { Payment } from '@/pages/Payment/Payment';
 
 const AppRoutes = () => {
     const { isAuthenticated } = useAuth();
@@ -157,6 +158,7 @@ const AppRoutes = () => {
                                 <Route path="voting" element={<Voting />} />
                                 <Route path="track" element={<Track />} />
                                 <Route path="track-details" element={<TrackingDetails />} />
+                                <Route path="payment-gateway" element={<Payment />} />
                             </Routes>
                         </ProtectedRoute>
                     }

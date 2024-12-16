@@ -26,6 +26,9 @@ export function RegistrationForm({
         <FormWrapper title="User Details">
             <div className="grid gap-6">
                 {/* Row 1: Name Fields */}
+                <div className="text-xs text-center text-muted-foreground font-semibold">
+                    * Providing your Aadhar card details is mandatory for completing this process.
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <Label htmlFor="aadhaarNumber">Aadhaar Number <span className="text-red-700">*</span></Label>
@@ -57,6 +60,9 @@ export function RegistrationForm({
                     <span className="mx-4 text-neutral-500 dark:text-neutral-400">or</span>
                     <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent h-[1px] w-full" />
                 </div>
+                <div className="text-xs text-center text-muted-foreground font-semibold">
+                    * Providing your Voter ID card details is optional.
+                </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <Label htmlFor="voterId">Voter ID / Electoral Card </Label>
@@ -81,17 +87,19 @@ export function RegistrationForm({
                         />
                     </div>
                 </div>
-                <div>If you wish to serve a community as a professional?</div>
+                <div>If you wish to serve the community as a professional?</div>
                 <div className="flex gap-4">
                     <Label>
                         <Checkbox
                             id="yes"
+                            className="mx-2"
                         />
                         Yes
                     </Label>
                     <Label>
                         <Checkbox
                             id="no"
+                            className="mx-2"
                         />
                         No
                     </Label>

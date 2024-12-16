@@ -2,6 +2,7 @@ import bpplogo from '@/assets/images/logos/Bpp.png';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Toaster } from '@/components/ui/sonner';
+import { useAuth } from "@/context/AuthContext";
 import { useMultiStepForm } from '@/hooks/useMultiStepForm';
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,7 +14,6 @@ import { EmailForm } from './EmailForm';
 import { OtpVerificationForm } from './OtpVerificationForm';
 import { PersonalDetailForm } from './PersonalDetailForm';
 import { RegistrationForm } from './RegistrationDetails';
-import { useAuth } from "@/context/AuthContext";
 
 type FormData = {
 
@@ -126,11 +126,11 @@ const MultiStepForm = () => {
 
     const { currentStepIndex, step, isFirstStep, isLastStep, back, next } =
         useMultiStepForm([
+            <RegistrationForm {...data} updateFields={updateFields} />,
             <EmailForm {...data} updateFields={updateFields} />,
             <OtpVerificationForm {...data} updateFields={updateFields} />,
             <PersonalDetailForm {...data} updateFields={updateFields} />,
             <AddressForm {...data} updateFields={updateFields} />,
-            <RegistrationForm {...data} updateFields={updateFields} />,
             <EducationalDetailsForm {...data} updateFields={updateFields} />,
             <CredentialsForm {...data} updateFields={updateFields} />,
         ])
